@@ -21,13 +21,19 @@ Sala:
 ## Bibliografia
 
   1. Operating Systems: Three Easy Pieces
+  
      Remzi H. Arpaci-Dusseau and Andrea C. Arpaci-Dusseau
+  
      (Version 0.91 -- ou mais recente se houver)
+     
      **Apenas em inglês. Aberto!**
      
   1. Operating System Concepts (Fundamentos de Sistemas Operacionais)
+     
      Abraham Silberschatz, Peter B. Galvin and  Greg Gagne
+     
      (9th Edition)
+     
      **Inglês e Português**
 
 ## Aulas
