@@ -21,7 +21,7 @@ Sala:
 
 ## Bibliografia
 
-  1. [Operating Systems: Three Easy Pieces (OSTEP)](http://pages.cs.wisc.edu/%7Eremzi/OSTEP/) <br>
+  1. [Operating Systems: Three Easy Pieces (OSTEP)](pages.cs.wisc.edu/~remzi/OSTEP/) <br>
      Remzi H. Arpaci-Dusseau and Andrea C. Arpaci-Dusseau <br>
      Version 0.91 -- ou mais recente se houver <br>
      **Apenas em inglês. Aberto!**
@@ -36,6 +36,9 @@ Sala:
      4th Edition. Versões antigas também são boas para a disciplina <br>
      **Inglês e Português**
 
+## Caso de Estudo
+
+  1. [XV6](https://github.com/mit-pdos/xv6-public)
 
 ## Aulas
 
@@ -92,11 +95,6 @@ Slides disponíveis [Google Drive](https://drive.google.com/drive/folders/0B0ryA
   1. Amazon Dynamo
   1. Facebook TAO
   1. Ceph
-
-## Material Interessante na Web
-
-  1. [OStep Book](http://pages.cs.wisc.edu/~remzi/OSTEP/)
-  1. [XV6](https://github.com/mit-pdos/xv6-public)
 
 [ProblemasRecomendados]: https://github.com/flaviovdf/SO-2017-2/blob/master/listas/ProblemasRecomendados.md
 [Lista]: https://github.com/flaviovdf/SO-2017-2/blob/master/listas/Lista.md
