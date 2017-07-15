@@ -38,8 +38,11 @@ Sala:
 
 ## Caso de Estudo
 
-  1. [XV6 - Código](https://github.com/mit-pdos/xv6-public)
-  1. [XV6 - Book](https://pdos.csail.mit.edu/6.828/2016/xv6/book-rev9.pdf)
+  1. [xv6 - Código](https://github.com/mit-pdos/xv6-public)
+  1. [xv6 - a simple, Unix-like teaching operating system](https://pdos.csail.mit.edu/6.828/2016/xv6/book-rev9.pdf) <br>
+     Russ Cox, Frank Kaashoek and Robert Morris <br>
+     Revision 9 -- ou mais recente se houver <br>
+      **Apenas em inglês. Aberto!**
   
 ## Aulas
 
