@@ -15,9 +15,13 @@ Sala:
 
 ## Listas
 
-  1. [Lista01]
-  1. [Lista02]
+  1. [Lista]
   1. [ProblemasRecomendados]
+
+## Bibliografia
+
+  1. OStep
+  1. Siberschatz
 
 ## Aulas
 
@@ -56,16 +60,14 @@ Slides disponíveis [Google Drive](https://drive.google.com/drive/folders/0B0ryA
 ## Tópicos de Seminários
 
   1. GlusterFS
+  1. AFS
   1. Docker
   1. Mobile OSes
-  1.
-
 
 ## Material Interessante na Web
 
   1. [OStep Bool](http://pages.cs.wisc.edu/~remzi/OSTEP/)
   1. [XV6](https://github.com/mit-pdos/xv6-public)
 
-[ProblemasRecomendados]: https://github.com/flaviovdf/SO-2017-1/blob/master/listas/ProblemasRecomendados.md
-[Lista01]: https://github.com/flaviovdf/SO-2017-1/blob/master/listas/Lista1.md
-[Lista02]: https://github.com/flaviovdf/SO-2017-1/blob/master/listas/Lista2.md
+[ProblemasRecomendados]: https://github.com/flaviovdf/SO-2017-2/blob/master/listas/ProblemasRecomendados.md
+[Lista]: https://github.com/flaviovdf/SO-2017-2/blob/master/listas/Lista.md
