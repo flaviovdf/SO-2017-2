@@ -91,6 +91,7 @@ Slides disponíveis [Google Drive](https://drive.google.com/drive/folders/0B0ryA
   1. Google Spanner
   1. Amazon Dynamo
   1. Facebook TAO
+  1. Ceph
 
 ## Material Interessante na Web
 
