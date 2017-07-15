@@ -4,7 +4,7 @@ Professor: Flavio Figueiredo
 
 Monitores:
 
-Aulas:
+Aulas: Terças e Quintas 14:55-16:35
 
 Sala:
 
@@ -12,6 +12,7 @@ Sala:
 
   1. [TP1](TODO)
   2. [TP2](TODO)
+  3. [TP3](TODO)
 
 ## Listas
 
@@ -20,15 +21,21 @@ Sala:
 
 ## Bibliografia
 
-  1. Operating Systems: Three Easy Pieces <br>
+  1. Operating Systems: Three Easy Pieces (OSTEP) <br>
      Remzi H. Arpaci-Dusseau and Andrea C. Arpaci-Dusseau <br>
-     (Version 0.91 -- ou mais recente se houver) <br>
+     Version 0.91 -- ou mais recente se houver <br>
      **Apenas em inglês. Aberto!**
      
   1. Operating System Concepts (Fundamentos de Sistemas Operacionais) <br>
      Abraham Silberschatz, Peter B. Galvin and  Greg Gagne <br>
-     (9th Edition) <br>
+     9th Edition. Versões antigas também são boas para a disciplina <br>
      **Inglês e Português**
+
+  1. Modern Operating Systems (Sistemas Operacionais Modernos) <br>
+     Andrew S. Tanenbaum and Herbert Bos <br>
+     4th Edition. Versões antigas também são boas para a disciplina <br>
+     **Inglês e Português**
+
 
 ## Aulas
 
@@ -74,6 +81,7 @@ Slides disponíveis [Google Drive](https://drive.google.com/drive/folders/0B0ryA
   1. GlusterFS
   1. AFS
   1. Docker
+  1. Kubernetes e/ou Puppet
   1. Mobile OSes
   1. EC2 Elastic Resource Manager
   1. Sistemas de Tempo Real
