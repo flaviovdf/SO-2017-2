@@ -20,8 +20,15 @@ Sala:
 
 ## Bibliografia
 
-  1. OStep
-  1. Siberschatz
+  1. Operating Systems: Three Easy Pieces
+     Remzi H. Arpaci-Dusseau and Andrea C. Arpaci-Dusseau
+     (Version 0.91 -- ou mais recente se houver)
+     **Apenas em inglês. Aberto!**
+     
+  1. Operating System Concepts (Fundamentos de Sistemas Operacionais)
+     Abraham Silberschatz, Peter B. Galvin and  Greg Gagne
+     (9th Edition)
+     **Inglês e Português**
 
 ## Aulas
 
@@ -59,14 +66,17 @@ Slides disponíveis [Google Drive](https://drive.google.com/drive/folders/0B0ryA
 
 ## Tópicos de Seminários
 
+  1. EC2 Elastic Resource Manager
   1. GlusterFS
   1. AFS
   1. Docker
   1. Mobile OSes
+  1. Sistemas de Tempo Real
+  1. 
 
 ## Material Interessante na Web
 
-  1. [OStep Bool](http://pages.cs.wisc.edu/~remzi/OSTEP/)
+  1. [OStep Book](http://pages.cs.wisc.edu/~remzi/OSTEP/)
   1. [XV6](https://github.com/mit-pdos/xv6-public)
 
 [ProblemasRecomendados]: https://github.com/flaviovdf/SO-2017-2/blob/master/listas/ProblemasRecomendados.md
