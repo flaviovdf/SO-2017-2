@@ -21,7 +21,7 @@ Sala:
 
 ## Bibliografia
 
-  1. [Operating Systems: Three Easy Pieces (OSTEP)](http://pages.cs.wisc.edu/~remzi/OSTEP/) <br>
+  1. [Operating Systems: Three Easy Pieces - OSTEP](http://pages.cs.wisc.edu/~remzi/OSTEP/) <br>
      Remzi H. Arpaci-Dusseau and Andrea C. Arpaci-Dusseau <br>
      Version 0.91 -- ou mais recente se houver <br>
      **Apenas em inglês. Aberto!**
@@ -38,8 +38,9 @@ Sala:
 
 ## Caso de Estudo
 
-  1. [XV6](https://github.com/mit-pdos/xv6-public)
-
+  1. [XV6 - Código](https://github.com/mit-pdos/xv6-public)
+  1. [XV6 - Book](https://pdos.csail.mit.edu/6.828/2016/xv6/book-rev9.pdf)
+  
 ## Aulas
 
 Slides disponíveis [Google Drive](https://drive.google.com/drive/folders/0B0ryAvcYobs0c1oxSU9LaWdFbWs).
