@@ -38,41 +38,45 @@ Slides disponíveis [Google Drive](https://drive.google.com/drive/folders/0B0ryA
 
 | Aula | Data     |  Prova 1                  | Informações                 |
 |------|----------|---------------------------|-----------------------------|
-| 1    |          | Introdução                | TP1                         |
-| 2    |          | Processos e Threads       |                             |
+| 1    |          | Introdução                |                             |
+| 2    |          | Processos e Threads       | TP1                         |
 | 3    |          | Escalonamento             |                             |
 | 4    |          | Sincronização             |                             |
 | 5    |          | Sincronização             |                             |
 | 6    |          | Problemas Sincronização   |                             |
-| 7    |          | Deadlocks                 | TP2                         |
+| 7    |          | Deadlocks                 |                             |
 | 8    |          | *Prova 1*                 |                             |
-| 9    |          | Compilação e Linkagem     |                             |
+| 9    |          | Compilação e Linkagem     | TP2                         |
 | 10   |          | Gerência de Memória       |                             |
 | 11   |          | Paginação                 |                             |
 | 12   |          | VMM                       |                             |
-| 13   |          | Espaço Livre e Malloc     | TP3                         |
-| 14   |          | *Prova 2*                 |                             |
-| 15   |          | XV6 Boot                  |                             |
-| 16   |          | E/S Dispositivos          |                             |
+| 13   |          | Espaço Livre e Malloc     |                             |
+| 14   |          | XV6 Boot                  |                             |
+| 15   |          | *Prova 2*                 |                             |
+| 16   |          | E/S Dispositivos          | TP3                         |
 | 17   |          | Arquivos + FFS            |                             |
-| 18   |          | Logs/Journal              |                             |
-| 19   |          | Proteção+Segurança        | TP4                         |
-| 20   |          | *Prova 3*                 |                             |
-| 21   |          | Virtualização             |                             |
-| 22   |          | Sistemas Distribuídos     |                             |
-| 23   |          | Mensuração                |                             |
-| 24   |          | *Seminários*              |                             |
+| 18   |          | Implementando um VFS      |                             |
+| 19   |          | Logs/Journal              |                             |
+| 20   |          | Proteção+Segurança        |                             |
+| 21   |          | *Prova 3*                 |                             |
+| 22   |          | Virtualização             | Alocação Seminários         |
+| 23   |          | Sistemas Distribuídos     |                             |
+| 24   |          | Mensuração                |                             |
 | 25   |          | *Seminários*              |                             |
+| 26   |          | *Seminários*              |                             |
+| 27   |          | *Seminários*              |                             |
+| 28   |          | *Reposição*               |                             |
+| 29   |          | *Especial*                |                             |
 
 ## Tópicos de Seminários
 
-  1. EC2 Elastic Resource Manager
+  1. Linux NameSpaces e CGroups
   1. GlusterFS
   1. AFS
   1. Docker
   1. Mobile OSes
+  1. EC2 Elastic Resource Manager
   1. Sistemas de Tempo Real
-  1. 
 
 ## Material Interessante na Web
 
