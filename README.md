@@ -56,25 +56,24 @@ Slides disponíveis [Google Drive](https://drive.google.com/drive/folders/0B0ryA
 | 9    |          | Compilação e Linkagem     | TP2                         |
 | 10   |          | Gerência de Memória       |                             |
 | 11   |          | Paginação                 |                             |
-| 12   |          | VMM                       |                             |
-| 13   |          | Espaço Livre e Malloc     |                             |
-| 14   |          | XV6 Boot                  |                             |
-| 15   |          | *Prova 2*                 |                             |
-| 16   |          | E/S Dispositivos          | TP3                         |
-| 17   |          | Arquivos + FFS            |                             |
-| 18   |          | Implementando um VFS      |                             |
-| 19   |          | Logs/Journal              |                             |
-| 20   |          | Proteção+Segurança        |                             |
-| 21   |          | *Prova 3*                 |                             |
-| 22   |          | *Reposição*               |                             |
-| 23   |          | Virtualização             | Alocação Seminários         |
-| 24   |          | Sistemas Distribuídos     |                             |
-| 25   |          | Mensuração                |                             |
-| 26   |          | *Seminários*              |                             |
+| 12   |          | Memória Virtual           |                             |
+| 13   |          | Memória Virtual           |                             |
+| 14   |          | Espaço Livre e Malloc     |                             |
+| 15   |          | XV6 Boot                  |                             |
+| 16   |          | *Prova 2*                 |                             |
+| 17   |          | E/S Dispositivos          | TP3                         |
+| 18   |          | Arquivos + FFS            |                             |
+| 19   |          | Implementando um VFS      |                             |
+| 20   |          | Logs/Journal              |                             |
+| 21   |          | Proteção+Segurança        |                             |
+| 22   |          | *Prova 3*                 |                             |
+| 23   |          | *Reposição*               |                             |
+| 24   |          | Virtualização             | Alocação Seminários         |
+| 25   |          | Sistemas Distribuídos     |                             |
+| 26   |          | Mensuração                |                             |
 | 27   |          | *Seminários*              |                             |
 | 28   |          | *Seminários*              |                             |
-| 29   |          | *Seminários*              |                             |
-| 30   |          | *Exame Especial*          |                             |
+| 29   |          | *Exame Especial*          |                             |
 
 ## Tópicos de Seminários
 
