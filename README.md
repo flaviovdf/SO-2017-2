@@ -66,14 +66,15 @@ Slides disponíveis [Google Drive](https://drive.google.com/drive/folders/0B0ryA
 | 19   |          | Logs/Journal              |                             |
 | 20   |          | Proteção+Segurança        |                             |
 | 21   |          | *Prova 3*                 |                             |
-| 22   |          | Virtualização             | Alocação Seminários         |
-| 23   |          | Sistemas Distribuídos     |                             |
-| 24   |          | Mensuração                |                             |
-| 25   |          | *Seminários*              |                             |
+| 22   |          | *Reposição*               |                             |
+| 23   |          | Virtualização             | Alocação Seminários         |
+| 24   |          | Sistemas Distribuídos     |                             |
+| 25   |          | Mensuração                |                             |
 | 26   |          | *Seminários*              |                             |
 | 27   |          | *Seminários*              |                             |
-| 28   |          | *Reposição*               |                             |
-| 29   |          | *Especial*                |                             |
+| 28   |          | *Seminários*              |                             |
+| 29   |          | *Seminários*              |                             |
+| 30   |          | *Exame Especial*          |                             |
 
 ## Tópicos de Seminários
 
@@ -85,6 +86,12 @@ Slides disponíveis [Google Drive](https://drive.google.com/drive/folders/0B0ryA
   1. Mobile OSes
   1. EC2 Elastic Resource Manager
   1. Sistemas de Tempo Real
+  1. Caso de Estudo: Windows
+  1. Caso de Estudo: FreeBSD
+  1. Caso de Estudo: Linux
+  1. Google Spanner
+  1. Amazon Dynamo
+  1. Facebook TAO
 
 ## Material Interessante na Web
 
