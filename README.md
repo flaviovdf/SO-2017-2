@@ -21,7 +21,7 @@ Sala:
 
 ## Bibliografia
 
-  1. [Operating Systems: Three Easy Pieces (OSTEP)](pages.cs.wisc.edu/~remzi/OSTEP/) <br>
+  1. [Operating Systems: Three Easy Pieces (OSTEP)](http://pages.cs.wisc.edu/~remzi/OSTEP/) <br>
      Remzi H. Arpaci-Dusseau and Andrea C. Arpaci-Dusseau <br>
      Version 0.91 -- ou mais recente se houver <br>
      **Apenas em inglês. Aberto!**
