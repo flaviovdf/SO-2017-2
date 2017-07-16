@@ -74,13 +74,14 @@ Slides disponíveis [Google Drive](https://drive.google.com/drive/folders/0B0ryA
 | 20   |          | Logs/Journal              |                             |
 | 21   |          | Proteção+Segurança        |                             |
 | 22   |          | *Prova 3*                 |                             |
-| 23   |          | *Reposição*               |                             |
-| 24   |          | Virtualização             | Alocação Seminários         |
+| 23   |          | *Reposição*               | Alocação Seminários         |
+| 24   |          | Virtualização             |                             |
 | 25   |          | Sistemas Distribuídos     |                             |
 | 26   |          | Mensuração                |                             |
 | 27   |          | *Seminários*              |                             |
 | 28   |          | *Seminários*              |                             |
-| 29   |          | *Exame Especial*          |                             |
+| 29   |          | *Seminários*              |                             |
+| 30   |          | *Exame Especial*          |                             |
 
 ## Tópicos de Seminários
 
