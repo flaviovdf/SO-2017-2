@@ -84,6 +84,7 @@ Slides disponíveis [Google Drive](https://drive.google.com/drive/folders/0B0ryA
 
 ## Tópicos de Seminários
 
+  1. Microkernel OSes
   1. Linux NameSpaces e CGroups
   1. GlusterFS
   1. AFS
@@ -99,6 +100,10 @@ Slides disponíveis [Google Drive](https://drive.google.com/drive/folders/0B0ryA
   1. Amazon Dynamo
   1. Facebook TAO
   1. Ceph
+  1. ext2/3/4
+  1. reiserFS
+  1. UnionFS
+  1. Microsoft Singularity
 
 [ProblemasRecomendados]: https://github.com/flaviovdf/SO-2017-2/blob/master/listas/ProblemasRecomendados.md
 [Lista]: https://github.com/flaviovdf/SO-2017-2/blob/master/listas/Lista.md
