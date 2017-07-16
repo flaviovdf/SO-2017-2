@@ -106,6 +106,8 @@ Slides disponíveis [Google Drive](https://drive.google.com/drive/folders/0B0ryA
   1. reiserFS
   1. UnionFS
   1. Microsoft Singularity
+  1. Xen and the Art of Virtualization
+  1. Emulation of Nintendo Game Boy: PyBoy paper
 
 [ProblemasRecomendados]: https://github.com/flaviovdf/SO-2017-2/blob/master/listas/ProblemasRecomendados.md
 [Lista]: https://github.com/flaviovdf/SO-2017-2/blob/master/listas/Lista.md
