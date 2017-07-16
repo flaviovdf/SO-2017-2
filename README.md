@@ -67,7 +67,7 @@ Slides disponíveis [Google Drive](https://drive.google.com/drive/folders/0B0ryA
 | 12   |          | Memória Virtual           |                             |
 | 13   |          | Memória Virtual           |                             |
 | 14   |          | Espaço Livre e Malloc     |                             |
-| 15   |          | XV6 Boot                  |                             |
+| 15   |          | xv6 Boot                  |                             |
 | 16   |          | *Prova 2*                 |                             |
 | 17   |          | E/S Dispositivos          | TP3                         |
 | 18   |          | Arquivos + FFS            |                             |
