@@ -51,7 +51,7 @@ Slides disponíveis [Google Drive](https://drive.google.com/drive/folders/0B0ryA
 
 **Plano de aulas inicial**
 
-| Aula | Data     |  Prova 1                  | Informações                 |
+| Aula | Data     |  Processos                | Informações                 |
 |------|----------|---------------------------|-----------------------------|
 | 1    | 01 Ago   | Introdução                |                             |
 | 2    | 03       | Processos e Threads       | TP1                         |
@@ -62,6 +62,9 @@ Slides disponíveis [Google Drive](https://drive.google.com/drive/folders/0B0ryA
 | 6    | 22       | Problemas Sincronização   |                             |
 | 7    | 24       | Deadlocks                 |                             |
 | 8    | 29       | *Prova 1*                 |                             |
+
+| Aula | Data     |  Memória                  | Informações                 |
+|------|----------|---------------------------|-----------------------------|
 | 9    | 31       | Compilação e Linkagem     | TP2                         |
 | 10   | 05 Set   | Gerência de Memória       |                             |
 |      | 07       |                           | *Feriado*                   |
@@ -71,6 +74,9 @@ Slides disponíveis [Google Drive](https://drive.google.com/drive/folders/0B0ryA
 | 14   | 21       | Espaço Livre e Malloc     |                             |
 | 15   | 26       | xv6 Boot                  |                             |
 | 16   | 28       | *Prova 2*                 |                             |
+
+| Aula | Data     |  Arquivos / E/S           | Informações                 |
+|------|----------|---------------------------|-----------------------------|
 | 17   | 03 Out   | E/S Dispositivos          | TP3                         |
 | 18   | 05       | Arquivos + FFS            |                             |
 | 19   | 10       | Implementando um VFS      |                             |
@@ -79,6 +85,9 @@ Slides disponíveis [Google Drive](https://drive.google.com/drive/folders/0B0ryA
 | 21   | 18       | Proteção+Segurança        |                             |
 | 22   | 24       | *Prova 3*                 |                             |
 | 23   | 26       | *Reposição*               | Alocação Seminários         |
+
+| Aula | Data     |  Seminários               | Informações                 |
+|------|----------|---------------------------|-----------------------------|
 | 24   | 31       | Virtualização             |                             |
 | 25   | 07 Nov   | Sistemas Distribuídos     |                             |
 | 26   | 09       | Mensuração                |                             |
