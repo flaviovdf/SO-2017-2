@@ -53,36 +53,39 @@ Slides disponíveis [Google Drive](https://drive.google.com/drive/folders/0B0ryA
 
 | Aula | Data     |  Prova 1                  | Informações                 |
 |------|----------|---------------------------|-----------------------------|
-| 1    |          | Introdução                |                             |
-| 2    |          | Processos e Threads       | TP1                         |
-| 3    |          | Escalonamento             |                             |
-| 4    |          | Sincronização             |                             |
-| 5    |          | Sincronização             |                             |
-| 6    |          | Problemas Sincronização   |                             |
-| 7    |          | Deadlocks                 |                             |
-| 8    |          | *Prova 1*                 |                             |
-| 9    |          | Compilação e Linkagem     | TP2                         |
-| 10   |          | Gerência de Memória       |                             |
-| 11   |          | Paginação                 |                             |
-| 12   |          | Memória Virtual           |                             |
-| 13   |          | Memória Virtual           |                             |
-| 14   |          | Espaço Livre e Malloc     |                             |
-| 15   |          | xv6 Boot                  |                             |
-| 16   |          | *Prova 2*                 |                             |
-| 17   |          | E/S Dispositivos          | TP3                         |
-| 18   |          | Arquivos + FFS            |                             |
-| 19   |          | Implementando um VFS      |                             |
-| 20   |          | Logs/Journal              |                             |
-| 21   |          | Proteção+Segurança        |                             |
-| 22   |          | *Prova 3*                 |                             |
-| 23   |          | *Reposição*               | Alocação Seminários         |
-| 24   |          | Virtualização             |                             |
-| 25   |          | Sistemas Distribuídos     |                             |
-| 26   |          | Mensuração                |                             |
-| 27   |          | *Seminários*              |                             |
-| 28   |          | *Seminários*              |                             |
-| 29   |          | *Seminários*              |                             |
-| 30   |          | *Exame Especial*          |                             |
+| 1    | 01 Ago   | Introdução                |                             |
+| 2    | 03       | Processos e Threads       | TP1                         |
+| 3    | 08       | Escalonamento             |                             |
+| 4    | 10       | Sincronização             |                             |
+|      | 15       |                           | *Feriado*                   |
+| 5    | 17       | Sincronização             |                             |
+| 6    | 22       | Problemas Sincronização   |                             |
+| 7    | 24       | Deadlocks                 |                             |
+| 8    | 29       | *Prova 1*                 |                             |
+| 9    | 31       | Compilação e Linkagem     | TP2                         |
+| 10   | 05 Set   | Gerência de Memória       |                             |
+|      | 07       |                           | *Feriado*                   |
+| 11   | 12       | Paginação                 |                             |
+| 12   | 14       | Memória Virtual           |                             |
+| 13   | 19       | Memória Virtual           |                             |
+| 14   | 21       | Espaço Livre e Malloc     |                             |
+| 15   | 26       | xv6 Boot                  |                             |
+| 16   | 28       | *Prova 2*                 |                             |
+| 17   | 03 Out   | E/S Dispositivos          | TP3                         |
+| 18   | 05       | Arquivos + FFS            |                             |
+| 19   | 10       | Implementando um VFS      |                             |
+|      | 12       |                           | *Feriado*                   |
+| 20   | 17       | Logs/Journal              |                             |
+| 21   | 18       | Proteção+Segurança        |                             |
+| 22   | 24       | *Prova 3*                 |                             |
+| 23   | 26       | *Reposição*               | Alocação Seminários         |
+| 24   | 31       | Virtualização             |                             |
+| 25   | 07 Nov   | Sistemas Distribuídos     |                             |
+| 26   | 09       | Mensuração                |                             |
+| 27   | 14       | *Seminários*              |                             |
+| 28   | 16       | *Seminários*              |                             |
+| 29   | 21       | *Seminários*              |                             |
+| 30   | 28       | *Exame Especial*          |                             |
 
 ## Tópicos de Seminários
 
