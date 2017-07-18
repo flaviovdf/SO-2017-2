@@ -44,6 +44,8 @@ Sala:
      Revision 9 -- ou mais recente se houver <br>
       **Apenas em inglês. Aberto!**
   1. [Linux Kernel - Código](https://github.com/torvalds/linux)
+  1. [Linux Insides - gitbook](https://www.gitbook.com/book/0xax/linux-insides/details) <br>
+     [@OxAX][(https://twitter.com/0xAX)
   
 ## Aulas
 
