@@ -2,11 +2,9 @@
 
 Professor: Flavio Figueiredo
 
-Monitores:
-
 Aulas: Terças e Quintas 14:55-16:35
 
-Sala:
+Sala: 2008 (Icex)
 
 ## TPs
 
