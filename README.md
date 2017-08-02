@@ -89,7 +89,8 @@ Slides disponíveis [Google Drive](https://drive.google.com/drive/folders/0B0ryA
 | Aula | Data     |  Seminários               | Informações                 |
 |------|----------|---------------------------|-----------------------------|
 | 24   | 31       | Virtualização             |                             |
-| 25   | 07 Nov   | Sistemas Distribuídos     |                             |
+|      | 02 Nov   |                           | *Feriado*                   |
+| 25   | 07       | Sistemas Distribuídos     |                             |
 | 26   | 09       | Mensuração                |                             |
 | 27   | 14       | *Seminários*              |                             |
 | 28   | 16       | *Seminários*              |                             |
