@@ -43,7 +43,9 @@ Sala: 2008 (Icex)
       **Apenas em inglês. Aberto!**
   1. [Linux Kernel - Código](https://github.com/torvalds/linux)
   1. [Linux Insides - gitbook](https://www.gitbook.com/book/0xax/linux-insides/details) <br>
-     [@OxAX](https://twitter.com/0xAX)
+     [@OxAX](https://twitter.com/0xAX) <br>
+     Versão mais nova <br>
+      **Inglês com uma tradução incompleta em Português. Aberto!**
   
 ## Aulas
 
