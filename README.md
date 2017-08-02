@@ -82,7 +82,7 @@ Slides disponíveis [Google Drive](https://drive.google.com/drive/folders/0B0ryA
 | 19   | 10       | Implementando um VFS      |                             |
 |      | 12       |                           | *Feriado*                   |
 | 20   | 17       | Logs/Journal              |                             |
-| 21   | 18       | Proteção+Segurança        |                             |
+| 21   | 19       | Proteção+Segurança        |                             |
 | 22   | 24       | *Prova 3*                 |                             |
 | 23   | 26       | *Reposição*               | Alocação Seminários         |
 
