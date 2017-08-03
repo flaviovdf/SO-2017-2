@@ -186,7 +186,7 @@ $ ps | grep signalteste
 ```
 
 **Código de Teste:** Disponibilizei um código
-[signaltester](https://github.com/flaviovdf/SO-2017-1/blob/master/tp1/signaltester/tester.c)
+[signaltester](https://github.com/flaviovdf/SO-2017-2/blob/master/tp1/signaltester/tester.c)
 para você testar o seu trabalho. O mesmo faz um tratamento simples de sinais em
 C.
 
@@ -195,3 +195,6 @@ Compile o teste com a linha
 ```
 $ gcc signaltester.c -o signaltester
 ```
+
+Uma forma de permitir a leitura da entrada e a impressão da lista de processos
+é utilizando `pthreads`. Tente fazer isto.
