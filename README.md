@@ -8,7 +8,7 @@ Sala: 2008 (Icex)
 
 ## TPs
 
-  1. [TP1](TODO)
+  1. [TP1](./tp1)
   2. [TP2](TODO)
   3. [TP3](TODO)
 
@@ -23,7 +23,7 @@ Sala: 2008 (Icex)
      Remzi H. Arpaci-Dusseau and Andrea C. Arpaci-Dusseau <br>
      Version 0.91 -- ou mais recente se houver <br>
      **Apenas em inglês. Aberto!**
-     
+
   1. Operating System Concepts (Fundamentos de Sistemas Operacionais) <br>
      Abraham Silberschatz, Peter B. Galvin and  Greg Gagne <br>
      9th Edition. Versões antigas também são boas para a disciplina <br>
@@ -46,7 +46,7 @@ Sala: 2008 (Icex)
      [@OxAX](https://twitter.com/0xAX) <br>
      Versão mais nova <br>
       **Inglês com uma tradução incompleta em Português. Aberto!**
-  
+
 ## Aulas
 
 Slides disponíveis [Google Drive](https://drive.google.com/drive/folders/0B0ryAvcYobs0c1oxSU9LaWdFbWs).
