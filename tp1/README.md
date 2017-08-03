@@ -127,6 +127,11 @@ leia a documentação das funções pipe, fork e close.
 
   1. Não use a função system na sua implementação. Use fork e exec.
 
+**Exemplos**
+
+  1. [Fork](../exemplos/02-Processos/fork/)
+  1. [Fork com pipe](../exemplos/02-Processos/forkpipe/)
+
 ## Parte 2: Utilizando /proc/ para fazer um TOP
 
 A segunda parte do TP consiste de um novo programa. Agora, vamos aprender um
