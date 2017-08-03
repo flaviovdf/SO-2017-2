@@ -56,14 +56,14 @@ Slides disponíveis [Google Drive](https://drive.google.com/drive/folders/0B0ryA
 | Aula | Data     |  Processos                | Informações                 |
 |------|----------|---------------------------|-----------------------------|
 | 1    | 01 Ago   | Introdução                |                             |
-| 2    | 03       | Processos e Threads       | TP1                         |
+| 2    | 03       | Processos e Threads       | Liberação TP1               |
 | 3    | 08       | Escalonamento             |                             |
 | 4    | 10       | Sincronização             |                             |
 |      | 15       |                           | *Feriado*                   |
 | 5    | 17       | Sincronização             |                             |
 | 6    | 22       | Problemas Sincronização   |                             |
 | 7    | 24       | Deadlocks                 |                             |
-| 8    | 29       | *Prova 1*                 |                             |
+| 8    | 29       | *Prova 1*                 | TP1 no Domingo pós prova    |
 
 | Aula | Data     |  Memória                  | Informações                 |
 |------|----------|---------------------------|-----------------------------|
@@ -75,7 +75,7 @@ Slides disponíveis [Google Drive](https://drive.google.com/drive/folders/0B0ryA
 | 13   | 19       | Memória Virtual           |                             |
 | 14   | 21       | Espaço Livre e Malloc     |                             |
 | 15   | 26       | xv6 Boot                  |                             |
-| 16   | 28       | *Prova 2*                 |                             |
+| 16   | 28       | *Prova 2*                 | TP2 no Domingo pós prova    |
 
 | Aula | Data     |  Arquivos / E/S           | Informações                 |
 |------|----------|---------------------------|-----------------------------|
@@ -85,7 +85,7 @@ Slides disponíveis [Google Drive](https://drive.google.com/drive/folders/0B0ryA
 |      | 12       |                           | *Feriado*                   |
 | 20   | 17       | Logs/Journal              |                             |
 | 21   | 19       | Proteção+Segurança        |                             |
-| 22   | 24       | *Prova 3*                 |                             |
+| 22   | 24       | *Prova 3*                 | TP3 no Domingo pós prova    |
 | 23   | 26       | *Reposição*               | Alocação Seminários         |
 
 | Aula | Data     |  Seminários               | Informações                 |
