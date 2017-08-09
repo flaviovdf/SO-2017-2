@@ -18,8 +18,7 @@ foque apenas na parte de chamadas de sistema, baixe o
 [esqueleto](https://gitlab.dcc.ufmg.br/cunha-dcc605/shell-assignment) do shell
 e o estude. O esqueleto do shell contém duas partes: um processador de linhas
 de comando e código para execução dos comandos. Você não precisa modificar o
-processador de linhas de comando (a não ser que queira implementar algumas das
-atividades extra abaixo), mas deve completar o código para execução dos
+processador de linhas de comando, mas deve completar o código para execução dos
 comandos. O processador de linhas só reconhece comandos simples como:
 
 ```
@@ -102,7 +101,7 @@ comandos similares.
 Dica: Dê uma olhada no manual das funções open e close (man 2 open). Se você
 não conhece o esquema de entrada e saída padrão de programas, dê uma olhada no
 artigo da Wikipedia
-[aqui](https://gitlab.dcc.ufmg.br/cunha-dcc605/shell-assignment).
+[aqui](https://en.wikipedia.org/wiki/Standard_stream).
 
 **Sequenciamento de comandos**
 
@@ -185,6 +184,11 @@ Com este sinal o processo deve morrer e sair da sua lista.
 
 **Dica:** Possivelmente o signaltester não vai aparecer entre os 20 primeiros.
 Use o comando abaixo para descobrir o PID do mesmo e testar seu topzera.
+
+**Dica 2:** O usuário que é dono do processo é o usuário dono do arquivo no /proc.
+A biblioteca `dirent.h` pode lhe ajudar.
+
+**Dica 3:** A biblioteca `sys/stat.h` também pode ser de ajuda.
 
 ```
 $ ps | grep signalteste
