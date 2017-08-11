@@ -4,7 +4,7 @@ Professor: Flavio Figueiredo
 
 Aulas: Terças e Quintas 14:55-16:35
 
-Sala: 2008 (Icex)
+Sala: 2015 (Icex)
 
 ## TPs
 
