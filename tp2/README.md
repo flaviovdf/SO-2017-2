@@ -106,14 +106,10 @@ console        3 18 0
 ### Controlando a VM
 
 * Control-a-c
-  1. info registers
-     to show CPU registers
-  1. x/10i $eip
-     show the next 10 instructions at the current instruction pointer
-  1. system-reset
-     reset & reboot the system
-  1. quit
-     exit the emulator (quit xv6) 
+  1. **info registers** to show CPU registers
+  1. **x/10i $eip** show the next 10 instructions at the current instruction pointer
+  1. **system-reset** reset & reboot the system
+  1. **quit** exit the emulator (quit xv6) 
 
 ```
 dd if=/dev/zero of=xv6.img count=10000
