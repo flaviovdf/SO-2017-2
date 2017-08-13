@@ -24,7 +24,7 @@ configurar o xv6 no Windows/macOSx mais abaixo.
 No Ubuntu, rode os seguintes comandos para instalar o gcc, qemu, git e o
 build-essentials.
 
-```shell
+```
 $ sudo apt-get update
 $ sudo apt-get install build-essential
 $ sudo apt-get install gcc
@@ -46,7 +46,7 @@ ferramentas no seu Windows/macOSx, veja as instruções para ter um ambiente xv6
 
 Rode o comando:
 
-```shell
+```
 $ git clone https://github.com/mit-pdos/xv6-public.git
 ```
 
@@ -56,19 +56,19 @@ Depois entre na pasta xv6-public.
 
 Após entrar na pasta `xv6-public` digite:
 
-```shell
+```
 $ make
 ```
 
 Para executar digite:
 
-```shell
+```
 $ make qemu-nox
 ```
 
 Se sua saída for algo como a abaixo, então você fez tudo corretamente:
 
-```shell
+```
 $ make qemu-nox
 qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 2 -m 512
 xv6...
@@ -80,7 +80,7 @@ init: starting sh
 
 O xv6 vem com alguns comandos como ls, cat, echo. Teste alguns
 
-```shell
+```
 $ ls
 .              1 1 512
 ..             1 1 512
