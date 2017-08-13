@@ -1,7 +1,13 @@
-# Paginador XV6
+# Paginador xv6
 
-## Rodando XV6
+## xv6
 
-## Compilando XV6
+### Compilando xv6
 
-## Saindo do XV6
+### Rodando xv6
+
+### Saindo do xv6
+
+## Syscall para pegar o endereço real de uma página
+
+## Copy-on-write pages
