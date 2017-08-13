@@ -50,11 +50,9 @@ Rode o comando:
 $ git clone https://github.com/mit-pdos/xv6-public.git
 ```
 
-### Compilando xv6
+Depois entre na pasta xv6-public.
 
-### Rodando xv6
-
-### Saindo do xv6
+### Compilando e Rodando o xv6
 
 ### Adicionando uma nova syscall e um novo comando
 
