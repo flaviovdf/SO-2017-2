@@ -106,6 +106,28 @@ console        3 18 0
 ### Controlando a VM
 
 * Control-a-c
+```
+dd if=/dev/zero of=xv6.img count=10000
+10000+0 records in
+10000+0 records out
+5120000 bytes (5.1 MB, 4.9 MiB) copied, 0.054514 s, 93.9 MB/s
+dd if=bootblock of=xv6.img conv=notrunc
+1+0 records in
+1+0 records out
+512 bytes copied, 9e-05 s, 5.7 MB/s
+dd if=kernel of=xv6.img seek=1 conv=notrunc
+337+1 records in
+337+1 records out
+172824 bytes (173 kB, 169 KiB) copied, 0.00093 s, 186 MB/s
+qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 2 -m 512
+xv6...
+cpu1: starting 1
+cpu0: starting 0
+sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap start 58
+init: starting sh
+$ QEMU 2.3.0 monitor - type 'help' for more information
+(qemu)
+```
   1. info registers
      to show CPU registers
   1. x/10i $eip
