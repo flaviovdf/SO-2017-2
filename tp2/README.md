@@ -3,12 +3,17 @@
 1. Entrega no domingo após a segunda prova
 1. Pode ser feito em dupla
 
-Parte deste material foi adaptado do material do [Remzi H. Arpaci-Dusseau](http://www.cs.wisc.edu/~remzi).
+Parte deste material foi adaptado do material do
+[Remzi H. Arpaci-Dusseau](http://www.cs.wisc.edu/~remzi).
 
-Neste TP vamos explorar alguns conceitos da segunda parte da disciplina. Em particular,
-vamos rever os conceitos de memória virtual e páginas copy on write.
+Neste TP vamos explorar alguns conceitos da segunda parte da disciplina.
+Em particular, vamos rever os conceitos de memória virtual e páginas
+copy on write.
 
 ## xv6
+
+Antes de iniciar o ambiente xv6 você precisa instalar alguns programas no seu ambiente Linux, Windows
+ou macOSx.
 
 ### Compilando xv6
 
