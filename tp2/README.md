@@ -66,6 +66,18 @@ Para executar digite:
 $ make qemu-nox
 ```
 
+Se sua saída for algo como a abaixo, então você fez tudo corretamente:
+
+```
+flaviovdf@chaplin:~/workspace/xv6-public$ make qemu-nox
+qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 2 -m 512
+xv6...
+cpu1: starting 1
+cpu0: starting 0
+sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap start 58
+init: starting sh
+```
+
 ### Adicionando uma nova syscall e um novo comando
 
 ## Syscall para pegar o endereço real de uma página
