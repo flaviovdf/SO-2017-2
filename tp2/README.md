@@ -54,6 +54,18 @@ Depois entre na pasta xv6-public.
 
 ### Compilando e Rodando o xv6
 
+Após entrar na pasta `xv6-public` digite:
+
+```shell
+$ make
+```
+
+Para executar digite:
+
+```shell
+$ make qemu-nox
+```
+
 ### Adicionando uma nova syscall e um novo comando
 
 ## Syscall para pegar o endereço real de uma página
