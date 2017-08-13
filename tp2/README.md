@@ -105,8 +105,39 @@ console        3 18 0
 
 ### Controlando a VM
 
-1. Control-a-c --> abre console Qemu
-1. Control-a-x --> desliga VM
+* Control-a-c
+  1. info registers
+     to show CPU registers
+  1. x/10i $eip
+     show the next 10 instructions at the current instruction pointer
+  1. system-reset
+     reset & reboot the system
+  1. quit
+     exit the emulator (quit xv6) 
+    
+* Control-a-x
+  1. Desliga a VM
+```
+dd if=/dev/zero of=xv6.img count=10000
+10000+0 records in
+10000+0 records out
+5120000 bytes (5.1 MB, 4.9 MiB) copied, 0.066966 s, 76.5 MB/s
+dd if=bootblock of=xv6.img conv=notrunc
+1+0 records in
+1+0 records out
+512 bytes copied, 0.007859 s, 65.1 kB/s
+dd if=kernel of=xv6.img seek=1 conv=notrunc
+337+1 records in
+337+1 records out
+172824 bytes (173 kB, 169 KiB) copied, 0.00478 s, 36.2 MB/s
+qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 2 -m 512
+xv6...
+cpu1: starting 1
+cpu0: starting 0
+sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap start 58
+init: starting sh
+$ QEMU: Terminated
+```
 
 ### Adicionando uma nova syscall e um novo comando
 
