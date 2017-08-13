@@ -27,7 +27,6 @@ build-essentials.
 ```
 $ sudo apt-get update
 $ sudo apt-get install build-essential
-$ sudo apt-get install gcc
 $ sudo apt-get install gcc-multilib
 $ sudo apt-get install qemu
 $ sudo apt-get install git
@@ -104,6 +103,9 @@ console        3 18 0
 ```
 
 ### Controlando a VM
+
+Provavelmente você vai utilizar só o comando **quit**, mas seguem uma lista de alguns
+outros.
 
 * Control-a-c
   1. **info registers** to show CPU registers
