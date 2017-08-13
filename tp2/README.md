@@ -17,6 +17,8 @@ ambiente Linux Ubuntu. Como nos outros trabalhos, recomendo **fortemente** que
 use um ambiente Linux ou uma VM. De qualquer forma, coloquei instruções de como
 configurar o xv6 no Windows/macOSx mais abaixo.
 
+### Configurando o ambiente
+
 **Ubuntu**
 
 No Ubuntu, rode os seguintes comandos para instalar o gcc, qemu, git e o
@@ -41,6 +43,12 @@ ferramentas no seu Windows/macOSx, veja as instruções para ter um ambiente xv6
 [aqui](https://gcallah.github.io/OperatingSystems/xv6Install.html).
 
 **Clonando**
+
+Rode o comando:
+
+```shell
+$ git clone https://github.com/mit-pdos/xv6-public.git
+```
 
 ### Compilando xv6
 
