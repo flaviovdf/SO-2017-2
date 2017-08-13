@@ -18,7 +18,7 @@ VM com Linux. Talvez seja possível usar o Linux Subsystem for Windows, veja
 como [aqui](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide).
 No macOSx você deve precisar do [Homebrew](https://brew.sh). Após instalar as
 ferramentas no seu Windows/macOSx, veja as instruções para ter um ambiente xv6
-[aqui](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide).
+[aqui](https://gcallah.github.io/OperatingSystems/xv6Install.html).
 
 **Ubuntu**
 
