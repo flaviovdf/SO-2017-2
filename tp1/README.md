@@ -33,7 +33,7 @@ $ rm y
 Se você não entende o que esses comandos fazem, estude o manual de um shell do
 Linux (por exemplo, do bash) bem como o manual de cada um dos comandos acima
 (ls, cat, rm, sort, uniq, wc) para se familiarizar. Copie e cole esses comandos
-num arquivo, por exemplo, teste.sh.
+num arquivo, por exemplo, grade.sh.
 
 Você pode compilar o esqueleto do shell rodando:
 
@@ -53,10 +53,10 @@ $ ./myshell
 ```
 
 Para sair do shell simplificado aperte ctrl+d (fim de arquivo). Teste o shell
-executando os comandos no arquivo teste.sh:
+executando o grade.sh:
 
 ```
-$ ./myshell < teste.sh
+$ grade.sh
 ```
 
 Essa execução irá falhar pois você ainda não implementou várias funcionalidades
