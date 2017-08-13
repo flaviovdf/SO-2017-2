@@ -13,12 +13,9 @@ write.
 ## xv6
 
 Antes de iniciar o ambiente xv6 você precisa instalar alguns programas no seu
-ambiente Linux Ubuntu. Para usuários Windows, ou macOSx recomendo o uso de uma
-VM com Linux. Talvez seja possível usar o Linux Subsystem for Windows, veja
-como [aqui](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide).
-No macOSx você deve precisar do [Homebrew](https://brew.sh). Após instalar as
-ferramentas no seu Windows/macOSx, veja as instruções para ter um ambiente xv6
-[aqui](https://gcallah.github.io/OperatingSystems/xv6Install.html).
+ambiente Linux Ubuntu. Como nos outros trabalhos, recomendo **fortemente** que
+use um ambiente Linux ou uma VM. De qualquer forma, coloquei instruções de como
+configurar o xv6 no Windows/macOSx mais abaixo.
 
 **Ubuntu**
 
@@ -34,6 +31,14 @@ $ sudo apt-get install qemu
 $ sudo apt-get install git
 $ sudo apt-get install nasm
 ```
+
+**Windows/macOSx**
+
+Para usuários Windows instaler o Linux Subsystem for Windows, veja
+como [aqui](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide).
+No macOSx você deve precisar do [Homebrew](https://brew.sh). Após instalar as
+ferramentas no seu Windows/macOSx, veja as instruções para ter um ambiente xv6
+[aqui](https://gcallah.github.io/OperatingSystems/xv6Install.html).
 
 **Clonando**
 
