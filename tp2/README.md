@@ -103,6 +103,11 @@ zombie         2 17 11844
 console        3 18 0
 ```
 
+### Controlando a VM
+
+1. Control-a-c --> abre console Qemu
+1. Control-a-x --> desliga VM
+
 ### Adicionando uma nova syscall e um novo comando
 
 ## Syscall para pegar o endereço real de uma página
