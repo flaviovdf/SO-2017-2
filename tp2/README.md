@@ -68,14 +68,39 @@ $ make qemu-nox
 
 Se sua saída for algo como a abaixo, então você fez tudo corretamente:
 
-```
-flaviovdf@chaplin:~/workspace/xv6-public$ make qemu-nox
+```shell
+$ make qemu-nox
 qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 2 -m 512
 xv6...
 cpu1: starting 1
 cpu0: starting 0
 sb: size 1000 nblocks 941 ninodes 200 nlog 30 logstart 2 inodestart 32 bmap start 58
 init: starting sh
+```
+
+O xv6 vem com alguns comandos como ls, cat, echo. Teste alguns
+
+```shell
+$ ls
+.              1 1 512
+..             1 1 512
+README         2 2 2632
+cat            2 3 13004
+echo           2 4 12096
+forktest       2 5 7780
+grep           2 6 14612
+init           2 7 12652
+kill           2 8 12140
+ln             2 9 12012
+ls             2 10 14168
+mkdir          2 11 12188
+rm             2 12 12164
+sh             2 13 22460
+stressfs       2 14 12844
+usertests      2 15 54992
+wc             2 16 13536
+zombie         2 17 11844
+console        3 18 0
 ```
 
 ### Adicionando uma nova syscall e um novo comando
