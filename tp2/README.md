@@ -10,7 +10,7 @@ Neste TP vamos explorar alguns conceitos da segunda parte da disciplina.  Em
 particular, vamos rever os conceitos de memória virtual e páginas copy on
 write.
 
-## xv6
+## Tutorial xv6
 
 Antes de iniciar o ambiente xv6 você precisa instalar alguns programas no seu
 ambiente Linux Ubuntu. Como nos outros trabalhos, recomendo **fortemente** que
@@ -169,6 +169,6 @@ xv6 e um comando shutdown que usa a syscall. No momento, única forma de desliga
 é com o Control-a-x. Após adicionar a syscall teremos um comando do sistema chamado
 `shutdown`.
 
-## Syscall para pegar o endereço real de uma página
+## Parte 1: Syscall para pegar o endereço real de uma página
 
-## Copy-on-write pages
+## Parte 2: Copy-on-write pages
