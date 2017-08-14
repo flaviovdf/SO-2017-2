@@ -163,6 +163,12 @@ $ QEMU: Terminated
 
 ### Adicionando uma nova syscall e um novo comando
 
+Agora vou mostrar um passo a passo como adicionar uma nova syscall no xv6. Use este
+passo a passo como base para seu TP. Vamos adicionar uma systcall para desligar o
+xv6 e um comando shutdown que usa a syscall. No momento, única forma de desligar o xv6
+é com o Control-a-x. Após adicionar a syscall teremos um comando do sistema chamado
+`shutdown`.
+
 ## Syscall para pegar o endereço real de uma página
 
 ## Copy-on-write pages
