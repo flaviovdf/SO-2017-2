@@ -169,6 +169,14 @@ xv6 e um comando shutdown que usa a syscall. No momento, única forma de desliga
 é com o Control-a-x. Após adicionar a syscall teremos um comando do sistema chamado
 `shutdown`.
 
+**Passo 1: Código da syscall**
+
+**Passo 2: Tabela de syscalls**
+
+**Passo 3: Novo Comando shutdown**
+
+**Passo 4: Testando tudo**
+
 ## Parte 1: Syscall para pegar o endereço real de uma página
 
 ## Parte 2: Copy-on-write pages
