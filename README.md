@@ -9,7 +9,7 @@ Sala: 2015 (Icex)
 ## TPs
 
   1. [TP1](./tp1)
-  2. [TP2](TODO)
+  2. [TP2](./tp2)
   3. [TP3](TODO)
 
 ## Listas
