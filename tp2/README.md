@@ -4,7 +4,9 @@
 1. Pode ser feito em dupla
 
 Parte deste material foi adaptado do material do
-[Remzi H. Arpaci-Dusseau](http://www.cs.wisc.edu/~remzi).
+[Remzi H. Arpaci-Dusseau](http://www.cs.wisc.edu/~remzi). Outra parte foi
+adaptada do material do
+[MIT](https://pdos.csail.mit.edu/6.828/2016/index.html).
 
 Neste TP vamos explorar alguns conceitos da segunda parte da disciplina.  Em
 particular, vamos rever os conceitos de memória virtual e páginas copy on
@@ -144,7 +146,7 @@ este passo a passo como base para seu TP. Vamos adicionar uma syscall retornar
 a data do sistema. Após adicionar a syscall teremos um comando do sistema
 chamado `date`.
 
-**Passo 1: Código da syscall**
+**Passo 0: Entendendo o Código xv6**
 
 Para adicionar uma syscall vamos precisar alterar alguns arquivos do xv6.
 
@@ -186,10 +188,34 @@ syscall(void)
 ```
 
 Note que na linha `curproc->tf->eax` o número da syscall é identificado
-através do valor do registrador `eax`. Lembre-se que syscalls são tratadas por
-traps, então não podemos simplesmente passar o valor
+através do valor do registrador `eax`.
 
-**Passo 2: Tabela de syscalls**
+Estude struct do processo definido no arquivo `proc.h`. Pode lhe ajudar
+a entender como o xv6 gerencia processos e trata traps. Em particular,
+note o campo `trapframe`. O mesmo pode ser encontrado no `x86.h`.
+
+```c
+enum procstate { UNUSED, EMBRYO, SLEEPING, RUNNABLE, RUNNING, ZOMBIE };
+
+// Per-process state
+struct proc {
+  uint sz;                     // Size of process memory (bytes)
+  pde_t* pgdir;                // Page table
+  char *kstack;                // Bottom of kernel stack for this process
+  enum procstate state;        // Process state
+  int pid;                     // Process ID
+  struct proc *parent;         // Parent process
+  struct trapframe *tf;        // Trap frame for current syscall
+  struct context *context;     // swtch() here to run process
+  void *chan;                  // If non-zero, sleeping on chan
+  int killed;                  // If non-zero, have been killed
+  struct file *ofile[NOFILE];  // Open files
+  struct inode *cwd;           // Current directory
+  char name[16];               // Process name (debugging)
+};
+```
+
+**Passo 1: Esquelto da syscall**
 
 **Passo 3: Novo Comando shutdown**
 
