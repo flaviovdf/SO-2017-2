@@ -149,34 +149,21 @@ comando do sistema chamado `shutdown`.
 
 Para adicionar uma syscall vamos precisar alterar alguns arquivos do xv6.
 
-1. user.h: This contains the user-side function prototypes of system calls as
-   well as utility library functions (stat, strcpy, printf, etc.).
-
-1. syscall.h: This file contains symbolic definitions of system call numbers.
-   You need to define a unique number for your system call. Be sure that the
-   numbers are consecutive. That is, there are no missing number in the
-   sequence. These numbers are indices into a table of pointers defined in
-   syscall.c (see next item).
-
-1. syscall.c: This file contains entry code for system call processing. The
-   syscall(void) function is the entry function for all system calls. Each
-   system call is identified by a unique integer, which is placed in the
-   processor’s eax register. The syscall function checks the integer to ensure
-   that it is in the appropriate range and then calls the corresponding
-   function that implements that call by making an indirect funciton call to a
-   function in the syscalls[] table. You need to ensure that the kernel
-   function that implements your system call is in the proper sequence in the
-   syscalls array.
-
-1. usys.S: This file contains macros for the assembler code for each system
-   call. This is user code (it will be part of a user-level program) that is
-   used to make a system call. The macro simply places the system call number
-   into the eax register and then invokes the system call. You need to add a
-   macro entry for your system call here.
-
-1. sysproc.c: This is a collection of process-related system calls. The
-   functions in this file are called from syscall. You can add your new
-   function to this file.
+1. `user.h:` Define as chamadas que são vísiveis ao usuário.
+   (stat, strcpy, printf, etc.).
+1. `syscall.h:` Define os números de cada syscall. Para implementar uma
+   nova você precisa adicionar uma nova entrada neste arquivo. Garanta
+   que os números são contíguos. Tal número vai ser usado no `syscall.c`
+1. `syscall.c:` Este arquivo tem as funções responsáveis por realmente
+   chamar o código da nova syscall. Em particular vamos estudar a função
+   `void syscall(void)`.
+1. `usys.S:` Macros assembly para chamar cada syscall. O código no
+   `usys.S` simplesmente coloca o número da syscall no registrador `eax`
+   e invoca o `void syscall(void)` do `syscall.c`. Você vai precisar
+   adicionar uma linha neste arquivo.
+1. `sysproc.c:` Sua nova chamada do sistema vai ser implementada neste
+   arquivo. O mesmo contém o código das system calls que o sistema oferece
+   para seus processos.
 
 Vamos iniciar dando uma olhada no `syscall.c` do xv6. Em particular, dê uma
 olhada na função `void syscall(void)`.
