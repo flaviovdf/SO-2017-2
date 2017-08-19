@@ -104,28 +104,16 @@ console        3 18 0
 
 ### Controlando a VM
 
-Provavelmente você vai utilizar só o comando **quit**, mas seguem uma lista de alguns
-outros.
+Provavelmente você vai utilizar só o comando **quit**, mas seguem uma lista de
+alguns outros.
 
 * Control-a-c
   1. **info registers** to show CPU registers
   1. **x/10i $eip** show the next 10 instructions at the current instruction pointer
   1. **system-reset** reset & reboot the system
-  1. **quit** exit the emulator (quit xv6) 
+  1. **quit** exit the emulator (quit xv6)
 
 ```
-dd if=/dev/zero of=xv6.img count=10000
-10000+0 records in
-10000+0 records out
-5120000 bytes (5.1 MB, 4.9 MiB) copied, 0.054514 s, 93.9 MB/s
-dd if=bootblock of=xv6.img conv=notrunc
-1+0 records in
-1+0 records out
-512 bytes copied, 9e-05 s, 5.7 MB/s
-dd if=kernel of=xv6.img seek=1 conv=notrunc
-337+1 records in
-337+1 records out
-172824 bytes (173 kB, 169 KiB) copied, 0.00093 s, 186 MB/s
 qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 2 -m 512
 xv6...
 cpu1: starting 1
@@ -138,20 +126,8 @@ $ QEMU 2.3.0 monitor - type 'help' for more information
 
 * Control-a-x
   1. Desliga a VM
-  
+
 ```
-dd if=/dev/zero of=xv6.img count=10000
-10000+0 records in
-10000+0 records out
-5120000 bytes (5.1 MB, 4.9 MiB) copied, 0.066966 s, 76.5 MB/s
-dd if=bootblock of=xv6.img conv=notrunc
-1+0 records in
-1+0 records out
-512 bytes copied, 0.007859 s, 65.1 kB/s
-dd if=kernel of=xv6.img seek=1 conv=notrunc
-337+1 records in
-337+1 records out
-172824 bytes (173 kB, 169 KiB) copied, 0.00478 s, 36.2 MB/s
 qemu-system-i386 -nographic -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 2 -m 512
 xv6...
 cpu1: starting 1
@@ -163,13 +139,69 @@ $ QEMU: Terminated
 
 ### Adicionando uma nova syscall e um novo comando
 
-Agora vou mostrar um passo a passo como adicionar uma nova syscall no xv6. Use este
-passo a passo como base para seu TP. Vamos adicionar uma systcall para desligar o
-xv6 e um comando shutdown que usa a syscall. No momento, única forma de desligar o xv6
-é com o Control-a-x. Após adicionar a syscall teremos um comando do sistema chamado
-`shutdown`.
+Agora vou mostrar um passo a passo como adicionar uma nova syscall no xv6. Use
+este passo a passo como base para seu TP. Vamos adicionar uma syscall para
+desligar o xv6 e um comando shutdown que usa a syscall. No momento, única forma
+de desligar o xv6 é com o Control-a-x. Após adicionar a syscall teremos um
+comando do sistema chamado `shutdown`.
 
 **Passo 1: Código da syscall**
+
+Para adicionar uma syscall vamos precisar alterar alguns arquivos do xv6.
+
+1. user.h: This contains the user-side function prototypes of system calls as
+   well as utility library functions (stat, strcpy, printf, etc.).
+
+1. syscall.h: This file contains symbolic definitions of system call numbers.
+   You need to define a unique number for your system call. Be sure that the
+   numbers are consecutive. That is, there are no missing number in the
+   sequence. These numbers are indices into a table of pointers defined in
+   syscall.c (see next item).
+
+1. syscall.c: This file contains entry code for system call processing. The
+   syscall(void) function is the entry function for all system calls. Each
+   system call is identified by a unique integer, which is placed in the
+   processor’s eax register. The syscall function checks the integer to ensure
+   that it is in the appropriate range and then calls the corresponding
+   function that implements that call by making an indirect funciton call to a
+   function in the syscalls[] table. You need to ensure that the kernel
+   function that implements your system call is in the proper sequence in the
+   syscalls array.
+
+1. usys.S: This file contains macros for the assembler code for each system
+   call. This is user code (it will be part of a user-level program) that is
+   used to make a system call. The macro simply places the system call number
+   into the eax register and then invokes the system call. You need to add a
+   macro entry for your system call here.
+
+1. sysproc.c: This is a collection of process-related system calls. The
+   functions in this file are called from syscall. You can add your new
+   function to this file.
+
+Vamos iniciar dando uma olhada no `syscall.c` do xv6. Em particular, dê uma
+olhada na função `void syscall(void)`.
+
+```c
+void
+syscall(void)
+{
+  int num;
+  struct proc *curproc = myproc();
+
+  num = curproc->tf->eax;
+  if(num > 0 && num < NELEM(syscalls) && syscalls[num]) {
+    curproc->tf->eax = syscalls[num]();
+  } else {
+    cprintf("%d %s: unknown sys call %d\n",
+            curproc->pid, curproc->name, num);
+    curproc->tf->eax = -1;
+  }
+}
+```
+
+Note que na linha `curproc->tf->eax` o número da syscall é identificado
+através do valor do registrador `eax`. Lembre-se que syscalls são tratadas por
+traps, então não podemos simplesmente passar o valor
 
 **Passo 2: Tabela de syscalls**
 
