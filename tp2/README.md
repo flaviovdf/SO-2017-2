@@ -231,12 +231,12 @@ sys_date(void)
 }
 ```
 
-O passo mais importante aqui é a chamada `argptr`. Toda syscall no xv6
-recebe void como entrada. Parece esquisito, mas lembre-se que estamos no
-meio do tratamento de um trap. Além disso, cada chamada do sistema vai ter
-parâmetros diferentes e precisamos de uma forma comum de chamar toda. Por
-isso, o xv6 tem as chamas `argptr`, `argint` e `argstr` para pegar da pilha
-parâmetros do tipo: ponteiro para qualquer coisa (que vem como char,
+O passo mais importante aqui é a chamada `argptr`. Toda syscall no xv6 recebe
+void como entrada. Parece esquisito, mas lembre-se que estamos no meio do
+tratamento de um trap. Além disso, cada chamada do sistema vai ter parâmetros
+diferentes e precisamos de uma forma comum de chamar toda e qualquer chamada de
+sistema. Por isso, o xv6 tem as chamas `argptr`, `argint` e `argstr` para pegar
+da pilha parâmetros do tipo: ponteiro para qualquer coisa (que vem como char,
 faça cast), inteiros e strings.
 
 ```c
@@ -255,10 +255,25 @@ int argptr(int n, char **pp, int size);
 int argstr(int n, char **pp);
 ```
 
-**Passo 3: Novo Comando shutdown**
+**Passo 2: Adicionando sua system call no vetor de tratamentos**
+
+Para que seu código seja chamado você deve alterar alguns arquivos do kernel.
+Em particular você deve alterar os arquivos:
+
+1. `syscall.h:` adicionar o número da nova chamada
+1. `syscall.c:` ver o vetor de tratamentos
+1. `user.h:` adicionar a chamada que vai ser visível para o usuário. Note que
+    essa chamada não é implementada, é só o esqueleto que o usuário vê.
+    Eu usei: `int date(void *);`
+1. `usys.S`: adicionar 1 linha para a chamada. Esse é o código assembly que
+    chaveia do `user.h` para a sua chamada do passo 0.
 
 **Passo 4: Testando tudo**
 
-## Parte 1: Syscall para pegar o endereço real de uma página
+## Parte 1: Termine o código da syscall de data
 
-## Parte 2: Copy-on-write pages
+Só isso, pode imprimir a data da forma que quiser.
+
+## Parte 2: Syscall para pegar o endereço real de uma página
+
+## Parte 3: Copy-on-write pages
