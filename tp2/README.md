@@ -139,35 +139,36 @@ init: starting sh
 $ QEMU: Terminated
 ```
 
-### Adicionando um esqueleto de uma nova syscall e um novo comando
+### Adicionando um esqueleto de uma nova chamada de sistema e um novo comando
 
-Agora vou mostrar um passo a passo como adicionar uma nova syscall no xv6. Use
-este passo a passo como base para seu TP. Vamos adicionar uma syscall retornar
-a data do sistema. Após adicionar a syscall teremos um comando do sistema
-chamado `date`.
+Agora vou mostrar um passo a passo como adicionar uma nova chamada de sistema
+no xv6. Use este passo a passo como base para seu TP. Vamos adicionar uma
+chamada de sistema retornar a data do sistema. Após adicionar a chamada de
+sistema teremos um comando do sistema chamado `date`.
 
 **Passo 0: Entendendo o Código xv6**
 
-Para adicionar uma syscall vamos precisar alterar alguns arquivos do xv6.
+Para adicionar uma chamada de sistema vamos precisar alterar alguns arquivos do
+xv6.
 
-1. `user.h:` Define as chamadas que são vísiveis ao usuário.
-   (stat, strcpy, printf, etc.).
-1. `syscall.h:` Define os números de cada syscall. Para implementar uma
-   nova você precisa adicionar uma nova entrada neste arquivo. Garanta
-   que os números são contíguos. Tal número vai ser usado no `syscall.c`
-1. `syscall.c:` Este arquivo tem as funções responsáveis por realmente
-   chamar o código da nova syscall. Em particular vamos estudar a função
-   `void syscall(void)`.
-1. `usys.S:` Macros assembly para chamar cada syscall. O código no
-   `usys.S` simplesmente coloca o número da syscall no registrador `eax`
-   e invoca o `void syscall(void)` do `syscall.c`. Você vai precisar
-   adicionar uma linha neste arquivo.
-1. `sysproc.c:` Sua nova chamada do sistema vai ser implementada neste
-   arquivo. O mesmo contém o código das system calls que o sistema oferece
-   para seus processos.
+1. `user.h:` Define as chamadas que são vísiveis ao usuário.  (stat, strcpy,
+   printf, etc.).
+1. `syscall.h:` Define os números de cada chamada de sistema. Para implementar
+   uma nova você precisa adicionar uma nova entrada neste arquivo. Garanta que
+   os números são contíguos. Tal número vai ser usado no `chamada de sistema.c`
+1. `chamada de sistema.c:` Este arquivo tem as funções responsáveis por
+   realmente chamar o código da nova chamada de sistema. Em particular vamos
+   estudar a função `void syscall(void)`.
+1. `usys.S:` Macros assembly para chamar cada chamada de sistema. O código no
+   `usys.S` simplesmente coloca o número da chamada de sistema no registrador
+   `eax` e invoca o `void syscall(void)` do `chamada de sistema.c`.
+   Você vai precisar adicionar uma linha neste arquivo.
+1. `sysproc.c:` Sua nova chamada do sistema vai ser implementada neste arquivo.
+   O mesmo contém o código das system calls que o sistema oferece para seus
+   processos.
 
-Vamos iniciar dando uma olhada no `syscall.c` do xv6. Em particular, dê uma
-olhada na função `void syscall(void)`.
+Vamos iniciar dando uma olhada no `chamada de sistema.c` do xv6. Em particular,
+dê uma olhada na função `void syscall(void)`.
 
 ```c
 void
@@ -177,8 +178,8 @@ syscall(void)
   struct proc *curproc = myproc();
 
   num = curproc->tf->eax;
-  if(num > 0 && num < NELEM(syscalls) && syscalls[num]) {
-    curproc->tf->eax = syscalls[num]();
+  if(num > 0 && num < NELEM(syscall) && syscall[num]) {
+    curproc->tf->eax = syscall[num]();
   } else {
     cprintf("%d %s: unknown sys call %d\n",
             curproc->pid, curproc->name, num);
@@ -187,8 +188,8 @@ syscall(void)
 }
 ```
 
-Note que na linha `curproc->tf->eax` o número da syscall é identificado
-através do valor do registrador `eax`.
+Note que na linha `curproc->tf->eax` o número da chamada de sistema é
+identificado através do valor do registrador `eax`.
 
 Estude struct do processo definido no arquivo `proc.h`. Pode lhe ajudar
 a entender como o xv6 gerencia processos e trata traps. Em particular,
@@ -205,7 +206,7 @@ struct proc {
   enum procstate state;        // Process state
   int pid;                     // Process ID
   struct proc *parent;         // Parent process
-  struct trapframe *tf;        // Trap frame for current syscall
+  struct trapframe *tf;        // Trap frame for current chamada de sistema
   struct context *context;     // swtch() here to run process
   void *chan;                  // If non-zero, sleeping on chan
   int killed;                  // If non-zero, have been killed
@@ -215,10 +216,10 @@ struct proc {
 };
 ```
 
-**Passo 1: Esqueleto da syscall**
+**Passo 1: Esqueleto da chamada de sistema**
 
-Suas syscalls vão morar no arquivo `sysproc.c`. Então, você pode usar o
-esqueleto abaixo para implementar a mesma.
+Suas chamadas de sistemas vão morar no arquivo `sysproc.c`. Então, você pode
+usar o esqueleto abaixo para implementar a mesma.
 
 ```c
 int
@@ -231,13 +232,13 @@ sys_date(void)
 }
 ```
 
-O passo mais importante aqui é a chamada `argptr`. Toda syscall no xv6 recebe
-void como entrada. Parece esquisito, mas lembre-se que estamos no meio do
-tratamento de um trap. Além disso, cada chamada do sistema vai ter parâmetros
-diferentes e precisamos de uma forma comum de chamar toda e qualquer chamada de
-sistema. Por isso, o xv6 tem as chamas `argptr`, `argint` e `argstr` para pegar
-da pilha parâmetros do tipo: ponteiro para qualquer coisa (que vem como char,
-faça cast), inteiros e strings.
+O passo mais importante aqui é a chamada `argptr`. Toda chamada de sistema no
+xv6 recebe void como entrada. Parece esquisito, mas lembre-se que estamos no
+meio do tratamento de um trap. Além disso, cada chamada do sistema vai ter
+parâmetros diferentes e precisamos de uma forma comum de chamar toda e qualquer
+chamada de sistema. Por isso, o xv6 tem as chamas `argptr`, `argint` e `argstr`
+para pegar da pilha parâmetros do tipo: ponteiro para qualquer coisa (que vem
+como char, faça cast), inteiros e strings.
 
 ```c
 // Fetch the nth 32-bit system call argument.
@@ -261,7 +262,7 @@ Para que seu código seja chamado você deve alterar alguns arquivos do kernel.
 Em particular você deve alterar os arquivos:
 
 1. `syscall.h:` adicionar o número da nova chamada
-1. `syscall.c:` ver o vetor de tratamentos
+1. `chamada de sistema.c:` ver o vetor de tratamentos
 1. `user.h:` adicionar a chamada que vai ser visível para o usuário. Note que
     essa chamada não é implementada, é só o esqueleto que o usuário vê.
     Eu usei: `int date(void*);` No fim, o usys.S quem trata tais chamadas.
@@ -286,7 +287,7 @@ main(int argc, char *argv[])
   struct rtcdate r;
 
   if (date(&r)) {
-    printf(stderr, "Erro na syscall\n");
+    printf(stderr, "Erro na chamada de sistema\n");
     exit();
   }
 
@@ -342,10 +343,19 @@ $ date
 Se nada for impresso, sem problemas, o comando ainda está incompleto. Se algum
 erro ocorrer em algum dos passos acima, você deve ter cometido algum erro.
 
-## Parte 1: Termine o código da syscall de data
+## Parte 1: Termine o código da chamada de sistema de data
 
-Só isso, pode imprimir a data da forma que quiser.
+Com os passos acima você sabe adicionar uma chamada de sistema no xv6. Na
+primeira parte do TP termine a chamada de data para ter certeza que entendeu
+todos os passos e arquivos. Só isso, pode imprimir a data da forma que quiser.
 
 ## Parte 2: Syscall para pegar o endereço real de uma página
+
+Agora vamos começar a entender como é feito o gerenciamento de memória no x86
+junto com o xv6. Para o caso específico de uma arquitetura x86, toda a tabela
+de páginas é atualizado diretamente pelo hardware.
+
+1. Falar do CR03
+1. Falar da tradução
 
 ## Parte 3: Copy-on-write pages
