@@ -264,11 +264,83 @@ Em particular você deve alterar os arquivos:
 1. `syscall.c:` ver o vetor de tratamentos
 1. `user.h:` adicionar a chamada que vai ser visível para o usuário. Note que
     essa chamada não é implementada, é só o esqueleto que o usuário vê.
-    Eu usei: `int date(void *);`
+    Eu usei: `int date(void*);` No fim, o usys.S quem trata tais chamadas.
 1. `usys.S`: adicionar 1 linha para a chamada. Esse é o código assembly que
     chaveia do `user.h` para a sua chamada do passo 0.
 
-**Passo 4: Testando tudo**
+**Passo 3: Novo Comando**
+
+Agora crie um arquivo `date.c` com o seguinte conteúdo:
+
+```c
+#include "types.h"
+#include "user.h"
+#include "date.h"
+
+int stdout = 1;
+int stderr = 2;
+
+int
+main(int argc, char *argv[])
+{
+  struct rtcdate r;
+
+  if (date(&r)) {
+    printf(stderr, "Erro na syscall\n");
+    exit();
+  }
+
+  // Imprima a data aqui
+
+  exit();
+}
+```
+
+Depois, no `Makefile` coloque uma linha para que seu novo comando faça parte
+do sistema. Para isto basta colocar uma linha `_date` (ver abaixo).
+
+```make
+UPROGS=\
+	_cat\
+	_date\
+	_echo\
+	_forktest\
+	_grep\
+	_init\
+	_kill\
+	_ln\
+	_ls\
+	_mkdir\
+	_rm\
+	_sh\
+	_stressfs\
+	_usertests\
+	_wc\
+	_zombie\
+```
+
+**Passo 4: Compilando e Testando**
+
+Assumindo que tudo foi feito corretamente, compile seu sistema operacional.
+
+```
+$ make
+```
+
+Se tudo deu certo execute o mesmo.
+
+```
+$ make qemu-nox
+```
+
+E teste seu comando date:
+
+```
+$ date
+```
+
+Se nada for impresso, sem problemas, o comando ainda está incompleto. Se algum
+erro ocorrer em algum dos passos acima, você deve ter cometido algum erro.
 
 ## Parte 1: Termine o código da syscall de data
 
