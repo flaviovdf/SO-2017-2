@@ -215,7 +215,45 @@ struct proc {
 };
 ```
 
-**Passo 1: Esquelto da syscall**
+**Passo 1: Esqueleto da syscall**
+
+Suas syscalls vão morar no arquivo `sysproc.c`. Então, você pode usar o
+esqueleto abaixo para implementar a mesma.
+
+```c
+int
+sys_date(void)
+{
+  char *ptr;
+  argptr(0, &ptr, sizeof(struct rtcdate*));
+  // seu código aqui
+  return 0;
+}
+```
+
+O passo mais importante aqui é a chamada `argptr`. Toda syscall no xv6
+recebe void como entrada. Parece esquisito, mas lembre-se que estamos no
+meio do tratamento de um trap. Além disso, cada chamada do sistema vai ter
+parâmetros diferentes e precisamos de uma forma comum de chamar toda. Por
+isso, o xv6 tem as chamas `argptr`, `argint` e `argstr` para pegar da pilha
+parâmetros do tipo: ponteiro para qualquer coisa (que vem como char,
+faça cast), inteiros e strings.
+
+```c
+// Fetch the nth 32-bit system call argument.
+int argint(int n, int *ip);
+
+// Fetch the nth word-sized system call argument as a pointer
+// to a block of memory of size bytes.  Check that the pointer
+// lies within the process address space.
+int argptr(int n, char **pp, int size);
+
+// Fetch the nth word-sized system call argument as a string pointer.
+// Check that the pointer is valid and the string is nul-terminated.
+// (There is no shared writable memory, so the string can't change
+// between this check and being used by the kernel.)
+int argstr(int n, char **pp);
+```
 
 **Passo 3: Novo Comando shutdown**
 
