@@ -155,19 +155,19 @@ xv6.
    printf, etc.).
 1. `syscall.h:` Define os números de cada chamada de sistema. Para implementar
    uma nova você precisa adicionar uma nova entrada neste arquivo. Garanta que
-   os números são contíguos. Tal número vai ser usado no `chamada de sistema.c`
-1. `chamada de sistema.c:` Este arquivo tem as funções responsáveis por
+   os números são contíguos. Tal número vai ser usado no `syscall.c`
+1. `syscall.c:` Este arquivo tem as funções responsáveis por
    realmente chamar o código da nova chamada de sistema. Em particular vamos
    estudar a função `void syscall(void)`.
 1. `usys.S:` Macros assembly para chamar cada chamada de sistema. O código no
    `usys.S` simplesmente coloca o número da chamada de sistema no registrador
-   `eax` e invoca o `void syscall(void)` do `chamada de sistema.c`.
+   `eax` e invoca o `void syscall(void)` do `syscall.c`.
    Você vai precisar adicionar uma linha neste arquivo.
 1. `sysproc.c:` Sua nova chamada do sistema vai ser implementada neste arquivo.
    O mesmo contém o código das system calls que o sistema oferece para seus
    processos.
 
-Vamos iniciar dando uma olhada no `chamada de sistema.c` do xv6. Em particular,
+Vamos iniciar dando uma olhada no `syscall.c` do xv6. Em particular,
 dê uma olhada na função `void syscall(void)`.
 
 ```c
@@ -206,7 +206,7 @@ struct proc {
   enum procstate state;        // Process state
   int pid;                     // Process ID
   struct proc *parent;         // Parent process
-  struct trapframe *tf;        // Trap frame for current chamada de sistema
+  struct trapframe *tf;        // Trap frame for current syscall
   struct context *context;     // swtch() here to run process
   void *chan;                  // If non-zero, sleeping on chan
   int killed;                  // If non-zero, have been killed
@@ -262,7 +262,7 @@ Para que seu código seja chamado você deve alterar alguns arquivos do kernel.
 Em particular você deve alterar os arquivos:
 
 1. `syscall.h:` adicionar o número da nova chamada
-1. `chamada de sistema.c:` ver o vetor de tratamentos
+1. `syscall.c:` ver o vetor de tratamentos
 1. `user.h:` adicionar a chamada que vai ser visível para o usuário. Note que
     essa chamada não é implementada, é só o esqueleto que o usuário vê.
     Eu usei: `int date(void*);` No fim, o usys.S quem trata tais chamadas.
