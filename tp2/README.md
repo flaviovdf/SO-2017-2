@@ -396,9 +396,17 @@ switchuvm(struct proc *p)
 ```
 
 Em particular a mudança ocorre na penúltima linha (`lcr3(V2P(p->pgdir))`). As
-linhas anteriores atualizam os segmentos presentes no x86.
+linhas anteriores atualizam os segmentos presentes no x86. Note o use da macro
+**V2P** que traduz um endereço virtual para um endereço real.
+
+**Com o conhecimento acima implemente**
+
+1. Uma chamada de sistema que indica para cada processo qual o endereço virtual
+   e o endereço real de suas páginas.
+1. Uma chamada de sistema que indica onde a tabela de página do processo atual
+   inicia (`p->pgdir`). Indique os endereços virtuais a reais.
+
+### TP2.3: Páginas Copy-on-Write
 
 1. Falar de como fazer flush da TLB
 1. Falar de qual função deve ser alterada.
-
-### TP2.3: Páginas Copy-on-Write
