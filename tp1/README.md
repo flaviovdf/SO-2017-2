@@ -182,7 +182,7 @@ PID    | User    | PROCNAME     | Estado |
 
 Com este sinal o processo deve morrer e sair da sua lista.
 
-**Dica:** Possivelmente o signaltester não vai aparecer entre os 20 primeiros.
+**Dica 1:** Possivelmente o signaltester não vai aparecer entre os 20 primeiros.
 Use o comando abaixo para descobrir o PID do mesmo e testar seu topzera.
 
 **Dica 2:** O usuário que é dono do processo é o usuário dono do arquivo no /proc.
