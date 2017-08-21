@@ -190,6 +190,8 @@ A biblioteca `dirent.h` pode lhe ajudar.
 
 **Dica 3:** A biblioteca `sys/stat.h` também pode ser de ajuda.
 
+**Dica 4:** Para enviar o sinal use a função [kill](https://linux.die.net/man/2/kill)
+
 ```
 $ ps | grep signalteste
 ```
