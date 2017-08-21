@@ -348,13 +348,13 @@ erro ocorrer em algum dos passos acima, você deve ter cometido algum erro.
 
 ## Especificação
 
-### TP2.1: Termine o código da chamada de sistema de data
+### TP2.1: Data (Terminando o Tutorial)
 
 Com os passos acima você sabe adicionar uma chamada de sistema no xv6. Na
 primeira parte do TP termine a chamada de data para ter certeza que entendeu
 todos os passos e arquivos. Só isso, pode imprimir a data da forma que quiser.
 
-### TP2.2: Chamadas de Sistema Auxiliares
+### TP2.2: Chamadas de Sistema Auxiliares para Entender a Memória
 
 Agora vamos começar a entender como é feito o gerenciamento de memória no x86
 junto com o xv6. Para o caso específico de uma arquitetura x86, toda a tabela
@@ -367,4 +367,4 @@ página x86 tem a seguinte forma (imagem do livro
 1. Falar do CR03
 1. Falar da tradução
 
-### TP2.3: Copy-on-write pages
+### TP2.3: Páginas Copy-on-Write
