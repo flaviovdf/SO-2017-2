@@ -9,11 +9,11 @@ adaptada do material do
 [MIT](https://pdos.csail.mit.edu/6.828/2016/index.html).
 
 Neste TP vamos explorar alguns conceitos da segunda parte da disciplina.  Em
-particular, vamos rever os conceitos de memória virtual e páginas copy on
-write.
+particular, vamos rever os conceitos de memória virtual e páginas *copy on
+write*.
 
 1. [Tutorial xv6](#tutorial)
-2. [Especificação](#especificacao)
+2. [Especificação](#especificação)
 
 ## Tutorial
 
@@ -364,7 +364,41 @@ página x86 tem a seguinte forma (imagem do livro
 
 ![x86 Pages](./imgs/x86pg.png "Tabela de Páginas no x86")
 
-1. Falar do CR03
-1. Falar da tradução
+Da figura, note que o endereço inicial da tabela de página é alocada no
+registrador CR03. Tal registrador é atualizado quando chaveamos de um processo
+para outro no xv6. Em particular, tal mudança é feita na função `switchuvm` do
+arquivo `vm.c`.
+
+```c
+// Switch TSS and h/w page table to correspond to process p.
+void
+switchuvm(struct proc *p)
+{
+  if(p == 0)
+    panic("switchuvm: no process");
+  if(p->kstack == 0)
+    panic("switchuvm: no kstack");
+  if(p->pgdir == 0)
+    panic("switchuvm: no pgdir");
+
+  pushcli();
+  mycpu()->gdt[SEG_TSS] = SEG16(STS_T32A, &mycpu()->ts, sizeof(mycpu()->ts)-1, 0);
+  mycpu()->gdt[SEG_TSS].s = 0;
+  mycpu()->ts.ss0 = SEG_KDATA << 3;
+  mycpu()->ts.esp0 = (uint)p->kstack + KSTACKSIZE;
+  // setting IOPL=0 in eflags *and* iomb beyond the tss segment limit
+  // forbids I/O instructions (e.g., inb and outb) from user space
+  mycpu()->ts.iomb = (ushort) 0xFFFF;
+  ltr(SEG_TSS << 3);
+  lcr3(V2P(p->pgdir));  // switch to process's address space
+  popcli();
+}
+```
+
+Em particular a mudança ocorre na penúltima linha (`lcr3(V2P(p->pgdir))`). As
+linhas anteriores atualizam os segmentos presentes no x86.
+
+1. Falar de como fazer flush da TLB
+1. Falar de qual função deve ser alterada.
 
 ### TP2.3: Páginas Copy-on-Write
