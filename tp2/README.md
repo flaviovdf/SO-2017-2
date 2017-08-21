@@ -12,10 +12,10 @@ Neste TP vamos explorar alguns conceitos da segunda parte da disciplina.  Em
 particular, vamos rever os conceitos de memória virtual e páginas copy on
 write.
 
-1. [Passos Iniciais](#Tutorial)
-2. [Parte 1](#Parte1)
-3. [Parte 2](#Parte2)
-4. [Parte 3](#Parte3)
+1. [Tutorial xv6](#tutorial)
+2. [Parte 1](#parte1)
+3. [Parte 2](#parte2)
+4. [Parte 3](#parte3)
 
 ## Tutorial
 
