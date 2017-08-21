@@ -354,7 +354,8 @@ todos os passos e arquivos. Só isso, pode imprimir a data da forma que quiser.
 Agora vamos começar a entender como é feito o gerenciamento de memória no x86
 junto com o xv6. Para o caso específico de uma arquitetura x86, toda a tabela
 de páginas é atualizada diretamente pelo hardware. Lembrando que a tabela de
-página x86 tem a seguinte forma:
+página x86 tem a seguinte forma (imagem do livro
+[xv6](https://pdos.csail.mit.edu/6.828/2016/xv6/book-rev9.pdf)).
 
 ![x86 Pages](./imgs/x86pg.png "Tabela de Páginas no x86")
 
