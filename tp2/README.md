@@ -183,8 +183,8 @@ syscall(void)
   struct proc *curproc = myproc();
 
   num = curproc->tf->eax;
-  if(num > 0 && num < NELEM(syscall) && syscall[num]) {
-    curproc->tf->eax = syscall[num]();
+  if(num > 0 && num < NELEM(syscalls) && syscalls[num]) {
+    curproc->tf->eax = syscalls[num]();
   } else {
     cprintf("%d %s: unknown sys call %d\n",
             curproc->pid, curproc->name, num);
@@ -348,17 +348,13 @@ $ date
 Se nada for impresso, sem problemas, o comando ainda está incompleto. Se algum
 erro ocorrer em algum dos passos acima, você deve ter cometido algum erro.
 
-## Parte1
-
-**Termine o código da chamada de sistema de data**
+## Parte1: Termine o código da chamada de sistema de data
 
 Com os passos acima você sabe adicionar uma chamada de sistema no xv6. Na
 primeira parte do TP termine a chamada de data para ter certeza que entendeu
 todos os passos e arquivos. Só isso, pode imprimir a data da forma que quiser.
 
-## Parte2
-
-**Syscall para pegar o endereço real de uma página**
+## Parte2: Chamadas de Sistema Auxiliares
 
 Agora vamos começar a entender como é feito o gerenciamento de memória no x86
 junto com o xv6. Para o caso específico de uma arquitetura x86, toda a tabela
@@ -371,6 +367,4 @@ página x86 tem a seguinte forma (imagem do livro
 1. Falar do CR03
 1. Falar da tradução
 
-## Parte3
-
-**Copy-on-write pages**
+## Parte3: Copy-on-write pages
