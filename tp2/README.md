@@ -265,7 +265,9 @@ Para que seu código seja chamado você deve alterar alguns arquivos do kernel.
 Em particular você deve alterar os arquivos:
 
 1. `syscall.h:` adicionar o número da nova chamada
-1. `syscall.c:` ver o vetor de tratamentos
+1. `syscall.c:` ver o vetor que mapeia o número da chamada de sistema para a
+   função que implementa a mesma. Tal vetor se chama `static int
+   (*syscalls[])(void)`.
 1. `user.h:` adicionar a chamada que vai ser visível para o usuário. Note que
     essa chamada não é implementada, é só o esqueleto que o usuário vê.
     Eu usei: `int date(void*);` No fim, o usys.S quem trata tais chamadas.
