@@ -12,6 +12,11 @@ Neste TP vamos explorar alguns conceitos da segunda parte da disciplina.  Em
 particular, vamos rever os conceitos de memória virtual e páginas copy on
 write.
 
+1. [Tutorial](#Tutorial xv6)
+2. [Parte 1](#Parte 1)
+3. [Parte 2](#Parte 2)
+4. [Parte 3](#Parte 3)
+
 ## Tutorial xv6
 
 Antes de iniciar o ambiente xv6 você precisa instalar alguns programas no seu
@@ -343,13 +348,17 @@ $ date
 Se nada for impresso, sem problemas, o comando ainda está incompleto. Se algum
 erro ocorrer em algum dos passos acima, você deve ter cometido algum erro.
 
-## Parte 1: Termine o código da chamada de sistema de data
+## Parte 1
+
+**Termine o código da chamada de sistema de data**
 
 Com os passos acima você sabe adicionar uma chamada de sistema no xv6. Na
 primeira parte do TP termine a chamada de data para ter certeza que entendeu
 todos os passos e arquivos. Só isso, pode imprimir a data da forma que quiser.
 
-## Parte 2: Syscall para pegar o endereço real de uma página
+## Parte 2
+
+**Syscall para pegar o endereço real de uma página**
 
 Agora vamos começar a entender como é feito o gerenciamento de memória no x86
 junto com o xv6. Para o caso específico de uma arquitetura x86, toda a tabela
