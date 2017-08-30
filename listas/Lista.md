@@ -17,10 +17,6 @@
    camadas? Qual seriam os impactos de um sistema com apenas 2 camadas? E
    apenas 1?
 
-1. [Silberschatz 2.8 - Alterada] Qual a finalidade e vantagens da abordagem em
-   camadas? Qual seriam os impactos de um sistema com apenas 2 camadas? E
-   apenas 1?
-
 1. [Follow - up da acima] Como garantimos que apenas o SO execute na camada 0?
 
 1. Qual a diferença entre Traps e Interrupções?
@@ -98,6 +94,9 @@
 
 1. Qual o menor programa que você consegue escrever que gera um deadlock?
    Pode utilizar pseudo código.
+
+1. Faz sentido ter um programa com várias threads que precisa de sincronização
+   constante?
 
 1. A chamada `thread_yield` faz com que uma thread libere o uso de CPU para
    outra thread/processo. Em quais situações a mesma é útil? Como ela difere

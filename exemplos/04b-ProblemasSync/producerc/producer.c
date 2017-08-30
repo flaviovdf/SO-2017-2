@@ -17,7 +17,7 @@ void *producer_f(void *argsv) {
   args_t *args = (args_t*) argsv;
   do {
     pthread_mutex_lock(args->mutex);
-    while (args->n == args->max-1) {
+    while (args->n == args->max) {
       pthread_cond_wait(args->cond_max, args->mutex);
     }
 
@@ -39,7 +39,7 @@ void *consumer_f(void *argsv) {
       pthread_cond_wait(args->cond_empty, args->mutex);
     }
 
-    printf("Consumed: [%d] %d\n", args->n, args->buffer[args->n]);
+    printf("Consumed: [%d] %d\n", args->n-1, args->buffer[args->n-1]);
     args->n--;
     pthread_cond_broadcast(args->cond_max);
     pthread_mutex_unlock(args->mutex);

@@ -103,6 +103,7 @@ Slides disponíveis [Google Drive](https://drive.google.com/drive/folders/0B0ryA
 
   1. Microkernel OSes
   1. Linux NameSpaces e CGroups
+  1. Communicating Sequential Processes by C. A. R. Hoare
   1. GlusterFS
   1. AFS
   1. Docker
