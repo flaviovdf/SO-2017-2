@@ -2,7 +2,7 @@
 #include <stdio.h>
 void f(void);
 
-int x;
+int x = 0xdcc066;
 int main(void) {
   f();
   printf("0x%x\n", x);

@@ -1,5 +1,7 @@
 // bar3.c
+#include<stdio.h>
 int x;
 void f(void) {
-  x = 0xDCC065;
+  printf("dentro de f() 0x%x\n", x);
+  x--;
 }
