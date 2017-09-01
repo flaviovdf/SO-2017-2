@@ -2,8 +2,8 @@
 #include <stdio.h>
 void f(void);
 
-int x = 0xdcc065;
-int y = 0xdcc066;
+int x = 0xdcc605;
+int y = 0xdcc606;
 
 int main(void) {
   int a = 1;
