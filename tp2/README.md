@@ -496,7 +496,7 @@ Além disto, implemente uma função `int num_pages(void)` que retorna o
 número de páginas do processo atual.
 
 ```c
-int num_pages(char *va);
+int num_pages(void);
 ```
 
 As duas funçôes precisam accesar o processo atual. Use a chamada
