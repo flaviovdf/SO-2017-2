@@ -509,4 +509,5 @@ filho.
    1. **Não** será necessário quando. O contador do número de referências for
       `==1`. Neste caso, apenas um processo referência a página e mesma pode
       ser escrita. Remova a flag PTE_COW e sete a página como writeable.
-   Nos dois casos acima realize o flush na TLB (ver mais acima).
+
+  Nos dois casos acima realize o flush na TLB (ver mais acima).
