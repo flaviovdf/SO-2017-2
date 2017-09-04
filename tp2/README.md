@@ -402,6 +402,21 @@ linhas anteriores atualizam os segmentos presentes no x86. Note o use da macro
 **V2P**. Macros como essa ajudam a mapear endereços reais para virtuais e vice
 versa. Veja as mesmas nos arquivos `mmu.h` e `memlayout.h` 
 
+**Flush da TLB** Lembre-se que a tabela de páginas pode ser alterada
+pela HW e pelo SW. No x86, o papel do SW (kernel) é apenas criar as novas
+entradas. Vide as flags no `mmu.h` utilizadas para tal inicialização. 
+Quando novas páginas são criadas/inicializadas, o HW então atualiza
+as flags da mesma enquanto o código executa. Sabendo disto, uma forma de
+indicar para o HW que a tabela mudou (criamos uma nova entrada por
+exemplo) é a seguinte chamada:
+
+```c
+lcr3(lcr3(V2P(p->pgdir)))
+```
+
+A mesma seta o registrador CR3 para a tabela de páginas do processo.
+Ao setar tal registrador, o hardware limpa a TLB.
+
 Outra função importante é a `walkpgdir`. Tal função recebe um endereço virtual
 e retorna um endereço real. A mesma existe no arquivo `vm.c`.
 
@@ -506,19 +521,6 @@ junto com o struct do processo.
 
 ### TP2.3: Páginas Copy-on-Write
 
-**Flush da TLB** Lembre-se que a tabela de páginas pode ser alterada
-pela HW e pelo SW. No x86, o papel do SW (kernel) é apenas criar as novas
-entradas. Vide as flags no `mmu.h` utilizadas para tal inicialização. 
-Quando novas páginas são criadas/inicializadas, o HW então atualiza
-as flags da mesma enquanto o código executa. Sabendo disto, uma forma de
-indicar para o HW que a tabela mudou (criamos uma nova entrada por
-exemplo) é a seguinte chamada:
-
-```c
-lcr3(v2p(pgdir))
-```
-
-A mesma seta o registrador CR3
 
 Um detalhe importante do x86 é 
 
