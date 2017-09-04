@@ -491,7 +491,13 @@ passos a seguir são:
    no vm.c (perto das chamadas kalloc).
 
 Com os 2 passos acima você deve ter um processo child que é
-**read only**.
+**read only**. Agora vem o passo mais importante, sempre que o hardware
+indicar uma trap de PAGEFAULT você deve criar uma página nova para o
+filho. 
 
-1. Quando o child tiver um pagefault ver se é uma pg READONLY
-1. Se sim, criar nova pagina com kalloc
+
+
+    Check if the fault is a write fault for a user address. Hint, look at the tf->err field, and the newly-added FEC_WR flags in mmu.h.
+    Check if the fault is for an address whose page table includes the PTE_COW flag. If not, kill the program as usual. If so, check the reference count on the page.
+        If the page has more than one reference, copy the page and replace it with a writeable copy in the local process. Be sure to invalidate the TLB!. Decrement the reference count on the original page.
+        If the page has only one reference, you can remove the PTE_COW flag and restore write permission to the page. No need to copy, as the other process has already copied the page. Be sure to invalidate the TLB!
