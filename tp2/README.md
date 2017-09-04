@@ -482,9 +482,16 @@ que ter a mesma assinatura da chamada `fork`. Diferente da chamada
 `fork`, `forkcow` cria um processo filho com páginas copy on write.
 Uma boa parte do esforço do comando `fork` é a função `copyuvm`.
 
-Defina uma flag no `defs.h`
+Para realizar o TP, recomendo que você copie a função fork e a
+copyuvm. Depois disso, mude as mesmas para ter o copy on write. Os
+passos a seguir são:
 
-1. Copiar paginas do pai no forkcow
-1. Setar paginas como READ ONLY
+1. Copiar paginas do pai no forkcow. Ver função copyuvm
+1. Setar paginas como READ ONLY. Ver flags do mmu.h e como são setadas
+   no vm.c (perto das chamadas kalloc).
+
+Com os 2 passos acima você deve ter um processo child que é
+**read only**.
+
 1. Quando o child tiver um pagefault ver se é uma pg READONLY
 1. Se sim, criar nova pagina com kalloc
