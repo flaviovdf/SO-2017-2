@@ -521,8 +521,7 @@ junto com o struct do processo.
 
 ### TP2.3: Páginas Copy-on-Write
 
-
-Um detalhe importante do x86 é 
-
-1. Page faults catching
-1. Falar de qual função deve ser alterada.
+1. Copiar paginas do pai no forkcow
+1. Setar paginas como READ ONLY
+1. Quando o child tiver um pagefault ver se é uma pg READONLY
+1. Se sim, criar nova pagina com kalloc
