@@ -454,50 +454,6 @@ Quando uma página é criada a mesma vai fazer uso da função `kalloc`.
 Quando é liberada o `kfree` é chamado. As duas chamadas estão no
 arquivo `kalloc.c`.
 
-```c
-// Free the page of physical memory pointed at by v,
-// which normally should have been returned by a
-// call to kalloc().  (The exception is when
-// initializing the allocator; see kinit above.)
-void
-kfree(char *v)
-{
-  struct run *r;
-
-  if((uint)v % PGSIZE || v < end || V2P(v) >= PHYSTOP)
-    panic("kfree");
-
-  // Fill with junk to catch dangling refs.
-  memset(v, 1, PGSIZE);
-
-  if(kmem.use_lock)
-    acquire(&kmem.lock);
-  r = (struct run*)v;
-  r->next = kmem.freelist;
-  kmem.freelist = r;
-  if(kmem.use_lock)
-    release(&kmem.lock);
-}
-
-// Allocate one 4096-byte page of physical memory.
-// Returns a pointer that the kernel can use.
-// Returns 0 if the memory cannot be allocated.
-char*
-kalloc(void)
-{
-  struct run *r;
-
-  if(kmem.use_lock)
-    acquire(&kmem.lock);
-  r = kmem.freelist;
-  if(r)
-    kmem.freelist = r->next;
-  if(kmem.use_lock)
-    release(&kmem.lock);
-  return (char*)r;
-}
-```
-
 **Com o conhecimento acima implemente**
 
 Uma chamada `virt2real` que recebe um endereço virtual (`char *`) e
@@ -520,6 +476,13 @@ kallocs e kfrees no `vm.c`. Você pode guardar o número de páginas
 junto com o struct do processo.
 
 ### TP2.3: Páginas Copy-on-Write
+
+Por fim, crie uma chama de sistema chamada `forkcow`. A mesma tem
+que ter a mesma assinatura da chamada `fork`. Diferente da chamada
+`fork`, `forkcow` cria um processo filho com páginas copy on write.
+Uma boa parte do esforço do comando `fork` é a função `copyuvm`.
+
+Defina uma flag no `defs.h`
 
 1. Copiar paginas do pai no forkcow
 1. Setar paginas como READ ONLY
