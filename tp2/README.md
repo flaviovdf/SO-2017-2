@@ -486,18 +486,26 @@ Para realizar o TP, recomendo que você copie a função fork e a
 copyuvm. Depois disso, mude as mesmas para ter o copy on write. Os
 passos a seguir são:
 
-1. Copiar paginas do pai no forkcow. Ver função copyuvm
-1. Setar paginas como READ ONLY. Ver flags do mmu.h e como são setadas
-   no vm.c (perto das chamadas kalloc).
+1. Copiar paginas do pai no `forkcow`. Ver o uso função `copyuvm`.
+1. Setar paginas como READ ONLY. Ver flags do `mmu.h` e como são setadas
+   no `vm.c` (perto das chamadas kalloc).
+1. Note (vide figura acima) que a tabela de páginas tem bits extra para
+   informação do sistema. Então, use tais bits para indicar que a página
+   é COW (setando uma flag PTE_COW em um bit livre).
 
 Com os 2 passos acima você deve ter um processo child que é
 **read only**. Agora vem o passo mais importante, sempre que o hardware
 indicar uma trap de PAGEFAULT você deve criar uma página nova para o
-filho. 
+filho.
 
-
-
-    Check if the fault is a write fault for a user address. Hint, look at the tf->err field, and the newly-added FEC_WR flags in mmu.h.
-    Check if the fault is for an address whose page table includes the PTE_COW flag. If not, kill the program as usual. If so, check the reference count on the page.
-        If the page has more than one reference, copy the page and replace it with a writeable copy in the local process. Be sure to invalidate the TLB!. Decrement the reference count on the original page.
-        If the page has only one reference, you can remove the PTE_COW flag and restore write permission to the page. No need to copy, as the other process has already copied the page. Be sure to invalidate the TLB!
+1. Certifique-se de que a falta de página é de escrita em um endereço
+   de usuário. Use o campo `tf->err` e as flags.
+1. Certifique-se que é uma página PTE_COW. Se não, algo esquisito
+   ocorreu (o programa quer acessar um endereço inválido). Mate o
+   processo.
+1. Crie uma página nova caso seja necessário. Será necessário quando:
+   1. A página é compartilhada com o pai. Para saber disto, você pode
+      implementar um contador para a quantidade de processos que
+      referênciam a página (atualize o mesmo ao criar childs). Se o
+      contador for `> 1` então faça uma cópia.
+   1. 
