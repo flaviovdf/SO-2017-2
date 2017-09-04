@@ -500,10 +500,12 @@ int num_pages(char *va);
 ```
 
 As duas funçôes precisam accesar o processo atual. Use a chamada
-`myproc`. A função `num_pages` pode ser feita alterando o struct
-run do kalloc.c para contar o número de páginas alocadas.
+`myproc`. A função `num_pages` pode ser feita rastreando os
+kallocs e kfrees no `vm.c`. Você pode guardar o número de páginas
+junto com o struct do processo.
 
 ### TP2.3: Páginas Copy-on-Write
 
 1. Falar de como fazer flush da TLB
+1. Page faults catching
 1. Falar de qual função deve ser alterada.
