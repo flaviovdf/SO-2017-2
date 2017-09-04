@@ -400,22 +400,21 @@ switchuvm(struct proc *p)
 Em particular a mudança ocorre na penúltima linha (`lcr3(V2P(p->pgdir))`). As
 linhas anteriores atualizam os segmentos presentes no x86. Note o use da macro
 **V2P**. Macros como essa ajudam a mapear endereços reais para virtuais e vice
-versa. Veja as mesmas nos arquivos `mmu.h` e `memlayout.h` 
+versa. Veja as mesmas nos arquivos `mmu.h` e `memlayout.h`
 
-**Flush da TLB** Lembre-se que a tabela de páginas pode ser alterada
-pela HW e pelo SW. No x86, o papel do SW (kernel) é apenas criar as novas
-entradas. Vide as flags no `mmu.h` utilizadas para tal inicialização. 
-Quando novas páginas são criadas/inicializadas, o HW então atualiza
-as flags da mesma enquanto o código executa. Sabendo disto, uma forma de
-indicar para o HW que a tabela mudou (criamos uma nova entrada por
-exemplo) é a seguinte chamada:
+**Flush da TLB** Lembre-se que a tabela de páginas pode ser alterada pela HW e
+pelo SW. No x86, o papel do SW (kernel) é apenas criar as novas entradas. Vide
+as flags no `mmu.h` utilizadas para tal inicialização.  Quando novas páginas
+são criadas/inicializadas, o HW então atualiza as flags da mesma enquanto o
+código executa. Sabendo disto, uma forma de indicar para o HW que a tabela
+mudou (criamos uma nova entrada por exemplo) é a seguinte chamada:
 
 ```c
 lcr3(lcr3(V2P(p->pgdir)))
 ```
 
-A mesma seta o registrador CR3 para a tabela de páginas do processo.
-Ao setar tal registrador, o hardware limpa a TLB.
+A mesma seta o registrador CR3 para a tabela de páginas do processo.  Ao setar
+tal registrador, o hardware limpa a TLB.
 
 Outra função importante é a `walkpgdir`. Tal função recebe um endereço virtual
 e retorna um endereço real. A mesma existe no arquivo `vm.c`.
@@ -447,44 +446,44 @@ walkpgdir(pde_t *pgdir, const void *va, int alloc)
 }
 ```
 
-A função acima não exportada para uso externo, porém você pode fazer
-uso da função `uva2ka` que chama `walkgdir`.
+A função acima não exportada para uso externo, porém você pode fazer uso da
+função `uva2ka` que chama `walkgdir`.
 
-Quando uma página é criada a mesma vai fazer uso da função `kalloc`.
-Quando é liberada o `kfree` é chamado. As duas chamadas estão no
-arquivo `kalloc.c`.
+Quando uma página é criada a mesma vai fazer uso da função `kalloc`.  Quando é
+liberada o `kfree` é chamado. As duas chamadas estão no arquivo `kalloc.c`.
 
 **Com o conhecimento acima implemente**
 
-Uma chamada `virt2real` que recebe um endereço virtual (`char *`) e
-retorna um endereço real. No `user.h` a mesma tem o seguinte cabeçalho:
+Uma chamada `virt2real` que recebe um endereço virtual (`char *`) e retorna um
+endereço real. No `user.h` a mesma tem o seguinte cabeçalho:
 
 ```c
 char* virt2real(char *va);
 ```
 
 Além disto, implemente uma função `int num_pages(void)` que retorna o
-número de páginas do processo atual.
+número de páginas que um processo faz uso (referencia).
 
 ```c
 int num_pages(void);
 ```
 
-As duas funçôes precisam accesar o processo atual. Use a chamada
-`myproc`. A função `num_pages` pode ser feita rastreando os
-kallocs e kfrees no `vm.c`. Você pode guardar o número de páginas
-junto com o struct do processo.
+As duas funções precisam acessar o processo atual. Use a chamada `myproc`. A
+função `num_pages` pode ser feita rastreando os kallocs e kfrees no `vm.c`. Em
+particular, foque nas funções `allocuvm`, `copyuvm` e `deallocuvm`. Qual o
+motivo de ignorarmos as outras que chamam `kalloc`? Guarde o número de
+referências para um `page table entry pte_t`. Vai ser útil para o copy on
+write.
 
 ### TP2.3: Páginas Copy-on-Write
 
-Por fim, crie uma chama de sistema chamada `forkcow`. A mesma tem
-que ter a mesma assinatura da chamada `fork`. Diferente da chamada
-`fork`, `forkcow` cria um processo filho com páginas copy on write.
-Uma boa parte do esforço do comando `fork` é a função `copyuvm`.
+Por fim, crie uma chama de sistema chamada `forkcow`. A mesma tem que ter a
+mesma assinatura da chamada `fork`. Diferente da chamada `fork`, `forkcow` cria
+um processo filho com páginas copy on write.  Uma boa parte do esforço do
+comando `fork` é a função `copyuvm`. Então, crie uma cópia `copyuvmcow`.
 
-Para realizar o TP, recomendo que você copie a função fork e a
-copyuvm. Depois disso, mude as mesmas para ter o copy on write. Os
-passos a seguir são:
+Para realizar o TP, recomendo que você copie a função fork e a copyuvm. Depois
+disso, mude as mesmas para ter o copy on write. Os passos a seguir são:
 
 1. Copiar paginas do pai no `forkcow`. Ver o uso função `copyuvm`.
 1. Setar paginas como READ ONLY. Ver flags do `mmu.h` e como são setadas
@@ -498,14 +497,16 @@ Com os 2 passos acima você deve ter um processo child que é
 indicar uma trap de PAGEFAULT você deve criar uma página nova para o
 filho.
 
-1. Certifique-se de que a falta de página é de escrita em um endereço
-   de usuário. Use o campo `tf->err` e as flags.
-1. Certifique-se que é uma página PTE_COW. Se não, algo esquisito
-   ocorreu (o programa quer acessar um endereço inválido). Mate o
-   processo.
-1. Crie uma página nova caso seja necessário. Será necessário quando:
-   1. A página é compartilhada com o pai. Para saber disto, você pode
-      implementar um contador para a quantidade de processos que
-      referênciam a página (atualize o mesmo ao criar childs). Se o
-      contador for `> 1` então faça uma cópia.
-   1. 
+1. Certifique-se de que a falta de página é de escrita em um endereço de
+   usuário. Use o campo `tf->err` e as flags.
+1. Certifique-se que é uma página PTE_COW. Se não, algo esquisito ocorreu (o
+   programa quer acessar um endereço inválido). Mate o processo.
+1. Crie uma página nova caso seja necessário.
+   1. Será necessário quando: A página é compartilhada com o pai. Para saber
+      disto, você pode implementar um contador para a quantidade de processos
+      que referenciam a página (atualize o mesmo ao criar childs). Se o
+      contador for maior do que 1 então faça uma cópia.
+   1. **Não** será necessário quando. O contador do número de referências for
+      `==1`. Neste caso, apenas um processo referência a página e mesma pode
+      ser escrita. Remova a flag PTE_COW e sete a página como writeable.
+   Nos dois casos acima realize o flush na TLB (ver mais acima).
