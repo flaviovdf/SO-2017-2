@@ -506,6 +506,21 @@ junto com o struct do processo.
 
 ### TP2.3: Páginas Copy-on-Write
 
-1. Falar de como fazer flush da TLB
+**Flush da TLB** Lembre-se que a tabela de páginas pode ser alterada
+pela HW e pelo SW. No x86, o papel do SW (kernel) é apenas criar as novas
+entradas. Vide as flags no `mmu.h` utilizadas para tal inicialização. 
+Quando novas páginas são criadas/inicializadas, o HW então atualiza
+as flags da mesma enquanto o código executa. Sabendo disto, uma forma de
+indicar para o HW que a tabela mudou (criamos uma nova entrada por
+exemplo) é a seguinte chamada:
+
+```c
+lcr3(v2p(pgdir))
+```
+
+A mesma seta o registrador CR3
+
+Um detalhe importante do x86 é 
+
 1. Page faults catching
 1. Falar de qual função deve ser alterada.
