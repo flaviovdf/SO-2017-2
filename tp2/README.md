@@ -401,12 +401,58 @@ Em particular a mudança ocorre na penúltima linha (`lcr3(V2P(p->pgdir))`). As
 linhas anteriores atualizam os segmentos presentes no x86. Note o use da macro
 **V2P** que traduz um endereço virtual para um endereço real.
 
-Outra função importante é a `walkpgdir`. Tal função recebe um 
+Outra função importante é a `walkpgdir`. Tal função recebe um endereço virtual
+e retorna um endereço real. A mesma existe no arquivo `vm.c`. As macros estão
+definidas no `mmu.h` e `memlayout.h`:
+
+```c
+// Return the address of the PTE in page table pgdir
+// that corresponds to virtual address va.  If alloc!=0,
+// create any required page table pages.
+static pte_t *
+walkpgdir(pde_t *pgdir, const void *va, int alloc)
+{
+  pde_t *pde;
+  pte_t *pgtab;
+
+  pde = &pgdir[PDX(va)];
+  if(*pde & PTE_P){
+    pgtab = (pte_t*)P2V(PTE_ADDR(*pde));
+  } else {
+    if(!alloc || (pgtab = (pte_t*)kalloc()) == 0)
+      return 0;
+    // Make sure all those PTE_P bits are zero.
+    memset(pgtab, 0, PGSIZE);
+    // The permissions here are overly generous, but they can
+    // be further restricted by the permissions in the page table
+    // entries, if necessary.
+    *pde = V2P(pgtab) | PTE_P | PTE_W | PTE_U;
+  }
+  return &pgtab[PTX(va)];
+}
+```
+
+A função acima não exportada para uso externo, porém você pode fazer
+uso da função `uva2ka` que chama `walkgdir`.
 
 **Com o conhecimento acima implemente**
 
-Uma chamada `virt2real` que recebe um endereço virtual (`const void *`) e
-retorna um endereço real.
+Uma chamada `virt2real` que recebe um endereço virtual (`char *`) e
+retorna um endereço real. No `user.h` a mesma tem o seguinte cabeçalho:
+
+```c
+char* virt2real(char *va);
+```
+
+Além disto, implemente uma função `int num_pages(void)` que retorna o
+número de páginas do processo atual.
+
+```c
+int num_pages(char *va);
+```
+
+As duas funçes precisam accesar o processo atual. Use a chamada
+`myproc`.
 
 ### TP2.3: Páginas Copy-on-Write
 
