@@ -499,8 +499,9 @@ número de páginas do processo atual.
 int num_pages(char *va);
 ```
 
-As duas funçes precisam accesar o processo atual. Use a chamada
-`myproc`.
+As duas funçôes precisam accesar o processo atual. Use a chamada
+`myproc`. A função `num_pages` pode ser feita alterando o struct
+run do kalloc.c para contar o número de páginas alocadas.
 
 ### TP2.3: Páginas Copy-on-Write
 
