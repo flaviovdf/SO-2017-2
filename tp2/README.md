@@ -356,7 +356,7 @@ Com os passos acima você sabe adicionar uma chamada de sistema no xv6. Na
 primeira parte do TP termine a chamada de data para ter certeza que entendeu
 todos os passos e arquivos. Só isso, pode imprimir a data da forma que quiser.
 
-### TP2.2: Chamadas de Sistema Auxiliares para Entender a Memória
+### TP2.2: Chamada de Sistema Auxiliar
 
 Agora vamos começar a entender como é feito o gerenciamento de memória no x86
 junto com o xv6. Para o caso específico de uma arquitetura x86, toda a tabela
@@ -401,12 +401,12 @@ Em particular a mudança ocorre na penúltima linha (`lcr3(V2P(p->pgdir))`). As
 linhas anteriores atualizam os segmentos presentes no x86. Note o use da macro
 **V2P** que traduz um endereço virtual para um endereço real.
 
+Outra função importante é a `walkpgdir`. Tal função recebe um 
+
 **Com o conhecimento acima implemente**
 
-1. Uma chamada de sistema que indica para cada processo qual o endereço virtual
-   e o endereço real de suas páginas.
-1. Uma chamada de sistema que indica onde a tabela de página do processo atual
-   inicia (`p->pgdir`). Indique os endereços virtuais a reais.
+Uma chamada `virt2real` que recebe um endereço virtual (`const void *`) e
+retorna um endereço real.
 
 ### TP2.3: Páginas Copy-on-Write
 
