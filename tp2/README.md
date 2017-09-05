@@ -356,7 +356,7 @@ Com os passos acima você sabe adicionar uma chamada de sistema no xv6. Na
 primeira parte do TP termine a chamada de data para ter certeza que entendeu
 todos os passos e arquivos. Só isso, pode imprimir a data da forma que quiser.
 
-### TP2.2: Chamada de Sistema Auxiliar
+### TP2.2: Chamadas de Sistema Auxiliar
 
 Agora vamos começar a entender como é feito o gerenciamento de memória no x86
 junto com o xv6. Para o caso específico de uma arquitetura x86, toda a tabela
@@ -402,7 +402,7 @@ linhas anteriores atualizam os segmentos presentes no x86. Note o use da macro
 **V2P**. Macros como essa ajudam a mapear endereços reais para virtuais e vice
 versa. Veja as mesmas nos arquivos `mmu.h` e `memlayout.h`
 
-**Flush da TLB** 
+**Flush da TLB**
 
 Lembre-se que a tabela de páginas pode ser alterada pela HW e
 pelo SW. No x86, o papel do SW (kernel) é apenas criar as novas entradas. Vide
@@ -474,9 +474,6 @@ int num_pages(void);
 
 As duas funções precisam acessar o processo atual. Use a chamada `myproc`.
 
-Por fim, guarde o número de referências para um `page table entry pte_t`.
-Vai ser útil para o copy on write.
-
 ### TP2.3: Páginas Copy-on-Write
 
 Por fim, crie uma chama de sistema chamada `forkcow`. A mesma tem que ter a
@@ -487,7 +484,12 @@ comando `fork` é a função `copyuvm`. Então, crie uma cópia `copyuvmcow`.
 Para realizar o TP, recomendo que você copie a função fork e a copyuvm. Depois
 disso, mude as mesmas para ter o copy on write. Os passos a seguir são:
 
-1. Copiar paginas do pai no `forkcow`. Ver o uso função `copyuvm`.
+1. Guarde o número de referências para um `page table entry pte_t`.
+   Vai ser útil para o copy on write. Para isto, implemente ou use uma
+   estrutura já pronta (ver `kalloc.c`) que guarda tal quantidade de
+   referências.
+1. Garantir que o `forkcow` usa as mesmas páginas do parent.
+   Para cada fork, adicione o número de referências para a página.
 1. Setar paginas como READ ONLY. Ver flags do `mmu.h` e como são setadas
    no `vm.c` (perto das chamadas `kalloc`).
 1. Note (vide figura acima) que a tabela de páginas tem bits extra para
@@ -505,7 +507,7 @@ filho.
    programa quer acessar um endereço inválido). Mate o processo.
 1. Crie uma página nova caso seja necessário.
    1. Será necessário quando: A página é compartilhada com o pai. Para saber
-      disto, você pode implementar um contador para a quantidade de processos
+      disto, você pode usar seu contador que indica a quantidade de processos
       que referenciam a página (atualize o mesmo ao criar childs). Se o
       contador for maior do que 1 então faça uma cópia.
    1. **Não** será necessário quando. O contador do número de referências for
@@ -530,7 +532,7 @@ Caso queira fazer a documentação em markdown use o comando:
 ```
 $ pandoc DOCTP2.md -o DOCTP2.pdf
 ```
-para gerar o pdf.
+para gerar o pdf (instale o pandoc antes).
 
 ## Testes automatizados
 
