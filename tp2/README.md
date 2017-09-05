@@ -402,7 +402,9 @@ linhas anteriores atualizam os segmentos presentes no x86. Note o use da macro
 **V2P**. Macros como essa ajudam a mapear endereços reais para virtuais e vice
 versa. Veja as mesmas nos arquivos `mmu.h` e `memlayout.h`
 
-**Flush da TLB** Lembre-se que a tabela de páginas pode ser alterada pela HW e
+**Flush da TLB** 
+
+Lembre-se que a tabela de páginas pode ser alterada pela HW e
 pelo SW. No x86, o papel do SW (kernel) é apenas criar as novas entradas. Vide
 as flags no `mmu.h` utilizadas para tal inicialização.  Quando novas páginas
 são criadas/inicializadas, o HW então atualiza as flags da mesma enquanto o
@@ -415,6 +417,8 @@ lcr3(lcr3(V2P(p->pgdir)))
 
 A mesma seta o registrador CR3 para a tabela de páginas do processo.  Ao setar
 tal registrador, o hardware limpa a TLB.
+
+**Endereços virtuals e reais (kernel)**
 
 Outra função importante é a `walkpgdir`. Tal função recebe um endereço virtual
 e retorna um endereço real. A mesma existe no arquivo `vm.c`.
@@ -446,8 +450,8 @@ walkpgdir(pde_t *pgdir, const void *va, int alloc)
 }
 ```
 
-A função acima não exportada para uso externo, porém você pode fazer uso da
-função `uva2ka` que chama `walkgdir`.
+Dê uma olhada e faça uso da função `uva2ka` que retorna um endereço real (de
+kernel) dado um endereço virtual.
 
 Quando uma página é criada a mesma vai fazer uso da função `kalloc`.  Quando é
 liberada o `kfree` é chamado. As duas chamadas estão no arquivo `kalloc.c`.
@@ -468,12 +472,10 @@ número de páginas que um processo faz uso (referencia).
 int num_pages(void);
 ```
 
-As duas funções precisam acessar o processo atual. Use a chamada `myproc`. A
-função `num_pages` pode ser feita rastreando os kallocs e kfrees no `vm.c`. Em
-particular, foque nas funções `allocuvm`, `copyuvm` e `deallocuvm`. Qual o
-motivo de ignorarmos as outras que chamam `kalloc`? Guarde o número de
-referências para um `page table entry pte_t`. Vai ser útil para o copy on
-write.
+As duas funções precisam acessar o processo atual. Use a chamada `myproc`.
+
+Por fim, guarde o número de referências para um `page table entry pte_t`.
+Vai ser útil para o copy on write.
 
 ### TP2.3: Páginas Copy-on-Write
 
