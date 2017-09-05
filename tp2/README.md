@@ -487,7 +487,7 @@ disso, mude as mesmas para ter o copy on write. Os passos a seguir são:
 
 1. Copiar paginas do pai no `forkcow`. Ver o uso função `copyuvm`.
 1. Setar paginas como READ ONLY. Ver flags do `mmu.h` e como são setadas
-   no `vm.c` (perto das chamadas kalloc).
+   no `vm.c` (perto das chamadas `kalloc`).
 1. Note (vide figura acima) que a tabela de páginas tem bits extra para
    informação do sistema. Então, use tais bits para indicar que a página
    é COW (setando uma flag PTE_COW em um bit livre).
@@ -511,3 +511,29 @@ filho.
       ser escrita. Remova a flag PTE_COW e sete a página como writeable.
 
   Nos dois casos acima realize o flush na TLB (ver mais acima).
+
+## Entrega
+
+A entrega do seu TP será um PDF com sua documentação. O mesmo deve conter um
+link para um git público onde o professor vai baixar o código. Na sua
+documentação explique:
+
+1. Quais decisões foram tomadas para realizar o TP. Por exemplo, como manter
+   o número de referências para cada página? Como pegar o número de páginas de
+   um processo?
+1. Quais arquivos foram alterados (não copie os arquivos apenas indique).
+1. Como o TP ajudou a entender paginação.
+
+Caso queira fazer a documentação em markdown use o comando:
+```
+$ pandoc DOCTP2.md -o DOCTP2.pdf
+```
+para gerar o pdf.
+
+## Testes automatizados
+
+Em breve
+
+## Pontos extra
+
+Para quem fizer mais testes de unidade para o TP.
