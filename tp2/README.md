@@ -499,7 +499,8 @@ disso, mude as mesmas para ter o copy on write. Os passos a seguir são:
 Com os 2 passos acima você deve ter um processo child que é
 **read only**. Agora vem o passo mais importante, sempre que o hardware
 indicar uma trap de PAGEFAULT você deve criar uma página nova para o
-filho.
+filho. Para tratar a PAGEFAULT inicie no arquivo `trap.c`. Veja como o mesmo
+trata a systemcall e inicie com um código similar.
 
 1. Certifique-se de que a falta de página é de escrita em um endereço de
    usuário. Use o campo `tf->err` e as flags.
@@ -515,6 +516,22 @@ filho.
       ser escrita. Remova a flag PTE_COW e sete a página como writeable.
 
   Nos dois casos acima realize o flush na TLB (ver mais acima).
+
+Para utilizar o `tf->err` você precisa saber dos bits utilizados para definir
+qual tipo de PAGEFAULT ocorreu:
+
+```
+ 31              4               0
++---+--  --+---+---+---+---+---+---+
+|   Reserved   | I | R | U | W | P |
++---+--  --+---+---+---+---+---+---+
+```
+
+Então, para saber se uma falta foi de escrita faça:
+
+```c
+if (tf->ef & 0x2)
+```
 
 ## Entrega
 
