@@ -8,7 +8,7 @@ Parte deste material foi adaptado do material do
 adaptada do material do
 [MIT](https://pdos.csail.mit.edu/6.828/2016/index.html). Por fim, também
 peguei dicas do curso da
-[Sntonybrook](https://www3.cs.stonybrook.edu/~porter/courses/cse306/s16/lab2.html).
+[Stonybrook](https://www3.cs.stonybrook.edu/~porter/courses/cse306/s16/lab2.html).
 
 Neste TP vamos explorar alguns conceitos da segunda parte da disciplina.  Em
 particular, vamos rever os conceitos de memória virtual e páginas *copy on
