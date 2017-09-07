@@ -27,22 +27,9 @@ int caso1fork(void) {
     }
     if(pid == 0)
       exit();   // fecha filho
+    else
+      if (wait() < 0) return FALSE;
   }
-
-  printf(stdout, "[--Caso 1.2] Testando %d chamadas wait\n", N);
-  for(; n > 0; n--){
-    if(wait() < 0){
-      printf(stdout, "[--Caso 1.2 - ERROR] Wait %d deu erro\n", n);
-      return FALSE;
-    }
-  }
-
-  printf(stdout, "[--Caso 1.3] Wait extra deve falhar\n", N);
-  if(wait() != -1){
-    printf(stdout, "[--Caso 1.3 - ERROR] Wait extra não falhou!\n", N);
-    return FALSE;
-  }
-
   return TRUE;
 }
 
@@ -54,7 +41,6 @@ int caso2forkcow(void) {
   printf(stdout, "[--Caso 2.1] Testando %d chamadas forkcow\n", N);
 
   for(n=0; n<N; n++){
-    printf(stdout, "%d\n", n);
     pid = forkcow();
     if(pid < 0) {
       printf(stdout, "[--Caso 2.1 - ERROR] Fork %d falhou!\n", n);
@@ -62,22 +48,9 @@ int caso2forkcow(void) {
     }
     if(pid == 0)
       exit();   // fecha filho
+    else
+      if (wait() < 0) return FALSE;
   }
-
-  printf(stdout, "[--Caso 2.2] Testando %d chamadas wait\n", N);
-  for(; n > 0; n--){
-    if(wait() < 0){
-      printf(stdout, "[--Caso 2.2 - ERROR] Wait %d deu erro\n", n);
-      return FALSE;
-    }
-  }
-
-  printf(stdout, "[--Caso 2.3] Wait extra deve falhar\n", N);
-  if(wait() != -1){
-    printf(stdout, "[--Caso 2.3 - ERROR] Wait extra não falhou!\n", N);
-    return FALSE;
-  }
-
   return TRUE;
 }
 
@@ -186,7 +159,7 @@ void print_date(struct rtcdate *r) {
 
 int main(int argc, char *argv[]) {
   struct rtcdate r;
-  int call_ok;
+  int call_ok = 1;
 
   printf(stdout, "[Caso 0] Testando o date\n");
   call_ok = get_date(&r);
