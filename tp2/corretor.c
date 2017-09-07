@@ -226,7 +226,7 @@ int main(int argc, char *argv[]) {
   printf(stdout, "  / |    ||          \n");
   printf(stdout, " *  /\\---/\\        \n");
   printf(stdout, "    ~~   ~~          \n");
-  printf(stdout, "....\"Congratulations! You haved mooed!\"...\n");
+  printf(stdout, "....\"Congratulations! You have mooed!\"...\n");
   printf(stdout, "\n");
   printf(stdout, "[0xDCC605 - COW] ALL OK!!!\n");
   exit();
