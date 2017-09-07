@@ -594,7 +594,7 @@ Se os dois funcionarem seu TP está OK!
 1. Para quem melhorar a documentação do TP
 1. Para quem fizer mais testes de unidade para o TP.
 1. Para quem colocar no seu relatório instruções de como rodar o GDB no kernel
-  1. Procure por qemu gdb xv6 no Google
+   1. Procure por qemu gdb xv6 no Google
 1. Para quem propor nova system calls para testar o TP
 1. Para quem corrigir um bug no XV6 e submeter uma issue/pull request
-  1. Tem um bem claro que o corretor.c mostra.
+   1. Tem um bem claro que o corretor.c mostra.
