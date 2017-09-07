@@ -12,7 +12,10 @@ int stderr = 2;
 const int GLOBAL1_RO = 0xdcc605;
 int GLOBAL2_RW = 0xdcc606;
 
+
 // testa o fork normal. garante que não quebramos nada
+// N forks e waits consecutivos. existe um limite de 64
+// processos no xv6, então temos que garantir que N <= 64
 int caso1fork(void) {
   int n;
   int pid;
@@ -33,7 +36,11 @@ int caso1fork(void) {
   return TRUE;
 }
 
+
 // mesmo do caso 1 só que com o novo forkcow
+// testa o fork cow. garante que não quebramos nada
+// N forks e waits consecutivos. existe um limite de 64
+// processos no xv6, então temos que garantir que N <= 64
 int caso2forkcow(void) {
   int n;
   int pid;
@@ -54,6 +61,11 @@ int caso2forkcow(void) {
   return TRUE;
 }
 
+
+// testa que o processo parent e child tem o mesmo num de pgs
+// embora durante o forkcow algumas páginas são escrita, os
+// 2 processos não crescem nem em pilha nem em heap.
+// pipes, wait e exit para comunicação e sync
 int caso3numpgs(void) {
   int fd[2];
   pipe(fd);
@@ -79,6 +91,10 @@ int caso3numpgs(void) {
   return TRUE;
 }
 
+
+// testa que o processo parent e child tem o mesmo addr real
+// para uma constante. usamos a GLOBAL1_RO
+// pipes, wait e exit para comunicação e sync
 int caso4mesmoaddr(void) {
   int fd[2];
   pipe(fd);
@@ -109,6 +125,10 @@ int caso4mesmoaddr(void) {
   return TRUE;
 }
 
+
+// testa que o processo parent e child tem o mesmo addr real
+// para uma GLOBAL. usamos a GLOBAL1_RW
+// pipes, wait e exit para comunicação e sync
 int caso5mesmoaddr(void) {
   int fd[2];
   pipe(fd);
@@ -140,6 +160,9 @@ int caso5mesmoaddr(void) {
 }
 
 
+// testa que o processo parent e child tem o addr diferentes
+// após um write em uma GLOBAL. usamos a GLOBAL1_RW
+// pipes, wait e exit para comunicação e sync
 int caso6cow(void) {
   int fd[2];
   pipe(fd);
@@ -171,6 +194,7 @@ int caso6cow(void) {
   return TRUE;
 }
 
+// testa a chamada date
 int get_date(struct rtcdate *r) {
   if (date(r)) {
     printf(stderr, "[ERROR] Erro na chamada de sistema date\n");
@@ -178,6 +202,7 @@ int get_date(struct rtcdate *r) {
   }
   return TRUE;
 }
+
 
 void print_date(struct rtcdate *r) {
   printf(stdout, "%d/%d/%d %d:%d:%d\n", r->day,
@@ -187,6 +212,7 @@ void print_date(struct rtcdate *r) {
                                         r->minute,
                                         r->second);
 }
+
 
 int main(int argc, char *argv[]) {
   struct rtcdate r;
