@@ -6,11 +6,14 @@
 Parte deste material foi adaptado do material do
 [Remzi H. Arpaci-Dusseau](http://www.cs.wisc.edu/~remzi). Outra parte foi
 adaptada do material do
-[MIT](https://pdos.csail.mit.edu/6.828/2016/index.html).
+[MIT](https://pdos.csail.mit.edu/6.828/2016/index.html). Por fim, também
+peguei dicas do curso da
+[Sntonybrook](https://www3.cs.stonybrook.edu/~porter/courses/cse306/s16/lab2.html).
 
 Neste TP vamos explorar alguns conceitos da segunda parte da disciplina.  Em
 particular, vamos rever os conceitos de memória virtual e páginas *copy on
-write*.
+write*. O objetivo é que o aluno entenda como funciona a memória virtual
+inserindo um nova chamada de sistema no xv6.
 
 1. [Tutorial xv6](#tutorial)
 2. [Especificação](#especificação)
@@ -67,7 +70,7 @@ $ make
 Para executar digite:
 
 ```
-$ make qemu-nox
+$ make qemu-nox              # ou make qemu caso prefira uma janelinha com o xv6
 ```
 
 Se sua saída for algo como a abaixo, então você fez tudo corretamente:
@@ -109,8 +112,8 @@ console        3 18 0
 
 ### Controlando a VM
 
-Provavelmente você vai utilizar só o comando **quit**, mas seguem uma lista de
-alguns outros.
+Provavelmente você vai utilizar só o comando **quit**, mas segue uma lista de
+alguns outros comandos do qemu que podem ser interessantes.
 
 * Control-a-c
   1. **info registers** to show CPU registers
@@ -145,9 +148,9 @@ $ QEMU: Terminated
 ### Adicionando um esqueleto de uma nova chamada de sistema e um novo comando
 
 Agora vou mostrar um passo a passo como adicionar uma nova chamada de sistema
-no xv6. Use este passo a passo como base para seu TP. Vamos adicionar uma
+no xv6. Use esse passo a passo como base para seu TP. Vamos adicionar uma
 chamada de sistema retornar a data do sistema. Após adicionar a chamada de
-sistema teremos um comando do sistema chamado `date`.
+sistema vamos criar também um comando do sistema chamado `date`.
 
 **Passo 0: Entendendo o Código xv6**
 
@@ -155,9 +158,9 @@ Para adicionar uma chamada de sistema vamos precisar alterar alguns arquivos do
 xv6.
 
 1. `user.h:` Define as chamadas que são vísiveis ao usuário.  (stat, strcpy,
-   printf, etc.).
+   printf, etc.). Esse arquivo define a "biblioteca padrão" do xv6 para o usuário.
 1. `syscall.h:` Define os números de cada chamada de sistema. Para implementar
-   uma nova você precisa adicionar uma nova entrada neste arquivo. Garanta que
+   uma nova você precisa adicionar uma nova entrada no `syscall.h:`. Garanta que
    os números são contíguos. Tal número vai ser usado no `syscall.c`
 1. `syscall.c:` Este arquivo tem as funções responsáveis por
    realmente chamar o código da nova chamada de sistema. Em particular vamos
@@ -166,9 +169,9 @@ xv6.
    `usys.S` simplesmente coloca o número da chamada de sistema no registrador
    `eax` e invoca o `void syscall(void)` do `syscall.c`.
    Você vai precisar adicionar uma linha neste arquivo.
-1. `sysproc.c:` Sua nova chamada do sistema vai ser implementada neste arquivo.
-   O mesmo contém o código das system calls que o sistema oferece para seus
-   processos.
+1. `sysproc.c:` Sua nova chamada do sistema vai ser implementada aqui.
+   O mesmo contém o código das chamadas de sistema que o xv6 oferece para seus
+   processos/usuários.
 
 Vamos iniciar dando uma olhada no `syscall.c` do xv6. Em particular,
 dê uma olhada na função `void syscall(void)`.
@@ -192,7 +195,9 @@ syscall(void)
 ```
 
 Note que na linha `curproc->tf->eax` o número da chamada de sistema é
-identificado através do valor do registrador `eax`.
+identificado através do valor do registrador `eax`. O mesmo campo recebe
+o retorno da chamada depois de que saímos. Antes da chamada o `eax` contém
+o primeiro parâmetro que indica o número da chamada.
 
 Estude struct do processo definido no arquivo `proc.h`. Pode lhe ajudar
 a entender como o xv6 gerencia processos e trata traps. Em particular,
@@ -359,9 +364,9 @@ todos os passos e arquivos. Só isso, pode imprimir a data da forma que quiser.
 ### TP2.2: Chamadas de Sistema Auxiliar
 
 Agora vamos começar a entender como é feito o gerenciamento de memória no x86
-junto com o xv6. Para o caso específico de uma arquitetura x86, toda a tabela
-de páginas é atualizada diretamente pelo hardware. Lembrando que a tabela de
-página x86 tem a seguinte forma (imagem do livro
+junto com o xv6. Para o caso específico de uma arquitetura x86, quando o processo
+executa a tabela de páginas é atualizada diretamente pelo hardware.
+Lembrando que a tabela de página x86 tem a seguinte forma (imagem do livro
 [xv6](https://pdos.csail.mit.edu/6.828/2016/xv6/book-rev9.pdf)).
 
 ![x86 Pages](./imgs/x86pg.png "Tabela de Páginas no x86")
@@ -400,16 +405,19 @@ switchuvm(struct proc *p)
 Em particular a mudança ocorre na penúltima linha (`lcr3(V2P(p->pgdir))`). As
 linhas anteriores atualizam os segmentos presentes no x86. Note o use da macro
 **V2P**. Macros como essa ajudam a mapear endereços reais para virtuais e vice
-versa. Veja as mesmas nos arquivos `mmu.h` e `memlayout.h`
+versa. Veja as mesmas nos arquivos `mmu.h` e `memlayout.h`. O hardware conhece
+endereços reais `V2P`, enquando o kernel/usuários conhecem endereços virtuais
+`P2V`.
 
 **Flush da TLB**
 
-Lembre-se que a tabela de páginas pode ser alterada pela HW e
-pelo SW. No x86, o papel do SW (kernel) é apenas criar as novas entradas. Vide
-as flags no `mmu.h` utilizadas para tal inicialização.  Quando novas páginas
-são criadas/inicializadas, o HW então atualiza as flags da mesma enquanto o
-código executa. Sabendo disto, uma forma de indicar para o HW que a tabela
-mudou (criamos uma nova entrada por exemplo) é a seguinte chamada:
+Lembre-se que a tabela de páginas pode ser alterada pelo HW e
+pelo SW. No x86, o papel do SW (kernel) é basicamente criar as novas entradas.
+Vide as flags no `mmu.h` utilizadas para tal inicialização. 
+Quando novas páginas são criadas/inicializadas, o HW então atualiza as flags
+da mesma enquanto o código executa. Sabendo disso, uma forma de indicar para
+o HW que a tabela mudou (criamos uma nova entrada por exemplo) é a
+seguinte chamada:
 
 ```c
 lcr3(lcr3(V2P(p->pgdir)))
@@ -420,7 +428,7 @@ tal registrador, o hardware limpa a TLB.
 
 *Sempre que você mudar a tabela, mesmo se for só setando 1 bit, faça flush*
 
-**Endereços virtuals e reais (kernel)**
+**Endereços virtuais, page table entries e endereços físico**
 
 Outra função importante é a `walkpgdir`. Tal função recebe um endereço virtual
 e retorna um endereço real. A mesma existe no arquivo `vm.c`.
@@ -452,23 +460,35 @@ walkpgdir(pde_t *pgdir, const void *va, int alloc)
 }
 ```
 
-Dê uma olhada e faça uso da função `uva2ka` que retorna um endereço real (de
-kernel) dado um endereço virtual.
+A função recebe:
+  * Endereço virtual como `char*`.
+  * Um ponteiro para o diretório da tabela de páginas (`pde_t`)
+  * Retorna um ponteiro para a entrada na tabela *table entry* (`pte_t`)
 
+É importante entender a diferença entre os 3 tipos acima, pois faremos uso
+dos três para o TP.
+
+**Alocando novos frames**
+
+Por fim, é importante estudar o código que aloca novos frames/molduras. Tais 
 Quando uma página é criada a mesma vai fazer uso da função `kalloc`.  Quando é
 liberada o `kfree` é chamado. As duas chamadas estão no arquivo `kalloc.c`.
+O kalloc pega o próximo frame de 4kb e retorna. Tal frame deve ser inserido na
+tabela de páginas. O kfree marca o frame como livre.
 
 **Com o conhecimento acima implemente**
 
-Uma chamada `virt2real` que recebe um endereço virtual (`char *`) e retorna um
+Uma chamada `virt2real` que recebe um endereço virtual (`char*`) e retorna um
 endereço real. No `user.h` a mesma tem o seguinte cabeçalho:
 
 ```c
 char* virt2real(char *va);
 ```
 
-Além disto, implemente uma função `int num_pages(void)` que retorna o
-número de páginas que um processo faz uso (referencia).
+Para retornar um `char*` pode fazer cast para int no `sysproc.c`.
+
+Além da chamada acima, implemente uma função `int num_pages(void)` que
+retorna o número de páginas que um processo faz uso (referencia).
 
 ```c
 int num_pages(void);
@@ -479,26 +499,30 @@ As duas funções precisam acessar o processo atual. Use a chamada `myproc`.
 ### TP2.3: Páginas Copy-on-Write
 
 Por fim, crie uma chama de sistema chamada `forkcow`. A mesma tem que ter a
-mesma assinatura da chamada `fork`. Diferente da chamada `fork`, `forkcow` cria
-um processo filho com páginas copy on write.  Uma boa parte do esforço do
-comando `fork` é a função `copyuvm`. Então, crie uma cópia `copyuvmcow`.
+mesma assinatura da chamada `fork`. Copie e cole a chamada fork, recomendo
+ter as duas chamadas para depurar eventuais erros.
 
-Para realizar o TP, recomendo que você copie a função fork e a copyuvm. Depois
-disso, mude as mesmas para ter o copy on write. Os passos a seguir são:
+Diferente da chamada `fork`, `forkcow` cria um processo filho com páginas
+copy on write.  Uma boa parte do esforço do comando `fork` é a função `copyuvm`.
+Então, crie chamada novada `copyuvmcow`.
 
-1. Guarde o número de referências para um `page table entry pte_t`.
-   Vai ser útil para o copy on write. Para isto, implemente ou use uma
+Os passos a seguir são:
+
+1. Guardar o número de referências para um frame/moldura.
+   Vai ser útil para o copy on write. Para tal, implemente ou use uma
    estrutura já pronta (ver `kalloc.c`) que guarda tal quantidade de
    referências.
-1. Garantir que o `forkcow` usa as mesmas páginas do parent.
-   Para cada fork, adicione o número de referências para a página.
+1. Garantir que o `forkcow` usa as mesmas molduras do parent.
+   Para cada fork, adicione o número de referências para a moldura.
 1. Setar paginas como READ ONLY. Ver flags do `mmu.h` e como são setadas
    no `vm.c` (perto das chamadas `kalloc`).
 1. Note (vide figura acima) que a tabela de páginas tem bits extra para
    informação do sistema. Então, use tais bits para indicar que a página
-   é COW (setando uma flag PTE_COW em um bit livre).
+   é COW (setando uma flag PTE_COW em um bit livre). `0x800` é um bom
+   valor para pegar um bit livre. 
+1. Setar a nova página como read only `*pte &= ~PTE_W`.
 
-Com os 2 passos acima você deve ter um processo child que é
+Com os 5 passos acima você deve ter um processo child que é
 **read only**. Agora vem o passo mais importante, sempre que o hardware
 indicar uma trap de PAGEFAULT você deve criar uma página nova para o
 filho. Para tratar a PAGEFAULT inicie no arquivo `trap.c`. Veja como o mesmo
