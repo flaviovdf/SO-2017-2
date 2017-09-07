@@ -413,7 +413,7 @@ endereços reais `V2P`, enquando o kernel/usuários conhecem endereços virtuais
 
 Lembre-se que a tabela de páginas pode ser alterada pelo HW e
 pelo SW. No x86, o papel do SW (kernel) é basicamente criar as novas entradas.
-Vide as flags no `mmu.h` utilizadas para tal inicialização. 
+Vide as flags no `mmu.h` utilizadas para tal inicialização.
 Quando novas páginas são criadas/inicializadas, o HW então atualiza as flags
 da mesma enquanto o código executa. Sabendo disso, uma forma de indicar para
 o HW que a tabela mudou (criamos uma nova entrada por exemplo) é a
@@ -470,7 +470,7 @@ dos três para o TP.
 
 **Alocando novos frames**
 
-Por fim, é importante estudar o código que aloca novos frames/molduras. Tais 
+Por fim, é importante estudar o código que aloca novos frames/molduras. Tais
 Quando uma página é criada a mesma vai fazer uso da função `kalloc`.  Quando é
 liberada o `kfree` é chamado. As duas chamadas estão no arquivo `kalloc.c`.
 O kalloc pega o próximo frame de 4kb e retorna. Tal frame deve ser inserido na
@@ -519,7 +519,7 @@ Os passos a seguir são:
 1. Note (vide figura acima) que a tabela de páginas tem bits extra para
    informação do sistema. Então, use tais bits para indicar que a página
    é COW (setando uma flag PTE_COW em um bit livre). `0x800` é um bom
-   valor para pegar um bit livre. 
+   valor para pegar um bit livre.
 1. Setar a nova página como read only `*pte &= ~PTE_W`.
 
 Com os 5 passos acima você deve ter um processo child que é
@@ -591,7 +591,10 @@ Se os dois funcionarem seu TP está OK!
 
 ## Pontos extra
 
+1. Para quem melhorar a documentação do TP
 1. Para quem fizer mais testes de unidade para o TP.
 1. Para quem colocar no seu relatório instruções de como rodar o GDB no kernel
-   1. Procure por qemu gdb xv6
+  1. Procure por qemu gdb xv6 no Google
 1. Para quem propor nova system calls para testar o TP
+1. Para quem corrigir um bug no XV6 e submeter uma issue/pull request
+  1. Tem um bem claro que o corretor.c mostra.
