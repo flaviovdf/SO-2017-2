@@ -553,7 +553,15 @@ para gerar o pdf (instale o pandoc antes).
 
 ## Testes automatizados
 
-Em breve
+Copie o [corretor.c](./corretor.c) para o local do seu código e altere o
+Makefile para compilar o mesmo. Ao entrar no xv6 rode 2 comandos:
+
+```
+$ forktest
+$ corretor
+```
+
+Se os dois funcionarem seu TP está OK!
 
 ## Pontos extra
 
