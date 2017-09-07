@@ -418,6 +418,8 @@ lcr3(lcr3(V2P(p->pgdir)))
 A mesma seta o registrador CR3 para a tabela de páginas do processo.  Ao setar
 tal registrador, o hardware limpa a TLB.
 
+*Sempre que você mudar a tabela, mesmo se for só setando 1 bit, faça flush*
+
 **Endereços virtuals e reais (kernel)**
 
 Outra função importante é a `walkpgdir`. Tal função recebe um endereço virtual
