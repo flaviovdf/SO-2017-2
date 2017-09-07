@@ -567,4 +567,7 @@ Se os dois funcionarem seu TP está OK!
 
 ## Pontos extra
 
-Para quem fizer mais testes de unidade para o TP.
+1. Para quem fizer mais testes de unidade para o TP.
+1. Para quem colocar no seu relatório instruções de como rodar o GDB no kernel
+   1. Procure por qemu gdb xv6
+1. Para quem propor nova system calls para testar o TP
