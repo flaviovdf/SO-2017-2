@@ -109,13 +109,12 @@ int caso4mesmoaddr(void) {
   return TRUE;
 }
 
-int caso5cow(void) {
+int caso5mesmoaddr(void) {
   int fd[2];
   pipe(fd);
   char answer[20];
   int pid = forkcow();
-  if (pid == 0) { // child manda addr de GLOBAL2_RW
-    GLOBAL2_RW--;
+  if (pid == 0) { // child manda addr de GLOBAL1_RO
     int addr = (int)virt2real((char*)&GLOBAL2_RW);
     if (addr < 0) addr = -addr; // atoi falha quando <0, nao sei pq
     printf(stdout, "[--Caso 5.1] Child write %d\n", addr);
@@ -131,7 +130,39 @@ int caso5cow(void) {
     wait();
     printf(stdout, "[--Caso 5.3] Parent lendo addr\n");
     read(fd[0], answer, 20);
-    printf(stdout, "[--Caso 5.4] Parent leu %d != %d\n",
+    printf(stdout, "[--Caso 5.4] Parent leu %d == %d\n",
+           addr,
+           atoi(answer));
+    close(fd[0]);
+    return addr == atoi(answer);
+  }
+  return TRUE;
+}
+
+
+int caso6cow(void) {
+  int fd[2];
+  pipe(fd);
+  char answer[20];
+  int pid = forkcow();
+  if (pid == 0) { // child manda addr de GLOBAL2_RW
+    GLOBAL2_RW--;
+    int addr = (int)virt2real((char*)&GLOBAL2_RW);
+    if (addr < 0) addr = -addr; // atoi falha quando <0, nao sei pq
+    printf(stdout, "[--Caso 6.1] Child write %d\n", addr);
+    close(fd[0]);
+    printf(fd[1], "%d\0", addr);
+    printf(stdout, "[--Caso 6.2] Child indo embora\n");
+    close(fd[1]);
+    exit();
+  } else { // parent espera filho acabar e lê o fd
+    int addr = (int)virt2real((char*)&GLOBAL2_RW);
+    if (addr < 0) addr = -addr; // atoi falha quando <0, nao sei pq
+    close(fd[1]);
+    wait();
+    printf(stdout, "[--Caso 6.3] Parent lendo addr\n");
+    read(fd[0], answer, 20);
+    printf(stdout, "[--Caso 6.4] Parent leu %d != %d\n",
            addr,
            atoi(answer));
     close(fd[0]);
@@ -212,13 +243,23 @@ int main(int argc, char *argv[]) {
 
   get_date(&r);
   print_date(&r);
-  printf(stdout, "[Caso 5] Testando o COW\n");
-  call_ok = caso5cow();
+  printf(stdout, "[Caso 5] Testando se o endereço de uma global é =\n");
+  call_ok = caso5mesmoaddr();
   if (call_ok == FALSE) {
     printf(stdout, "[Caso 5 - ERROR] Falhou!\n");
     exit();
   }
   printf(stdout, "[Caso 5] OK\n");
+
+  get_date(&r);
+  print_date(&r);
+  printf(stdout, "[Caso 6] Testando o COW\n");
+  call_ok = caso6cow();
+  if (call_ok == FALSE) {
+    printf(stdout, "[Caso 6 - ERROR] Falhou!\n");
+    exit();
+  }
+  printf(stdout, "[Caso 6] OK\n");
   printf(stdout, "\n");
   printf(stdout, "         (__)        \n");
   printf(stdout, "         (oo)        \n");
@@ -226,7 +267,7 @@ int main(int argc, char *argv[]) {
   printf(stdout, "  / |    ||          \n");
   printf(stdout, " *  /\\---/\\        \n");
   printf(stdout, "    ~~   ~~          \n");
-  printf(stdout, "....\"Congratulations! You haved mooed!\"...\n");
+  printf(stdout, "....\"Congratulations! You have mooed!\"...\n");
   printf(stdout, "\n");
   printf(stdout, "[0xDCC605 - COW] ALL OK!!!\n");
   exit();
