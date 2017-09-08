@@ -18,6 +18,9 @@ inserindo um nova chamada de sistema no xv6.
 1. [Tutorial xv6](#tutorial)
 2. [Especificação](#especificação)
 
+Recomendo ler o [Capítulo 2 do livro xv6](https://pdos.csail.mit.edu/6.828/2016/xv6/book-rev9.pdf).
+São poucas páginas que explicam diversos conceitos que vamos utilizar no tp.
+
 ## Tutorial
 
 Antes de iniciar o ambiente xv6 você precisa instalar alguns programas no seu
