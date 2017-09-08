@@ -406,11 +406,11 @@ switchuvm(struct proc *p)
 ```
 
 Em particular a mudança ocorre na penúltima linha (`lcr3(V2P(p->pgdir))`). As
-linhas anteriores atualizam os segmentos presentes no x86. Note o use da macro
-**V2P**. Macros como essa ajudam a mapear endereços reais para virtuais e vice
-versa. Veja as mesmas nos arquivos `mmu.h` e `memlayout.h`. O hardware conhece
-endereços reais `V2P`, enquando o kernel/usuários conhecem endereços virtuais
-`P2V`.
+linhas anteriores atualizam os segmentos presentes no x86, pode ignorar as mesmas.
+Note o use da macro **V2P**. Macros como essa ajudam a mapear endereços reais para
+virtuais e vice versa. Veja as mesmas nos arquivos `mmu.h` e `memlayout.h`.
+O hardware conhece endereços reais `V2P`, enquando o kernel/usuários conhecem
+endereços virtuais `P2V`.
 
 **Flush da TLB**
 
@@ -427,7 +427,9 @@ lcr3(lcr3(V2P(p->pgdir)))
 ```
 
 A mesma seta o registrador CR3 para a tabela de páginas do processo.  Ao setar
-tal registrador, o hardware limpa a TLB.
+tal registrador, o hardware limpa a TLB. Limpar a TLB é importante pois a
+a TLB é um cache que se não for atualizado gera inconsistências entre a tabela
+real e o valor na TLB.
 
 *Sempre que você mudar a tabela, mesmo se for só setando 1 bit, faça flush*
 
@@ -473,7 +475,7 @@ dos três para o TP.
 
 **Alocando novos frames**
 
-Por fim, é importante estudar o código que aloca novos frames/molduras. Tais
+Por fim, é importante estudar o código que aloca novos frames/molduras.
 Quando uma página é criada a mesma vai fazer uso da função `kalloc`.  Quando é
 liberada o `kfree` é chamado. As duas chamadas estão no arquivo `kalloc.c`.
 O kalloc pega o próximo frame de 4kb e retorna. Tal frame deve ser inserido na
@@ -518,14 +520,12 @@ Os passos a seguir são:
 1. Garantir que o `forkcow` usa as mesmas molduras do parent.
    Para cada fork, adicione o número de referências para a moldura.
 1. Setar paginas como READ ONLY. Ver flags do `mmu.h` e como são setadas
-   no `vm.c` (perto das chamadas `kalloc`).
+   no `vm.c` (perto das chamadas `kalloc`). `*pte &= ~PTE_W`.
 1. Note (vide figura acima) que a tabela de páginas tem bits extra para
    informação do sistema. Então, use tais bits para indicar que a página
-   é COW (setando uma flag PTE_COW em um bit livre). `0x800` é um bom
-   valor para pegar um bit livre.
-1. Setar a nova página como read only `*pte &= ~PTE_W`.
-
-Com os 5 passos acima você deve ter um processo child que é
+   é COW (setando uma flag PTE_COW em um bit livre).
+   
+Com os 4 passos acima você deve ter um processo child que é
 **read only**. Agora vem o passo mais importante, sempre que o hardware
 indicar uma trap de PAGEFAULT você deve criar uma página nova para o
 filho. Para tratar a PAGEFAULT inicie no arquivo `trap.c`. Veja como o mesmo
@@ -533,8 +533,10 @@ trata a systemcall e inicie com um código similar.
 
 1. Certifique-se de que a falta de página é de escrita em um endereço de
    usuário. Use o campo `tf->err` e as flags.
+1. Para determinar o endereço virtual que gerou a fault use o registrador
+   CR2: `uint va = rcr2();`.
 1. Certifique-se que é uma página PTE_COW. Se não, algo esquisito ocorreu (o
-   programa quer acessar um endereço inválido). Mate o processo.
+   programa quer acessar um endereço inválido).
 1. Crie uma página nova caso seja necessário.
    1. Será necessário quando: A página é compartilhada com o pai. Para saber
       disto, você pode usar seu contador que indica a quantidade de processos
@@ -544,7 +546,7 @@ trata a systemcall e inicie com um código similar.
       `==1`. Neste caso, apenas um processo referência a página e mesma pode
       ser escrita. Remova a flag PTE_COW e sete a página como writeable.
 
-  Nos dois casos acima realize o flush na TLB (ver mais acima).
+*Nos dois casos acima realize o flush na TLB (ver mais acima).*
 
 Para utilizar o `tf->err` você precisa saber dos bits utilizados para definir
 qual tipo de PAGEFAULT ocorreu:
