@@ -57,10 +57,10 @@
 
 1. Explique as métricas de avaliação de algoritmos de escalonamento. É possível
    maximizar todas elas de uma só vez?
-  a. Throughput
-  b. Turnaround time (tempo de término)
-  c. Tempo de Espera
-  d. Tempo de Resposta
+   * Throughput
+   * Turnaround time (tempo de término)
+   * Tempo de Espera
+   * Tempo de Resposta
 
 1. [Silberschatz 6.16] Considere o conjunto de processos a seguir, com duração
    de pico de CPU dada em milisegundos:
@@ -189,7 +189,7 @@
    Quais são os passos do SO para tratar as mesmas?
 
 1. [Siberschatz 9.7 - Alterada] Considere o array bidimensional `A`:
-   `int A[][] = new int[100][100]`, O programa inteiro que processa a matriz
+   `int A[][] = new int[100][100]`. O programa inteiro (texto) que processa a matriz
    reside na página 0. Com 3 quadros de memória real e assumindo que cada linha
    da matriz cabe em 1 página, quantas faltas ocorrem ao ler a matriz das
    seguintes forma em um acesso FIFO:
@@ -203,7 +203,6 @@
        for (int i = 0; i < 100; i++)
            // Lê A[i][j]
    ```
-   Asssumo que apenas o quadro 0 está ocupado com a página 0, que  o programa.
 
 1. [Siberschatz 9.10 - Alterada] Em um algoritmo ótimo pode ocorrer a anomalia
    de belady? Explique.
