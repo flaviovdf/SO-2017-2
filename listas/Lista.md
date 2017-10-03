@@ -63,7 +63,7 @@
    * Tempo de Resposta
 
 1. [Silberschatz 6.16] Considere o conjunto de processos a seguir, com duração
-   de pico de CPU dada em milisegundos:
+   de pico de CPU dada em milissegundos:
 
    | Processo| Duração do Pico | Prioridade |
    | --------|-----------------|------------|
@@ -243,7 +243,7 @@
     1. Segunda chance?
 
 1. [Silberschatz 9.14] Suponha que um programa tenha acabado de referenciar um
-   endereço na memória virtual. Descreve se e qual o morivo de cada cenário
+   endereço na memória virtual. Descreve se e qual o motivo de cada cenário
    ocorrer:
    a. Falta na TLB sem falta na tabela de páginas.
    b. Falta na TLB com falta na tabela de páginas.
@@ -290,7 +290,7 @@
    Isto é, um cache de inodes->dados.
 
 1. [Silberschatz 11.14] Se o sistema operacional souber que
-   determinada aplicaço vai fazer uso dos dados de um arquivo,
+   determinada aplicação vai fazer uso dos dados de um arquivo,
    domo tal informação pode ser explorada por desempenho?
 
 1. Discuta e compara hard links e soft links em quesitos de
