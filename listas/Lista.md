@@ -181,7 +181,7 @@
       se a mesma for de 1 nível?
    1. Suponha que o mesmo sistema tenha uma TLB com 32 entradas. Assumindo
       um tempo de acesso de 10ns para a memória real e 2ns para a TLB, qual a
-      efiácia do sistema?
+      eficácia do sistema?
 
 ## Memória: SO
 
