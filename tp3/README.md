@@ -38,9 +38,17 @@ terá um layout de blocos similar ao da figura abaixo:
 +-------+-------+-------+-------+-------+--------+--------+--------+--------+--
 | super |  descritores  |       |       |                 |
 | bloco |      do       |d-bmap |i-bmap | tabela de inode |  blocos de dados...
-|   i   |     grupo     |       |       |                 |
+| const |     grupo     |       |       |                 |
 +-------+-------+-------+-------+-------+--------+--------+--------+--------+--
  1-bloco    n-blocos     1-bloco 1-bloco     n-blocos          n-blocos
+
+  * Bloco de Boot         -->
+  * Super Bloco           -->
+  * Descritores do Grupo  -->
+  * Data Bitmap (d-bmap)  -->
+  * Inode Bitmap (i-bmap) -->
+  * Tabela de inodes      -->
+  * Bloco de dados        -->
 ```
 
 ## Criando imagens
