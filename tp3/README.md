@@ -20,7 +20,8 @@ para o ext3 e ext4 que são mais populares hoje em dia.
 **Layout dos inodes, grupos e blocos**
 
 Seguindo o modelo do FFS, um disco formatado com um sistema de arquivos ext2
-terá um layout de blocos similar ao da figura abaixo:
+terá um layout de blocos similar ao da figura abaixo (note que existem
+problemas de escala na mesma, é apenas um esquema):
 
 ```
   1-bloco
