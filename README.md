@@ -10,7 +10,7 @@ Sala: 2015 (Icex)
 
   1. [TP1](./tp1)
   2. [TP2](./tp2)
-  3. [TP3](TODO)
+  3. [TP3](./tp3)
 
 ## Listas
 
@@ -37,7 +37,7 @@ Sala: 2015 (Icex)
 ## Caso de Estudo
 
   1. [xv6 - Código](https://github.com/mit-pdos/xv6-public)
-  1. [xv6 - a simple, Unix-like teaching operating system (livro)](https://pdos.csail.mit.edu/6.828/2016/xv6/book-rev9.pdf) <br>
+  1. [xv6 - a simple, Unix-like teaching operating system (livro)](https://pdos.csail.mit.edu/6.828/2016/xv6/book-rev10.pdf) <br>
      Russ Cox, Frank Kaashoek and Robert Morris <br>
      Revision 9 -- ou mais recente se houver <br>
       **Apenas em inglês. Aberto!**
@@ -80,7 +80,7 @@ Slides disponíveis [Google Drive](https://drive.google.com/drive/folders/0B0ryA
 | Aula | Data     |  Arquivos / E/S           | Informações                 |
 |------|----------|---------------------------|-----------------------------|
 | 17   | 03 Out   | E/S Dispositivos          | TP3                         |
-| 18   | 05       | Arquivos + FFS            |                             |
+| 18   | 05       | Arquivos                  |                             |
 | 19   | 10       | Implementando um VFS      |                             |
 |      | 12       |                           | *Feriado*                   |
 | 20   | 17       | Logs/Journal              |                             |
