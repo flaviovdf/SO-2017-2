@@ -364,7 +364,7 @@ Com os passos acima você sabe adicionar uma chamada de sistema no xv6. Na
 primeira parte do TP termine a chamada de data para ter certeza que entendeu
 todos os passos e arquivos. Só isso, pode imprimir a data da forma que quiser.
 
-### TP2.2: Chamadas de Sistema Auxiliar
+### TP2.2: Chamadas de Sistema para lhe auxiliar
 
 Agora vamos começar a entender como é feito o gerenciamento de memória no x86
 junto com o xv6. Para o caso específico de uma arquitetura x86, quando o processo
@@ -509,7 +509,7 @@ ter as duas chamadas para depurar eventuais erros.
 
 Diferente da chamada `fork`, `forkcow` cria um processo filho com páginas
 copy on write.  Uma boa parte do esforço do comando `fork` é a função `copyuvm`.
-Então, crie chamada novada `copyuvmcow`.
+Então, crie **uma função** nova `copyuvmcow`.
 
 Os passos a seguir são:
 
