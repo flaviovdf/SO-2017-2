@@ -1,9 +1,9 @@
-# FSCK
+# DCC605 File System Checker (DCC-FSCK).
 
 Neste trabalho você vai implementar um FSCK para o sistema ext2. Para
 realizar seu TP recomendo um bom entendimento do
 [Fast File System](http://pages.cs.wisc.edu/~remzi/OSTEP/file-ffs.pdf). O mesmo
-é a base do ext2/ext3 e ext4.
+é a base do ext2.
 
 ## Sobre o ext2
 
@@ -24,6 +24,14 @@ terá um layout de blocos similar ao da figura abaixo (note que existem
 problemas de escala na mesma, é apenas um esquema):
 
 ```
+Layout geral:
+  * Bloco de Boot         --> Utilizado para iniciar o sistema, sempre ocupa
+                              uma posição fixa no ínicio do disco.
+  * Grupo de Blocos i     --> Cada grupo de blocos é utilizado para guardar
+                              arquivos. Fazemos uso de mais de um grupo pois
+                              discos tem vários cílindros. Então guardar
+                              artigos relacionados em um mesmo bloco ajuda.
+
   1-bloco
  +-------+-------+-------+-------+-------+-------+-------+-------+-------+-----
  | bloco |                               |                               |
@@ -35,22 +43,38 @@ problemas de escala na mesma, é apenas um esquema):
       /                                     \
      /                                       \
     /                                         \
-   /           grupo de bloco i                \
-+-------+-------+-------+-------+-------+--------+--------+--------+--------+--
-| super |  descritores  |       |       |                 |
-| bloco |      do       |d-bmap |i-bmap | tabela de inode |  blocos de dados...
-| const |     grupo     |       |       |                 |
-+-------+-------+-------+-------+-------+--------+--------+--------+--------+--
+   /                                           \
+  /                                             \
+ /               grupo de blocos i               \
++-------+-------+-------+-------+-------+-------+-------+-------+-------+------
+| super |  descritores  |       |       | tabela        |
+| bloco |      do       |d-bmap |i-bmap | de inode      |  blocos de dados...
+| const |     grupo     |       |       | inodes        |
++-------+-------+-------+-------+-------+-------+-------+-------+-------+------
  1-bloco    n-blocos     1-bloco 1-bloco     n-blocos          n-blocos
 
-  * Bloco de Boot         -->
+Layout de um grupo:
   * Super Bloco           -->
   * Descritores do Grupo  -->
   * Data Bitmap (d-bmap)  -->
   * Inode Bitmap (i-bmap) -->
-  * Tabela de inodes      -->
-  * Bloco de dados        -->
+  * Tabela de Inodes      -->
+  * Bloco de Dados        -->
 ```
+
+**Blocos**
+
+**Grupos de Blocos**
+
+**Super Blocos**
+
+**INodes**
+
+**Diretórios**
+
+**Arquivos**
+
+**Links**
 
 ## Criando imagens
 
