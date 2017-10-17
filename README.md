@@ -79,21 +79,20 @@ Slides disponíveis [Google Drive](https://drive.google.com/drive/folders/0B0ryA
 
 | Aula | Data     |  Arquivos / E/S           | Informações                 |
 |------|----------|---------------------------|-----------------------------|
-| 17   | 03 Out   | E/S Dispositivos          | TP3                         |
-| 18   | 05       | Arquivos                  |                             |
-| 19   | 10       | Implementando um VFS      |                             |
+| 17   | 05 Out   | E/S Dispositivos          | TP3                         |
+| 18   | 10       | Arquivos                  |                             |
 |      | 12       |                           | *Feriado*                   |
-| 20   | 17       | Logs/Journal              |                             |
-| 21   | 19       | Proteção+Segurança        |                             |
-| 22   | 24       | *Prova 3*                 | TP3 no Domingo pós prova    |
-| 23   | 26       | *Reposição*               | Alocação Seminários         |
+| 19   | 17       | Implementando um VFS      |                             |
+| 20   | 19       | Logs/Journal              |                             |
+| 21   | 24       | Proteção+Segurança        |                             |
+| 22   | 26       | *Prova 3*                 | TP3 no Domingo pós prova    |
+| 23   | 31       | *Reposição*               | Alocação Seminários         |
 
 | Aula | Data     |  Seminários               | Informações                 |
 |------|----------|---------------------------|-----------------------------|
-| 24   | 31       | Virtualização             |                             |
 |      | 02 Nov   |                           | *Feriado*                   |
-| 25   | 07       | Sistemas Distribuídos     |                             |
-| 26   | 09       | Mensuração                |                             |
+| 24   | 07       | Virtualização             |                             |
+| 25   | 09       | Sistemas Distribuídos     |                             |
 | 27   | 14       | *Seminários*              |                             |
 | 28   | 16       | *Seminários*              |                             |
 | 29   | 21       | *Seminários*              |                             |
