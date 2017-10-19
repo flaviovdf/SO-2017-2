@@ -150,9 +150,30 @@ um dado bloco:
 #define BLOCK_OFFSET(block) (BASE_OFFSET + (block-1)*block_size)
 ```
 
-**Blocos**
-
 **INodes**
+
+```c
+/*
+ * second extended file system inode data in memory
+ */
+struct ext2_inode_info {
+  __le32	    i_data[15];
+  __u32             i_flags;
+  __u32             i_faddr;
+  __u16             i_state;
+  __u32             i_dtime;
+  // . . . 
+  /*
+   * i_block_group is the number of the block group which contains
+   * this file's inode.  Constant across the lifetime of the inode,
+   * it is used for making block allocation decisions - we try to
+   * place a file's data blocks near its inode block, and new inodes
+   * near to their parent directory's inode.
+   */
+  __u32             i_block_group;
+  struct list_head  i_orphan;	       /* unlinked but open inodes */
+};
+```
 
 **Diretórios**
 
