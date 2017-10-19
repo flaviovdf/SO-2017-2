@@ -260,19 +260,21 @@ Writing superblocks and filesystem accounting information: done
 
 ## Erros que vamos causar:
 
-O seu fsck vai resolver 5 erros que causaremos no ext2.  Os erros e soluções
+O seu fsck vai resolver 4 erros que causaremos no ext2.  Os erros e soluções
 foram adaptados
 [daqui](https://www.ece.cmu.edu/~ganger/746.spring10/projects/proj1_fsck/18746-s10-proj1.pdf)
-e [daqui](https://www.linux.com/blog/fun-e2fsck-and-debugfs).
+e [daqui](https://www.linux.com/blog/fun-e2fsck-and-debugfs) (deste segundo em particular).
 
 **TODO: Traduzir erros e soluções**
 
-Dê um olhada nos 2 materiais acima e resolva os erros indicados.
+Dê um olhada nos 2 materiais acima, em particular o segundo, e resolva os erros indicados.
 
 ## Script de corrupção:
 
 O script que disponibilizado causa os erros descritos acima. Para cada imagem
 gerada, rode seu programa e conserte os erros.
+
+[Script](https://github.com/flaviovdf/SO-2017-2/blob/master/tp3/tests/fs_creator.sh)
 
 ## Entrega
 
