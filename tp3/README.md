@@ -224,6 +224,10 @@ struct ext2_dir_entry {
 
 ## Criando imagens
 
+O script de teste já cria as imagens que você deve trabalhar em cima.
+O mesmo faz uso dos comandos `dd` e `mkfs` discutidos em sala. Segue
+alguns exemplos:
+
 **Comando dd**
 
 ```
@@ -254,8 +258,6 @@ Allocating group tables: done
 Writing inode tables: done
 Writing superblocks and filesystem accounting information: done
 ```
-
-**Falar do superblock backup**
 
 ## Erros que vamos causar:
 
