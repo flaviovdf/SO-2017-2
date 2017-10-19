@@ -224,11 +224,10 @@ struct ext2_dir_entry {
 
 ## Criando imagens
 
-O script de teste já cria as imagens que você deve trabalhar em cima.
-O mesmo faz uso dos comandos `dd` e `mkfs` discutidos em sala. Segue
-alguns exemplos:
+O script de teste já cria as imagens que você deve trabalhar em cima.  O mesmo
+faz uso dos comandos `dd` e `mkfs` discutidos em sala. Segue alguns exemplos:
 
-**Comando dd**
+**Comando dd - criando imagem zerada**
 
 ```
 $ filename=fs-0x00dcc605-ext2-10240.img
@@ -241,7 +240,7 @@ $ dd if=/dev/zero of=$filename bs=1024 count=10240
 1048576 bytes (1.0 MB, 1.0 MiB) copied, 0.0242941 s, 43.2 MB/s
 ```
 
-**Comando mkfs.ext2**
+**Comando mkfs.ext2 - criando um disco de 1mb sem superblock backup**
 
 ```
 $ mkfs.ext2 fs-0x00dcc605-ext2-10240.img
@@ -261,49 +260,19 @@ Writing superblocks and filesystem accounting information: done
 
 ## Erros que vamos causar:
 
-O seu fsck vai resolver 5 erros que causaremos no ext2. Seguem os erros e as
-soluções:
+O seu fsck vai resolver 5 erros que causaremos no ext2.  Os erros e soluções
+foram adaptados
+[daqui](https://www.ece.cmu.edu/~ganger/746.spring10/projects/proj1_fsck/18746-s10-proj1.pdf)
+e [daqui](https://www.linux.com/blog/fun-e2fsck-and-debugfs).
 
-1. **Super bloco corrompido**
+**TODO: Traduzir erros e soluções**
 
-1. **Ponteiros para Diretórios** Directory pointers (see McKusick & Kowalski,
-   section 3.7). Verify for each dire ctory:  that the  first  directory  entry
-is  “.”   and self-references,  and  tha t  the  second  directory  entry  is
-“..”   and references its parent inode. If you find an error, notify the u ser
-and correct the entry.
+Dê um olhada nos 2 materiais acima e resolva os erros indicados.
 
-1. **inodes sem referências**
+## Script de corrupção:
 
-Pass 2:  Unreferenced inodes (section 3.5).  Check to make sure
-all allocated inodes are re ferenced in a directory entry somewhere.  If you
-find an unreferenced in ode, place it in the /lost+found directory—make the new
-filename the same as the inode number.  (I.e., if the unreferenced inode is
-#1074, make it the file or directory /lost+found/#1074 .)
-
-Pass 3: Inode link
-count (section 3.5). Count the number of directory entries that po int to each
-inode (e.g., the number of hard links) and compare that to the inode link
-counter. If you find a discrepancy, notify the user and update the inode link
-counter.
-
-1. **Bitmap correto**
-
-Pass 4:  Block allocation  bitmap (section  3.3).   Walk the
-directory  tree and verify that the bl ock bitmap is correct.  If you find a
-block that should (or should no t) be marked in the bitmap, notify the user and
-correct the bitmap.  2 For this part, running the following command should fix
-disk e rrors on the specified partition.  ./myfsck -f < partition number
->
--i < disk image file
->
-If the user specifies -f 0 , your tool should correct disk errors on every ext2
-partitio n contained in the disk image.  If you run your tool against the file
-systems on partitions 3 an d 6, you should find one of each error (two on one
-file system, two on the other). To formally test your tool, use it to fix the
-errors and then run the version of fsck provided by the system on the image
-(See the Resources section). If no errors are returned, your tool works.  This
-part will be graded by penalizing 10 points for ev ery error the system fsck
-finds, for a total of 50 points.
+O script que disponibilizado causa os erros descritos acima. Para cada imagem
+gerada, rode seu programa e conserte os erros.
 
 ## Entrega
 
