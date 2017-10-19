@@ -131,10 +131,9 @@ unsigned int descr_list_size =
 group_count * sizeof(struct ext2_group_descr);
 ```
 
-To read in the group descriptors, you first have to calculate the offset from
-the beginning of the disk. The first 1024 bytes are reserved and the first
-block is occupied by the superblock, so the code to read the first group
-descriptor off the disk looks like:
+Para ler os descritores do grupo, primeiramente você deve calcular o offset do
+inicio do disco. Como o disco tem 1024 bytes reservados no inicio e o primeiro
+bloco é um superbloco, o código é para ler o descrito é tal como:
 
 ```c
 struct ext2_group_descr group_descr;
@@ -143,13 +142,9 @@ lseek(sd, 1024 + block_size, SEEK_SET);
 read(sd, &group_descr, sizeof(group_descr));
 ```
 
-The group descriptor tells us the location of the block/inode bitmaps and of
-the inode table (described later) through the bg block bitmap, bg inode bitmap
-and bg inode table fields. These values indicate the blocks where the bitmaps
-and the table are located. It is handy to have a function to convert a block
-number to an offset on disk, which can be easily done by knowing that all
-blocks on disk have the same size of block size bytes (calculated earlier from
-the super-block):
+O descritor do grupo vai conter meta-dados para identificar o data e inode
+bitmap daquele grupo. Uma macro boa de se ter indica qual o local do disco de
+um dado bloco:
 
 ```c
 /* location of the super-block in the first group */
