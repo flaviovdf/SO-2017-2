@@ -83,21 +83,21 @@ vão ser representados em *little endian*.
 
 ```c
 struct ext2_super_block {
-__le32 s_inodes_count; 			  /* Inodes count */
-__le32 s_blocks_count; 			  /* Blocks count */
-__le32 s_r_blocks_count;		  /* Reserved blocks count */
-__le32 s_free_blocks_count; 	/* Free blocks count */
-__le32 s_free_inodes_count; 	/* Free inodes count */
-__le32 s_first_data_block; 		/* First Data Block */
-__le32 s_log_block_size; 		  /* Block size */
+__le32 s_inodes_count;          /* Inodes count */
+__le32 s_blocks_count;          /* Blocks count */
+__le32 s_r_blocks_count;        /* Reserved blocks count */
+__le32 s_free_blocks_count;     /* Free blocks count */
+__le32 s_free_inodes_count;     /* Free inodes count */
+__le32 s_first_data_block;      /* First Data Block */
+__le32 s_log_block_size;        /* Block size */
 // . . .
-__le32 s_blocks_per_group; 		/* # Blocks per group */
+__le32 s_blocks_per_group;      /* # Blocks per group */
 // . . .
-__le32 s_inodes_per_group; 		/* # Inodes per group */
+__le32 s_inodes_per_group;      /* # Inodes per group */
 // . . .
-__le16 s_magic; 			        /* Magic signature */
-__le32 s_first_ino; 			    /* First non-reserved inode */
-__le16 s_inode_size; 			    /* size of inode structure */
+__le16 s_magic;                 /* Magic signature */
+__le32 s_first_ino;             /* First non-reserved inode */
+__le16 s_inode_size;            /* size of inode structure */
 // . . .
 }
 ```
@@ -107,12 +107,12 @@ __le16 s_inode_size; 			    /* size of inode structure */
 ```c
 struct ext2_group_desc
 {
-__le32 bg_block_bitmap;			     /* Blocks bitmap block */
-__le32 bg_inode_bitmap; 		     /* Inodes bitmap block */
-__le32 bg_inode_table; 			     /* Inodes table block */
-__le16 bg_free_blocks_count; 		 /* Free blocks count */
-__le16 bg_free_inodes_count; 		 /* Free inodes count */
-__le16 bg_used_dirs_count; 		   /* Directories count */
+__le32 bg_block_bitmap;         /* Blocks bitmap block */
+__le32 bg_inode_bitmap;         /* Inodes bitmap block */
+__le32 bg_inode_table;          /* Inodes table block */
+__le16 bg_free_blocks_count;    /* Free blocks count */
+__le16 bg_free_inodes_count;    /* Free inodes count */
+__le16 bg_used_dirs_count;      /* Directories count */
 __le16 bg_pad;
 __le32 bg_reserved[3];
 };
@@ -160,11 +160,11 @@ um dado bloco:
 
 ```c
 struct ext2_dir_entry_2 {
-	__le32	inode;			/* Inode number */
-	__le16	rec_len;		/* Directory entry length */
-	__u8	name_len;		  /* Name length */
-	__u8	file_type;
-	char	name[];			  /* File name, up to EXT2_NAME_LEN */
+  __le32  inode;         /* Inode number */
+  __le16  rec_len;       /* Directory entry length */
+  __u8    name_len;      /* Name length */
+  __u8    file_type;
+  char    name[];        /* File name, up to EXT2_NAME_LEN */
 };
 ```
 
