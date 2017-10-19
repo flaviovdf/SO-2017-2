@@ -98,7 +98,7 @@ struct ext2_super_block {
   __le16 s_magic;                 /* Magic signature */
   __le32 s_first_ino;             /* First non-reserved inode */
   __le16 s_inode_size;            /* size of inode structure */
-// . . .
+  // . . .
 }
 ```
 
@@ -107,14 +107,14 @@ struct ext2_super_block {
 ```c
 struct ext2_group_desc
 {
-__le32 bg_block_bitmap;         /* Blocks bitmap block */
-__le32 bg_inode_bitmap;         /* Inodes bitmap block */
-__le32 bg_inode_table;          /* Inodes table block */
-__le16 bg_free_blocks_count;    /* Free blocks count */
-__le16 bg_free_inodes_count;    /* Free inodes count */
-__le16 bg_used_dirs_count;      /* Directories count */
-__le16 bg_pad;
-__le32 bg_reserved[3];
+  __le32 bg_block_bitmap;         /* Blocks bitmap block */
+  __le32 bg_inode_bitmap;         /* Inodes bitmap block */
+  __le32 bg_inode_table;          /* Inodes table block */
+  __le16 bg_free_blocks_count;    /* Free blocks count */
+  __le16 bg_free_inodes_count;    /* Free inodes count */
+  __le16 bg_used_dirs_count;      /* Directories count */
+  __le16 bg_pad;
+  __le32 bg_reserved[3];
 };
 ```
 
@@ -123,12 +123,10 @@ uso dos campos do superbloco.
 
 ```c
 /* calculate number of block groups on the disk */
-unsigned int group_count =
-1 + (super.s_blocks_count-1) / super.s_blocks_per_group;
+unsigned int group_count = 1 + (super.s_blocks_count-1) / super.s_blocks_per_group;
 
 /* calculate size of the group descriptor list in bytes */
-unsigned int descr_list_size =
-group_count * sizeof(struct ext2_group_descr);
+unsigned int descr_list_size = group_count * sizeof(struct ext2_group_descr);
 ```
 
 Para ler os descritores do grupo, primeiramente você deve calcular o offset do
