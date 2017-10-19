@@ -203,8 +203,83 @@ Writing superblocks and filesystem accounting information: done
 
 **Falar do superblock backup**
 
-## Fazendo uso das imagens
+## Erros que vamos causar:
 
-## Casos de teste
+Extend  your  tool  to checks  for the  specific  file system  errors  l
+isted  below.   Your  tool  should  make  four
+“passes”,  checking for the specified errors in each pass.  Whe
+n an error is found,  you should print a de-
+scription of the error to
+stdout
+and automatically fix the error. Your tool must only generate
+output when
+detecting and repairing errors—in other words, it should ge
+nerate no output for a correct file system.
+
+Pass 1: Directory pointers
+(see McKusick & Kowalski, section 3.7). Verify for each dire
+ctory:  that
+the  first  directory  entry  is  “.”   and  self-references,  and  tha
+t  the  second  directory  entry  is “..”   and
+references its parent inode. If you find an error, notify the u
+ser and correct the entry.
+
+Pass 2:  Unreferenced inodes
+(section 3.5).  Check to make sure all allocated inodes are re
+ferenced
+in a directory entry somewhere.  If you find an unreferenced in
+ode, place it in the
+/lost+found
+directory—make the new filename the same as the inode number.
+(I.e., if the unreferenced inode is
+#1074, make it the file or directory
+/lost+found/#1074
+.)
+
+Pass 3: Inode link count
+(section 3.5). Count the number of directory entries that po
+int to each inode
+(e.g., the number of hard links) and compare that to the inode
+link counter. If you find a discrepancy,
+notify the user and update the inode link counter.
+
+Pass 4:  Block allocation  bitmap
+(section  3.3).   Walk the directory  tree and verify that the bl
+ock
+bitmap is correct.  If you find a block that should (or should no
+t) be marked in the bitmap, notify the
+user and correct the bitmap.
+2
+For this part, running the following command should fix disk e
+rrors on the specified partition.
+./myfsck -f
+<
+partition number
+>
+-i
+<
+disk image file
+>
+If the user specifies
+-f 0
+, your tool should correct disk errors on every ext2 partitio
+n contained in the disk
+image.
+If you run your tool against the file systems on partitions 3 an
+d 6, you should find one of each error (two on
+one file system, two on the other). To formally test your tool,
+use it to fix the errors and then run the version
+of fsck provided by the system on the image (See the Resources
+section). If no errors are returned, your tool
+works.  This part will be graded by penalizing 10 points for ev
+ery error the system fsck finds, for a total of
+50 points.
 
 ## Entrega
+
+Um .c e um .h (caso precise) que roda o fsck corrigindo os 5 casos
+acima. Chame seu programa de `dcc_os_fsck`.
+
+A entrega será pelo moodle. Desta vez como é um único arquivo faz
+menos sentido um repositório no git. Porém, caso deseje utilizar, pode
+fazer a entrega pelo git.
