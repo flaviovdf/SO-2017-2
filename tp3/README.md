@@ -154,40 +154,73 @@ um dado bloco:
 
 ```c
 /*
- * second extended file system inode data in memory
+ * Structure of an inode on the disk
  */
-struct ext2_inode_info {
-  __le32	    i_data[15];
-  __u32             i_flags;
-  __u32             i_faddr;
-  __u16             i_state;
-  __u32             i_dtime;
-  // . . . 
-  /*
-   * i_block_group is the number of the block group which contains
-   * this file's inode.  Constant across the lifetime of the inode,
-   * it is used for making block allocation decisions - we try to
-   * place a file's data blocks near its inode block, and new inodes
-   * near to their parent directory's inode.
-   */
-  __u32             i_block_group;
-  struct list_head  i_orphan;	       /* unlinked but open inodes */
+struct ext2_inode {
+	__le16	i_mode;		/* File mode */
+	__le16	i_uid;		/* Low 16 bits of Owner Uid */
+	__le32	i_size;		/* Size in bytes */
+	__le32	i_atime;	/* Access time */
+	__le32	i_ctime;	/* Creation time */
+	__le32	i_mtime;	/* Modification time */
+	__le32	i_dtime;	/* Deletion Time */
+	__le16	i_gid;		/* Low 16 bits of Group Id */
+	__le16	i_links_count;	/* Links count */
+	__le32	i_blocks;	/* Blocks count */
+	__le32	i_flags;	/* File flags */
+	union {
+		struct {
+			__le32  l_i_reserved1;
+		} linux1;
+		struct {
+			__le32  h_i_translator;
+		} hurd1;
+		struct {
+			__le32  m_i_reserved1;
+		} masix1;
+	} osd1;				/* OS dependent 1 */
+	__le32	i_block[EXT2_N_BLOCKS];/* Pointers to blocks */
+	__le32	i_generation;	/* File version (for NFS) */
+	__le32	i_file_acl;	/* File ACL */
+	__le32	i_dir_acl;	/* Directory ACL */
+	__le32	i_faddr;	/* Fragment address */
+	union {
+		struct {
+			__u8	l_i_frag;	/* Fragment number */
+			__u8	l_i_fsize;	/* Fragment size */
+			__u16	i_pad1;
+			__le16	l_i_uid_high;	/* these 2 fields    */
+			__le16	l_i_gid_high;	/* were reserved2[0] */
+			__u32	l_i_reserved2;
+		} linux2;
+		struct {
+			__u8	h_i_frag;	/* Fragment number */
+			__u8	h_i_fsize;	/* Fragment size */
+			__le16	h_i_mode_high;
+			__le16	h_i_uid_high;
+			__le16	h_i_gid_high;
+			__le32	h_i_author;
+		} hurd2;
+		struct {
+			__u8	m_i_frag;	/* Fragment number */
+			__u8	m_i_fsize;	/* Fragment size */
+			__u16	m_pad1;
+			__u32	m_i_reserved2[2];
+		} masix2;
+	} osd2;				/* OS dependent 2 */
 };
 ```
 
 **Diretórios**
 
 ```c
-struct ext2_dir_entry_2 {
+struct ext2_dir_entry {
   __le32  inode;         /* Inode number */
   __le16  rec_len;       /* Directory entry length */
-  __u8    name_len;      /* Name length */
-  __u8    file_type;
+  __le16  name_len;      /* Name length */
   char    name[];        /* File name, up to EXT2_NAME_LEN */
 };
 ```
-
-**Links**
 
 ## Criando imagens
 
