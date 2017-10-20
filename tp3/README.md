@@ -136,6 +136,7 @@ bloco é um superbloco, o código é para ler o descrito é tal como:
 ```c
 struct ext2_group_descr group_descr;
 /* position head above the group descriptor block */
+/* sd --> storage device, no nosso caso um arquivo */
 lseek(sd, 1024 + block_size, SEEK_SET);
 read(sd, &group_descr, sizeof(group_descr));
 ```
@@ -157,57 +158,19 @@ um dado bloco:
  * Structure of an inode on the disk
  */
 struct ext2_inode {
-	__le16	i_mode;		/* File mode */
-	__le16	i_uid;		/* Low 16 bits of Owner Uid */
-	__le32	i_size;		/* Size in bytes */
-	__le32	i_atime;	/* Access time */
-	__le32	i_ctime;	/* Creation time */
-	__le32	i_mtime;	/* Modification time */
-	__le32	i_dtime;	/* Deletion Time */
-	__le16	i_gid;		/* Low 16 bits of Group Id */
-	__le16	i_links_count;	/* Links count */
-	__le32	i_blocks;	/* Blocks count */
-	__le32	i_flags;	/* File flags */
-	union {
-		struct {
-			__le32  l_i_reserved1;
-		} linux1;
-		struct {
-			__le32  h_i_translator;
-		} hurd1;
-		struct {
-			__le32  m_i_reserved1;
-		} masix1;
-	} osd1;				/* OS dependent 1 */
-	__le32	i_block[EXT2_N_BLOCKS];/* Pointers to blocks */
-	__le32	i_generation;	/* File version (for NFS) */
-	__le32	i_file_acl;	/* File ACL */
-	__le32	i_dir_acl;	/* Directory ACL */
-	__le32	i_faddr;	/* Fragment address */
-	union {
-		struct {
-			__u8	l_i_frag;	/* Fragment number */
-			__u8	l_i_fsize;	/* Fragment size */
-			__u16	i_pad1;
-			__le16	l_i_uid_high;	/* these 2 fields    */
-			__le16	l_i_gid_high;	/* were reserved2[0] */
-			__u32	l_i_reserved2;
-		} linux2;
-		struct {
-			__u8	h_i_frag;	/* Fragment number */
-			__u8	h_i_fsize;	/* Fragment size */
-			__le16	h_i_mode_high;
-			__le16	h_i_uid_high;
-			__le16	h_i_gid_high;
-			__le32	h_i_author;
-		} hurd2;
-		struct {
-			__u8	m_i_frag;	/* Fragment number */
-			__u8	m_i_fsize;	/* Fragment size */
-			__u16	m_pad1;
-			__u32	m_i_reserved2[2];
-		} masix2;
-	} osd2;				/* OS dependent 2 */
+  __le16 i_mode;                 /* File mode */
+  __le16 i_uid;                  /* Low 16 bits of Owner Uid */
+  __le32 i_size;                 /* Size in bytes */
+  __le32 i_atime;                /* Access time */
+  __le32 i_ctime;                /* Creation time */
+  __le32 i_mtime;                /* Modification time */
+  __le32 i_dtime;                /* Deletion Time */
+  __le16 i_gid;                  /* Low 16 bits of Group Id */
+  __le16 i_links_count;          /* Links count */
+  __le32 i_blocks;               /* Blocks count */
+  __le32 i_flags;                /* File flags */
+  __le32 i_block[EXT2_N_BLOCKS]; /* Pointers to blocks */
+  // . . .
 };
 ```
 
@@ -265,9 +228,19 @@ foram adaptados
 [daqui](https://www.ece.cmu.edu/~ganger/746.spring10/projects/proj1_fsck/18746-s10-proj1.pdf)
 e [daqui](https://www.linux.com/blog/fun-e2fsck-and-debugfs).
 
-**TODO: Traduzir erros e soluções**
-
 Dê um olhada nos 2 materiais acima e resolva os erros indicados.
+
+1. **Fun 1: Attack the superblock** O primeiro erro que você deve tratar é um
+ataque ao superbloco. Ao criar uma imagem o ext2 tem backups de super blocos
+em cada grupo. Então, quando o primeiro superbloco for atacado você deve
+caminhar até um grupo e recuperar o backup. Para saber se é um erro de
+superbloco a montagem do disco vai falhar.
+
+1. **Fun 2: Blocos pertecentes a mais de um inode**
+
+1. **Fun 3: Permissão Corrompida**
+
+1. **Fun 4: inodes orfãos**
 
 ## Script de corrupção:
 
