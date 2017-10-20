@@ -247,6 +247,8 @@ superbloco a montagem do disco vai falhar.
 O script que disponibilizado causa os erros descritos acima. Para cada imagem
 gerada, rode seu programa e conserte os erros.
 
+[Script](https://github.com/flaviovdf/SO-2017-2/blob/master/tp3/tests/fs_creator.sh)
+
 ## Entrega
 
 Um .c e um .h (caso precise) que roda o fsck corrigindo os 5 casos acima. Chame
