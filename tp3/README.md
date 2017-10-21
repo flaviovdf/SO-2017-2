@@ -1,5 +1,8 @@
 # DCC605 File System Checker (DCC-FSCK).
 
+1. Pode ser feito em dupla
+1. 05 de Novembro de 2017
+
 Neste trabalho você vai implementar um FSCK para o sistema ext2. Para
 realizar seu TP recomendo um bom entendimento do
 [Fast File System](http://pages.cs.wisc.edu/~remzi/OSTEP/file-ffs.pdf). O mesmo
