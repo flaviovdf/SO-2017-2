@@ -247,7 +247,12 @@ de um arquivo. Caso ache algum inode sem permissões coloque um valor correto.
 Qual valor?! Talvez seja uma boa ideia indicar para o usuário e pedir para o
 mesmo decidir.
 
-1. **Fun 4: Orfãos** Por fim, vamos
+1. **Fun 4: Órfãos** Por fim, vamos criar inodes de arquivos que não pertencem
+a nenhum diretório. Os mesmos podem ser considerados órfãos. Então, no seu
+sistema de arquivos vão existir inodes que não pertecem a nenhum diretório.
+Ache os mesmos e mova para uma pasta `/lost+found` na raiz da imagem do disco.
+Coloque como nome do arquivo o número do inode (`/lost+found/#1074`). Assim
+como nos cases anteriores, confirme a ação com o usuário.
 
 ## Script de corrupção:
 
@@ -265,3 +270,11 @@ seu programa de `dcc_os_fsck`.
 A entrega será pelo moodle. Desta vez como é um único arquivo faz menos sentido
 um repositório no git. Porém, caso deseje utilizar, pode fazer a entrega pelo
 git.
+
+## Pontos Extra
+
+1. Crie mais tipos de erros de acordo com os vários links desta documentação.
+   Isto é, caso você tenha lido o material pode achar mais erros para adicionar
+   no `fs_creator`.
+2. Resolva o erro criado no passo anterior.
+3. Dicas de melhorias na documentação.
