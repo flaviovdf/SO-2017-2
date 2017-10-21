@@ -265,6 +265,10 @@ solução. Peça uma confirmação para prosseguir.
 Note que o script causa os 4 erros para cada uma das imagens! Seu trabalho tem
 que identificar os erros sozinho.
 
+Para rodar o script, instale o `debugfs`
+
+**O script roda apenas com sudo/root**
+
 ## Entrega
 
 Um .c e um .h (caso precise) que roda o fsck corrigindo os 4 casos acima. Chame
