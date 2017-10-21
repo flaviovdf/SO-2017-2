@@ -257,13 +257,21 @@ Ache os mesmos e mova para uma pasta `/lost+found` na raiz da imagem do disco.
 Coloque como nome do arquivo o número do inode (`/lost+found/#1074`). Assim
 como nos cases anteriores, confirme a ação com o usuário.
 
+## Imagens de Erro
+
+As imagens com os 4 erros acima estão na pasta [tests](./tests). A única
+diferença entre as imagens é o tamanho das mesmas.
+
 ## Script de corrupção
 
-O script que disponibilizado causa os erros descritos acima. Para cada imagem
+** [Cuidado] O Script precisa de root e caso você mude o mesmo pode causar erros.**
+**           Rode o mesmo com cuidado. Recomendo usar as imagens pre-prontas.
+
+Criamos um script para causar os erros descritos acima. Para cada imagem
 gerada, rode seu programa. Para cada erro indique para o usuário o erro e a
 solução. Peça uma confirmação para prosseguir.
 
-[Script](https://github.com/flaviovdf/SO-2017-2/blob/master/tp3/tests/fs_creator.sh)
+[Script](https://gist.github.com/anonymous/31686fc7a8aa920acf2dc17753a1a80f)
 
 Note que o script causa os 4 erros para cada uma das imagens! Seu trabalho tem
 que identificar os erros sozinho.
