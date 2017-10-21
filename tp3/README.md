@@ -264,7 +264,7 @@ diferença entre as imagens é o tamanho das mesmas.
 
 ## Script de corrupção
 
-**[Cuidado] O Script precisa de root e caso você mude o mesmo pode causar erros.**
+**[Cuidado] O Script precisa de root e caso você mude o mesmo pode causar erros no seu pc**
 
 **Rode o mesmo com cuidado. Recomendo usar as imagens pre-prontas.**
 
