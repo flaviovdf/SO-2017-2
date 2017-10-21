@@ -220,7 +220,7 @@ Writing inode tables: done
 Writing superblocks and filesystem accounting information: done
 ```
 
-## Erros que vamos causar:
+## Erros que vamos causar
 
 O seu fsck vai resolver 4 erros que causaremos no ext2.  Os erros e soluções
 foram adaptados
@@ -254,13 +254,16 @@ Ache os mesmos e mova para uma pasta `/lost+found` na raiz da imagem do disco.
 Coloque como nome do arquivo o número do inode (`/lost+found/#1074`). Assim
 como nos cases anteriores, confirme a ação com o usuário.
 
-## Script de corrupção:
+## Script de corrupção
 
 O script que disponibilizado causa os erros descritos acima. Para cada imagem
 gerada, rode seu programa. Para cada erro indique para o usuário o erro e a
 solução. Peça uma confirmação para prosseguir.
 
 [Script](https://github.com/flaviovdf/SO-2017-2/blob/master/tp3/tests/fs_creator.sh)
+
+Note que o script causa os 4 erros para cada uma das imagens! Seu trabalho tem
+que identificar os erros sozinho.
 
 ## Entrega
 
