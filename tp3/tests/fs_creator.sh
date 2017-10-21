@@ -1,8 +1,5 @@
 #!/bin/bash
 
-set -e
-set -u
-
 # Setup colors output
 green=`tput setaf 2`
 red=`tput setaf 1`
@@ -83,13 +80,13 @@ for size in $_10MB $_100MB; do
   mkdir -p $basepath/$size/dir1
   echo "this is file-a" > $basepath/$size/dir1/a
   echo "this is file-b" > $basepath/$size/dir1/b
-  
-  # Create temp file with debugfs command  
+
+  # Create temp file with debugfs command
   echo "clri dir1" > /tmp/fun4_cmd.tmp
   echo "${green} ====== Fun4: Executing debugfs clri dir1 ...  ${reset}"
   debugfs -s $sbbackup -b 1024 -w -f /tmp/fun4_cmd.tmp $mounted_device
   rm /tmp/fun4_cmd.tmp
-  echo "${green} ====== Fun4 Checking: trying to unmount, mount back again and ls dir1, expect 'structure needs cleaning 'error ${reset}" 
+  echo "${green} ====== Fun4 Checking: trying to unmount, mount back again and ls dir1, expect 'structure needs cleaning 'error ${reset}"
   umount $mounted_device
   mount -o sb=$sbbackup $fname $basepath/$size
   ls $basepath/$size/dir1 || true
