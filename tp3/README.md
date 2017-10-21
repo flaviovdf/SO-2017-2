@@ -3,7 +3,8 @@
 Neste trabalho você vai implementar um FSCK para o sistema ext2. Para
 realizar seu TP recomendo um bom entendimento do
 [Fast File System](http://pages.cs.wisc.edu/~remzi/OSTEP/file-ffs.pdf). O mesmo
-é a base do ext2.
+é a base do ext2. Além disto, a seção 42.2 do OSTEP deve ser útil, leia a mesma
+[aqui](http://pages.cs.wisc.edu/~remzi/OSTEP/file-journaling.pdf).
 
 ## Sobre o ext2
 
@@ -65,8 +66,6 @@ Layout de um grupo:
                               mapear para 2 caminhos.
   * Bloco de Dados        --> Os dados do arquivos e diretórios em si.
 ```
-
-The le32 and le16 datatypes specify little-endian 32-bit and 16-bit integers (unsigned)
 
 ## Structs úteis
 
@@ -223,7 +222,7 @@ Writing superblocks and filesystem accounting information: done
 
 ## Erros que vamos causar:
 
-O seu fsck vai resolver 5 erros que causaremos no ext2.  Os erros e soluções
+O seu fsck vai resolver 4 erros que causaremos no ext2.  Os erros e soluções
 foram adaptados
 [daqui](https://www.ece.cmu.edu/~ganger/746.spring10/projects/proj1_fsck/18746-s10-proj1.pdf)
 e [daqui](https://www.linux.com/blog/fun-e2fsck-and-debugfs).
@@ -234,24 +233,33 @@ Dê um olhada nos 2 materiais acima e resolva os erros indicados.
 ataque ao superbloco. Ao criar uma imagem o ext2 tem backups de super blocos
 em cada grupo. Então, quando o primeiro superbloco for atacado você deve
 caminhar até um grupo e recuperar o backup. Para saber se é um erro de
-superbloco a montagem do disco vai falhar.
+superbloco a montagem do disco vai falhar. Indique o erro para o usuário e peça
+para o mesmo confirmar a operação.
 
-1. **Fun 2: Blocos pertecentes a mais de um inode**
+1. **Fun 2: Blocos pertecentes a mais de um inode** No segundo ataque, 2 inodes
+vão indicar que são donos de um mesmo bloco. Isto não pode ocorrer. Ache um dos
+inodes e apague o mesmo. Note que não podemos fazer muito mais do que isto
+nesse momento. Indique o erro para o usuário e peça para o mesmo confirmar a
+operação.
 
-1. **Fun 3: Permissão Corrompida**
+1. **Fun 3: Permissão Corrompida** No terceiro ataque vamos zerar as permissões
+de um arquivo. Caso ache algum inode sem permissões coloque um valor correto.
+Qual valor?! Talvez seja uma boa ideia indicar para o usuário e pedir para o
+mesmo decidir.
 
-1. **Fun 4: inodes orfãos**
+1. **Fun 4: Orfãos** Por fim, vamos
 
 ## Script de corrupção:
 
 O script que disponibilizado causa os erros descritos acima. Para cada imagem
-gerada, rode seu programa e conserte os erros.
+gerada, rode seu programa. Para cada erro indique para o usuário o erro e a
+solução. Peça uma confirmação para prosseguir.
 
 [Script](https://github.com/flaviovdf/SO-2017-2/blob/master/tp3/tests/fs_creator.sh)
 
 ## Entrega
 
-Um .c e um .h (caso precise) que roda o fsck corrigindo os 5 casos acima. Chame
+Um .c e um .h (caso precise) que roda o fsck corrigindo os 4 casos acima. Chame
 seu programa de `dcc_os_fsck`.
 
 A entrega será pelo moodle. Desta vez como é um único arquivo faz menos sentido
