@@ -264,8 +264,8 @@ diferença entre as imagens é o tamanho das mesmas.
 
 ## Script de corrupção
 
-** [Cuidado] O Script precisa de root e caso você mude o mesmo pode causar erros.**
-**           Rode o mesmo com cuidado. Recomendo usar as imagens pre-prontas.
+**[Cuidado] O Script precisa de root e caso você mude o mesmo pode causar erros.**
+**Rode o mesmo com cuidado. Recomendo usar as imagens pre-prontas.
 
 Criamos um script para causar os erros descritos acima. Para cada imagem
 gerada, rode seu programa. Para cada erro indique para o usuário o erro e a
