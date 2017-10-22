@@ -2,9 +2,9 @@
 
 ## Datas, Entregas e Alunos
 
-1. Escolha do tema:
-1. Entrega do relatório:
-1. Apresentações:
+1. Escolha do tema: Até 31 de Outubro
+1. Entrega do relatório: Até 28 de Novembro
+1. Apresentações: A definir (até o dia 02 de Novembro)
 
 ## Objetivos
 
@@ -38,19 +38,34 @@
 
 ## Tópicos de Seminários
 
-  1. Microkernel OSes
+  1. Microkernel OSes:
+     * https://homes.cs.washington.edu/~bershad/590s/papers/towards-ukernels.pdf
+     * https://en.wikipedia.org/wiki/Tanenbaum%E2%80%93Torvalds_debate
   1. Linux NameSpaces e CGroups
+     * Novas abordagens de proteção do Linux
+     * https://www.youtube.com/watch?v=sK5i-N34im8
   1. Communicating Sequential Processes by C. A. R. Hoare
+     * Artigo Clássico de Comunicação Entre Processos
+     * https://spinroot.com/courses/summer/Papers/hoare_1978.pdf
   1. GlusterFS
+     * Sistemas de arquivos distribuídos
+     * http://docs.gluster.org/en/latest/Quick-Start-Guide/Architecture/
   1. AFS
+     * Andrew File System. Sistema tried and tested de arquivos distribuídos
+     * O material do OStep deve ser um bom starting point
+     * http://pages.cs.wisc.edu/~remzi/OSTEP/dist-afs.pdf
   1. Docker
+     * Fazer uma palestra hands on seguindo as dicas da aula de virtualização
+     * Comandos, migração, casos de uso
   1. Kubernetes e/ou Puppet
+     * Fazer uma palestra hands on seguindo as dicas da aula de virtualização
+     * Comandos, migração, casos de uso
   1. Mobile OSes
-  1. EC2 Elastic Resource Manager
-  1. Sistemas de Tempo Real
   1. Caso de Estudo: Windows
   1. Caso de Estudo: FreeBSD
   1. Caso de Estudo: Linux
+  1. EC2 Elastic Resource Manager
+  1. Sistemas de Tempo Real
   1. Google Spanner
   1. Amazon Dynamo
   1. Facebook TAO
