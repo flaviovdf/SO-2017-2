@@ -58,6 +58,8 @@
      * Considerado um dos SOs mais seguros do mundo
      * Explicar como garantir tal segurança
   1. Microsoft Singularity
+     * https://www.microsoft.com/en-us/research/project/singularity/
+     * https://en.wikipedia.org/wiki/Singularity_(operating_system)
 
 **Tópicos em Proteção**
   
@@ -68,9 +70,15 @@
 **Sistemas de Arquivos**
 
   1. ext3/4
+     * Explicar o ext3 e ext4 em detalhes
+     * Ponto de partida no OStep
+     * http://pages.cs.wisc.edu/~remzi/OSTEP/file-journaling.pdf
+     * http://pages.cs.wisc.edu/~remzi/OSTEP/file-lfs.pdf
   1. reiserFS
   1. UnionFS 
   1. Ceph
+     * Sistemas de arquivos distribuídos
+     * http://docs.ceph.com/docs/master/architecture/
   1. GlusterFS
      * Sistemas de arquivos distribuídos
      * http://docs.gluster.org/en/latest/Quick-Start-Guide/Architecture/
@@ -106,6 +114,11 @@
      * Artigo Clássico de Comunicação Entre Processos
      * https://spinroot.com/courses/summer/Papers/hoare_1978.pdf
   1. Xen and the Art of Virtualization
+     * www.cs.yale.edu/homes/yu-minlan/teach/csci599-fall12/papers/xen.pdf
   
 **Emulação**
-  1. Emulation of Nintendo Game Boy: PyBoy paper
+
+  1. Emulation of Nintendo Game Boy
+      * PyBoy paper
+      * https://github.com/Baekalfen/PyBoy
+      * https://github.com/Baekalfen/PyBoy/blob/master/PyBoy.pdf
