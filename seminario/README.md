@@ -74,8 +74,13 @@
      * Ponto de partida no OStep
      * http://pages.cs.wisc.edu/~remzi/OSTEP/file-journaling.pdf
      * http://pages.cs.wisc.edu/~remzi/OSTEP/file-lfs.pdf
-  1. reiserFS
+  1. NTFS
+     * Sistemas de arquivos do windows
+     * https://en.wikipedia.org/wiki/NTFS
   1. UnionFS 
+     * Sistema de arquivos feito pensando em versionamento (e.g., ala git)
+     * Uma das bases do docker
+     * http://unionfs.filesystems.org/
   1. Ceph
      * Sistemas de arquivos distribuídos
      * http://docs.ceph.com/docs/master/architecture/
@@ -101,12 +106,18 @@
   1. Caso de Estudo Android
   1. Caso de Estudo iOS
 
-**Nuvem**
+**Nuvem e BDs na Nuvem (um pouco mais avançado)**
   
   1. EC2 Elastic Resource Manager
+     * Entender recursos elásticos na nuvem
+     * Formas de pricing
+     * http://www.cs.technion.ac.il/~ladypine/spotprice-acmsmall.pdf
   1. Google Spanner
+     * https://research.google.com/archive/spanner.html
   1. Amazon Dynamo
+     * https://aws.amazon.com/pt/dynamodb/
   1. Facebook TAO
+     * https://www.usenix.org/node/174510
 
 **Artigos Clássicos**
 
