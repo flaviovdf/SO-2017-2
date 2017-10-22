@@ -17,6 +17,10 @@ Sala: 2015 (Icex)
   1. [Lista]
   1. [ProblemasRecomendados]
 
+## Seminários
+
+  1. [Seminários](./seminarios)
+
 ## Bibliografia
 
   1. [Operating Systems: Three Easy Pieces - OSTEP](http://pages.cs.wisc.edu/~remzi/OSTEP/) <br>
