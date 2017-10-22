@@ -38,15 +38,39 @@
 
 ## Tópicos de Seminários
 
+**Estruturas e Casos de Usos**
+
   1. Microkernel OSes:
      * https://homes.cs.washington.edu/~bershad/590s/papers/towards-ukernels.pdf
      * https://en.wikipedia.org/wiki/Tanenbaum%E2%80%93Torvalds_debate
+  1. Caso de Estudo: Windows
+     * Material do Tanenbaum e Silberschatz
+     * Os dois livros descrevem o Windows
+  1. Caso de Estudo: Linux
+     * Material do Tanenmbaum e Silberschatz
+     * Os dois livros descrevem o Windows
+  1. Sistemas de Tempo Real
+     * Material do Tanenmbaum e Silberschatz
+  1. Caso de Estudo: FreeBSD
+     * Livro Design and Implementation of the FreeBSD System
+     * Disponível com o Professor
+  1. Caso de Estudo OpenBSD
+     * Considerado um dos SOs mais seguros do mundo
+     * Explicar como garantir tal segurança
+  1. Microsoft Singularity
+
+**Tópicos em Proteção**
+  
   1. Linux NameSpaces e CGroups
      * Novas abordagens de proteção do Linux
      * https://www.youtube.com/watch?v=sK5i-N34im8
-  1. Communicating Sequential Processes by C. A. R. Hoare
-     * Artigo Clássico de Comunicação Entre Processos
-     * https://spinroot.com/courses/summer/Papers/hoare_1978.pdf
+
+**Sistemas de Arquivos**
+
+  1. ext3/4
+  1. reiserFS
+  1. UnionFS 
+  1. Ceph
   1. GlusterFS
      * Sistemas de arquivos distribuídos
      * http://docs.gluster.org/en/latest/Quick-Start-Guide/Architecture/
@@ -54,25 +78,34 @@
      * Andrew File System. Sistema tried and tested de arquivos distribuídos
      * O material do OStep deve ser um bom starting point
      * http://pages.cs.wisc.edu/~remzi/OSTEP/dist-afs.pdf
+
+**Containers**
+
   1. Docker
      * Fazer uma palestra hands on seguindo as dicas da aula de virtualização
      * Comandos, migração, casos de uso
   1. Kubernetes e/ou Puppet
      * Fazer uma palestra hands on seguindo as dicas da aula de virtualização
      * Comandos, migração, casos de uso
-  1. Mobile OSes
-  1. Caso de Estudo: Windows
-  1. Caso de Estudo: FreeBSD
-  1. Caso de Estudo: Linux
+
+**Mobile**
+
+  1. Caso de Estudo Android
+  1. Caso de Estudo iOS
+
+**Nuvem**
+  
   1. EC2 Elastic Resource Manager
-  1. Sistemas de Tempo Real
   1. Google Spanner
   1. Amazon Dynamo
   1. Facebook TAO
-  1. Ceph
-  1. ext2/3/4
-  1. reiserFS
-  1. UnionFS
-  1. Microsoft Singularity
+
+**Artigos Clássicos**
+
+  1. Communicating Sequential Processes by C. A. R. Hoare
+     * Artigo Clássico de Comunicação Entre Processos
+     * https://spinroot.com/courses/summer/Papers/hoare_1978.pdf
   1. Xen and the Art of Virtualization
+  
+**Emulação**
   1. Emulation of Nintendo Game Boy: PyBoy paper
