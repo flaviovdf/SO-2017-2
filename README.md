@@ -19,7 +19,7 @@ Sala: 2015 (Icex)
 
 ## Seminários
 
-  1. [Seminários](./seminarios)
+  1. [Seminários](./seminario)
 
 ## Bibliografia
 
