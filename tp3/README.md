@@ -81,6 +81,13 @@ Antes de iniciar, temos que entender os tipos `__le32` e `__le16`. Como o Linux
 Esses dois em particular são *unsigned ints* de 32 e 16 bits. Os mesmos sempre
 vão ser representados em *little endian*.
 
+Como o PC que vai corrigir o TP é little endian (o seu tamnbém deve ser),
+pode usar um atalho como:
+
+```c
+typedef int __le32;
+```
+
 **Super bloco**
 
 ```c
