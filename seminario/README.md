@@ -134,3 +134,6 @@
       * https://github.com/Baekalfen/PyBoy
       * https://github.com/Baekalfen/PyBoy/blob/master/PyBoy.pdf
   1. CHIP 8 Emulation
+      * http://www.cs.columbia.edu/~sedwards/classes/2016/4840-spring/designs/Chip8.pdf
+      * http://mattmik.com/files/chip8/mastering/chip8.html
+      * Procure por CHIP8 Emulator. Diversos código e tutoriais
