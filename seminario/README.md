@@ -133,3 +133,4 @@
       * PyBoy paper
       * https://github.com/Baekalfen/PyBoy
       * https://github.com/Baekalfen/PyBoy/blob/master/PyBoy.pdf
+  1. CHIP 8 Emulation
