@@ -104,7 +104,13 @@
 **Mobile**
 
   1. Caso de Estudo Android
+     * Falar das limitações
+     * Explicar paginação e escalonamento
+     * Explicar gerência do disco
   1. Caso de Estudo iOS
+     * Falar das limitações
+     * Explicar paginação e escalonamento
+     * Explicar gerência do disco
 
 **Nuvem e BDs na Nuvem (um pouco mais avançado)**
   
