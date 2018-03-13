@@ -66,6 +66,7 @@
   1. Linux NameSpaces e CGroups
      * Novas abordagens de proteção do Linux
      * https://www.youtube.com/watch?v=sK5i-N34im8
+  1. The Return of Software Vulnerabilities in the Brazilian Voting Machine
 
 **Sistemas de Arquivos**
 
