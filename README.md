@@ -1,4 +1,4 @@
-# DCC065 - Sistemas Operacionais: 2017.2
+# DCC605 - Sistemas Operacionais: 2017.2
 
 Professor: Flavio Figueiredo
 
